@@ -1,4 +1,7 @@
 
+#DashboardList .table.data tbody tr:not(:hover) { background-color: #fff }
+#DashboardList .table.data tbody tr:nth-child(4n+1):not(:hover) { background-color: #f6f8f8 }
+#DashboardList .table.data tbody tr:nth-child(2n) { background-color: #fff }
 .btn-group .panel-setting:hover {
   color: #444!important;
   border:none;
