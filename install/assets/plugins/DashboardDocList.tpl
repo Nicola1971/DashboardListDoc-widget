@@ -1,7 +1,7 @@
 /**
- * DashboardDocList 3.1 
+ * DashboardDocList 
  *
- * Dashboard Docmunts list widget plugin for Evolution CMS
+ * Dashboard Documents list widget plugin for Evolution CMS
  * @author    Nicola Lambathakis
  * @category    plugin
  * @version    3.1 rc
