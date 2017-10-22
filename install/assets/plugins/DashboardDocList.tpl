@@ -83,13 +83,13 @@ $rowTpl = '@CODE: <tr>
 <td style="text-align: right;" class="actions">
 <a target="main" href="index.php?a=27&id=[+id+]" title="edit"><i class="fa fa-pencil-square-o"></i></a> <a href="[(site_url)]index.php?id=[+id+]" target="_blank" title="preview"><i class="fa fa-eye"></i></a> ';
 if ($showMoveButton == yes) { 
-$rowTpl .= '<a href="index.php?a=51&id=[+id+]" title="move"><i class="fa fa-arrows"></i></a> ';
+$rowTpl .= '<a target="main" href="index.php?a=51&id=[+id+]" title="move"><i class="fa fa-arrows"></i></a> ';
 }
 if ($showPublishButton == yes) { 
 $rowTpl .= '[[if? &is=`[+published+]:=:1` &then=` 
-<a href="index.php?a=62&id=[+id+]" title="unpublish"><i class="fa fa-arrow-down"></i></a>  
+<a target="main" href="index.php?a=62&id=[+id+]" title="unpublish"><i class="fa fa-arrow-down"></i></a>  
 `&else=`
-<a href="index.php?a=62&id=[+id+]" title="publish"><i class="fa fa-arrow-up"></i></a>  
+<a target="main" href="index.php?a=62&id=[+id+]" title="publish"><i class="fa fa-arrow-up"></i></a>  
 `]]';
 }
  
