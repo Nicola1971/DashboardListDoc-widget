@@ -1,0 +1,14 @@
+
+#DashboardList .table.data tbody tr:not(:hover) { background-color: #fff }
+#DashboardList .table.data tbody tr:nth-child(4n+1):not(:hover) { background-color: #f6f8f8 }
+#DashboardList .table.data tbody tr:nth-child(2n) { background-color: #fff }
+.btn-group .panel-setting:hover {
+  color: #444!important;
+  border:none;
+}
+#DashboardList td.actions .fa {margin-left:6px;}
+
+.dark #DashboardList .table.data tbody tr:not(:hover) { background-color: #272c33}
+.dark #DashboardList .table.data tbody tr:nth-child(4n+1):not(:hover) { background-color: #383f48}
+.dark #DashboardList .table.data tbody tr:nth-child(2n) { background-color: #272c33}
+
