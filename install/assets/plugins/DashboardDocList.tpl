@@ -86,7 +86,7 @@ $rowTpl = '@CODE: <tr>
 <td data-toggle="collapse" data-target=".collapse'.$WidgetID.'[+id+]"> <span class="label label-info">[+id+]</span></td>
 <td data-toggle="collapse" data-target=".collapse'.$WidgetID.'[+id+]"><a target="main" data-title="edit?" class="dataConfirm [[if? &is=`[+published+]:=:0` &then=`unpublished`]]" href="index.php?a=27&id=[+id+]" title="edit">[+pagetitle+]</a></td>
 <td data-toggle="collapse" data-target=".collapse'.$WidgetID.'[+id+]"class="text-right text-nowrap">[+date+]</td>
-<td data-toggle="collapse" data-target=".collapse'.$WidgetID.'[+id+]"style="text-align: right;" class="actions">
+<td style="text-align: right;" class="actions">
 <a target="main" href="index.php?a=27&id=[+id+]" title="edit"><i class="fa fa-pencil-square-o"></i></a> <a href="[(site_url)]index.php?id=[+id+]" target="_blank" title="preview"><i class="fa fa-eye"></i></a> ';
 if ($showMoveButton == yes) { 
 $rowTpl .= '<a href="index.php?a=51&id=[+id+]" title="move"><i class="fa fa-arrows"></i></a> ';
@@ -103,7 +103,7 @@ if ($showDeleteButton == yes) {
 $rowTpl .= '<a href="index.php?a=6&id=[+id+]" title="delete"><i class="fa fa-trash-o"></i></a>  ';
 }
 
-$rowTpl .= ' <a style="margin-left:6px;" title="' . $_lang["resource_overview"] . '" data-toggle="collapse" data-target=".collapse'.$WidgetID.'[+id+]"><i class="fa fa-info"></i></a></td>
+$rowTpl .= '<a style="margin-left:6px;" title="' . $_lang["resource_overview"] . '" data-toggle="collapse" data-target=".collapse'.$WidgetID.'[+id+]"><i class="fa fa-info"></i></a></td>
 
 </tr>
 <tr class="resource-overview-accordian collapse collapse'.$WidgetID.'[+id+]">
