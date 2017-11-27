@@ -89,18 +89,18 @@ $rowTpl = '@CODE: <tr>
 <td style="text-align: right;" class="actions">
 <a target="main" href="index.php?a=27&id=[+id+]" title="edit"><i class="fa fa-pencil-square-o"></i></a> <a href="[(site_url)]index.php?id=[+id+]" target="_blank" title="preview"><i class="fa fa-eye"></i></a> ';
 if ($showMoveButton == yes) { 
-$rowTpl .= '<a href="index.php?a=51&id=[+id+]" title="move"><i class="fa fa-arrows"></i></a> ';
+$rowTpl .= '<a target="main" href="index.php?a=51&id=[+id+]" title="move"><i class="fa fa-arrows"></i></a> ';
 }
 if ($showPublishButton == yes) { 
 $rowTpl .= '[[if? &is=`[+published+]:=:1` &then=` 
-<a href="index.php?a=62&id=[+id+]" class="confirm" title="unpublish"><i class="fa fa-arrow-down"></i></a>  
+<a target="main" href="index.php?a=62&id=[+id+]" class="confirm" title="unpublish"><i class="fa fa-arrow-down"></i></a>  
 `&else=`
-<a href="index.php?a=62&id=[+id+]" class="confirm" title="publish"><i class="fa fa-arrow-up"></i></a>  
+<a target="main" href="index.php?a=62&id=[+id+]" class="confirm" title="publish"><i class="fa fa-arrow-up"></i></a>  
 `]]';
 }
  
 if ($showDeleteButton == yes) { 
-$rowTpl .= '<a href="index.php?a=6&id=[+id+]" title="delete"><i class="fa fa-trash-o"></i></a>  ';
+$rowTpl .= '<a target="main" href="index.php?a=6&id=[+id+]" title="delete"  onClick="window.location.reload();"><i class="fa fa-trash-o"></i></a>  ';
 }
 
 $rowTpl .= '<a style="margin-left:6px;" title="' . $_lang["resource_overview"] . '" data-toggle="collapse" data-target=".collapse'.$WidgetID.'[+id+]"><i class="fa fa-info"></i></a></td>
