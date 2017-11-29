@@ -23,3 +23,6 @@ span.footable-toggle {display:inline-block;width:20px;cursor:pointer;}
 }
 
 #DashboardList td.actions .fa {margin-left:6px;}
+#DashboardList td a.unpublished {color:#B98787;font-style: italic}
+#DashboardList td a.deleted {color:#A52A2A;text-decoration: line-through}
+#DashboardList td a.deleted:hover {color:#A52A2A;text-decoration: line-through}

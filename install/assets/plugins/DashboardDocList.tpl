@@ -67,7 +67,7 @@ jQuery(function($){
 else {
 $cssOutput = '
 
-<script src="../assets/plugins/dashboarddoclist/js/footable.min.js"></script>
+<script src="../assets/plugins/dashboarddoclist/js/footable.js"></script>
 <script>	
 jQuery(function($){
 		$(\'#TableList\').footable({
@@ -120,7 +120,7 @@ $parentId = $ParentFolder;
 $dittototal = $ListItems;
 $rowTpl = '@CODE: <tr>
 <td aria-expanded="false" class="footable-toggle"> <span class="label label-info">[+id+]</span></td>
-<td class="footable-toggle"><a target="main" data-title="edit?" class="dataConfirm [[if? &is=`[+published+]:=:0` &then=`unpublished`]]" href="index.php?a=27&id=[+id+]" title="edit">[+pagetitle+]</a></td>
+<td class="footable-toggle"><a target="main" data-title="edit?" class="dataConfirm [[if? &is=`[+published+]:=:0` &then=`unpublished`]] [[if? &is=`[+deleted+]:=:1` &then=`deleted`]]" href="index.php?a=27&id=[+id+]" title="edit">[+pagetitle+]</a></td>
 <td class="footable-toggle text-right text-nowrap">[+editedon:date=`%d-%m-%Y`+]</td>
 <td style="text-align: right;" class="actions">
 <a target="main" href="index.php?a=27&id=[+id+]" title="edit"><i class="fa fa-pencil-square-o"></i></a> <a href="[(site_url)]index.php?id=[+id+]" target="_blank" title="preview"><i class="fa fa-eye"></i></a> ';
@@ -165,7 +165,7 @@ $params['tvPrefix'] = '';
 $params['tvList'] = $DocListerTvFields;
 $params['display'] = $dittototal;		
 if ($showPublishedOnly == yes) {
-$params['showNoPublish'] = '0';
+$params['showNoPublish'] = '1';
 }
 if ($hideFolders == yes) {
 $wherehideFolders = 'isfolder=0';
