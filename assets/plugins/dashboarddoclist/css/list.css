@@ -1,9 +1,28 @@
+#DashboardList .table.data tbody tr:not(:hover) { background-color: transparent;border:none; }
+#DashboardList .table.data tbody tr:not(:hover):not(.footable-detail-row) { background-color: #fff }
+#DashboardList .table.data tbody tr:nth-child(2n+1):not(:hover):not(.footable-detail-row) { background-color: #f6f8f8 }
 
-#DashboardList .table.data tbody tr:not(:hover) { background-color: #fff }
-#DashboardList .table.data tbody tr:nth-child(4n+1):not(:hover) { background-color: #f6f8f8 }
-#DashboardList .table.data tbody tr:nth-child(2n) { background-color: #fff }
+table.footable-details th {display:none;}
+#DashboardList table.footable-details.table.data,
+#DashboardList table.footable-details.table.data tbody tr:nth-child(2n+1):not(:hover),
+#DashboardList table.footable-details.table.data tbody tr td,
+#DashboardList table.footable-details.table.data tbody tr:hover { border:none; background-color: transparent;}
+
+span.footable-toggle {display:inline-block;width:20px;cursor:pointer;}
+
+/*hide search filter dropdown*//*
+.footable-filtering-search .btn.dropdown-toggle {
+    display: none;
+}
+*/
+
+/*widget styles*/
 .btn-group .panel-setting:hover {
   color: #444!important;
   border:none;
 }
-td.actions a {margin-left:3px;}
+
+#DashboardList td.actions .fa {margin-left:6px;}
+#DashboardList td a.unpublished {color:#B98787;font-style: italic}
+#DashboardList td a.deleted {color:#A52A2A;text-decoration: line-through}
+#DashboardList td a.deleted:hover {color:#A52A2A;text-decoration: line-through}

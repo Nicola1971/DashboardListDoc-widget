@@ -1,14 +1,65 @@
+#DashboardList .table.data tbody tr:not(:hover) { background-color: transparent;border:none; }
+#DashboardList .table.data tbody tr:not(:hover):not(.footable-detail-row) { background-color: #fff }
+#DashboardList .table.data tbody tr:nth-child(2n+1):not(:hover):not(.footable-detail-row) { background-color: #f6f8f8 }
 
-#DashboardList .table.data tbody tr:not(:hover) { background-color: #fff }
-#DashboardList .table.data tbody tr:nth-child(4n+1):not(:hover) { background-color: #f6f8f8 }
-#DashboardList .table.data tbody tr:nth-child(2n) { background-color: #fff }
+table.footable-details th {display:none;}
+#DashboardList table.footable-details.table.data,
+#DashboardList table.footable-details.table.data tbody tr:nth-child(2n+1):not(:hover),
+#DashboardList table.footable-details.table.data tbody tr td,
+#DashboardList table.footable-details.table.data tbody tr:hover { border:none; background-color: transparent;}
+
+span.footable-toggle {display:inline-block;width:20px;cursor:pointer;}
+
+
+.footable .btn-secondary {
+	border: 1px solid #ddd;
+}
+
+.footable .btn .caret {
+	margin-left: 0;
+	display:none /*flat fix*/
+}
+/*hide search filter dropdown*//*
+.footable-filtering-search .btn.dropdown-toggle {
+    display: none;
+}
+*/
+/*widget styles*/
 .btn-group .panel-setting:hover {
   color: #444!important;
   border:none;
 }
-#DashboardList td.actions .fa {margin-left:6px;}
 
-.dark #DashboardList .table.data tbody tr:not(:hover) { background-color: #272c33}
-.dark #DashboardList .table.data tbody tr:nth-child(4n+1):not(:hover) { background-color: #383f48}
-.dark #DashboardList .table.data tbody tr:nth-child(2n) { background-color: #272c33}
+#DashboardList td.actions .fa {margin-left:6px;}
+#DashboardList td a.unpublished {color:#B98787;font-style: italic}
+#DashboardList td a.deleted {color:#A52A2A;text-decoration: line-through}
+#DashboardList td a.deleted:hover {color:#A52A2A;text-decoration: line-through}
+/*DARK*/
+
+.dark .footable .pagination > li > a {border-color:#202329; background-color:#383F48}
+
+.dark .footable .pagination > li > a:hover,
+.dark .footable .pagination > li > span:hover,
+.dark .footable .pagination > li > a:focus,
+.dark .footable .pagination > li > span:focus {
+	color: #fff;
+	border-color:#202329; background-color:#383F48
+}
+
+.dark .footable .pagination > .active > a,
+.dark .footable .pagination > .active > span,
+.dark .footable .pagination > .active > a:hover,
+.dark .footable .pagination > .active > span:hover,
+.dark .footable .pagination > .active > a:focus,
+.dark .footable .pagination > .active > span:focus {
+	color: #fff;
+	background-color: #337ab7;
+	border-color:#202329;
+}
+
+.dark #DashboardList .table.data tbody tr:not(:hover):not(.footable-detail-row) { background-color: #383f48}
+.dark #DashboardList .table.data tbody tr:nth-child(2n):not(.footable-detail-row) { background-color: #272c33}
+
+.dark #DashboardList .table.data tbody tr:hover:not(.footable-detail-row) { background-color: #30364c}
+
 
