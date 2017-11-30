@@ -14,12 +14,12 @@
  * @reportissues https://github.com/Nicola1971/WelcomeStats-EvoDashboard-Plugin/issues
  * @link        
  * @lastupdate  29/11/2017
- * @internal    @properties &wdgVisibility=Show widget for:;menu;All,AdminOnly,AdminExcluded,ThisRoleOnly,ThisUserOnly;All &ThisRole=Show only to this role id:;string;;;enter the role id &ThisUser=Show only to this username:;string;;;enter the username  &wdgTitle= Widget Title:;string;Documents List  &wdgicon= widget icon:;string;fa-pencil  &wdgposition=widget position:;list;1,2,3,4,5,6,7,8,9,10;1 &wdgsizex=widget x size:;list;12,6,4,3;12 &ParentFolder=Parent folder for List documents:;string;0 &ListItems=Max items in List:;string;50 &tablefields= Tv Fields:;string;[+longtitle+],[+description+],[+introtext+],[+documentTags+] &tableheading=TV  heading:;string;Long Title,Description,Introtext,Tags &hideFolders= Hide Folders:;list;yes,no;no &showPublishedOnly= Show Deleted and Unpublished:;list;yes,no;yes &dittolevel= Depht:;string;3 &showMoveButton= Show Move Button:;list;yes,no;yes &showPublishButton= Show Publish Button:;list;yes,no;yes &showDeleteButton= Show Delete Button:;list;yes,no;yes &WidgetID= Unique Widget ID:;string;DocListBox &HeadBG= Widget Title Background color:;string; &HeadColor= Widget title color:;string;
+ * @internal    @properties &wdgVisibility=Show widget for:;menu;All,AdminOnly,AdminExcluded,ThisRoleOnly,ThisUserOnly;All &ThisRole=Show only to this role id:;string;;;enter the role id &ThisUser=Show only to this username:;string;;;enter the username  &wdgTitle= Widget Title:;string;Documents List  &wdgicon= widget icon:;string;fa-pencil  &wdgposition=widget position:;list;1,2,3,4,5,6,7,8,9,10;1 &wdgsizex=widget x size:;list;12,6,4,3;12 &ParentFolder=Parent folder for List documents:;string;0 &ListItems=Max items in List:;string;50 &showParent= Show Parent Column:;list;yes,no;yes &tablefields= Tv Fields:;string;[+longtitle+],[+description+],[+introtext+],[+documentTags+] &tableheading=TV  heading:;string;Long Title,Description,Introtext,Tags &hideFolders= Hide Folders:;list;yes,no;no &showPublishedOnly= Show Deleted and Unpublished:;list;yes,no;yes &dittolevel= Depht:;string;3 &showMoveButton= Show Move Button:;list;yes,no;yes &showPublishButton= Show Publish Button:;list;yes,no;yes &showDeleteButton= Show Delete Button:;list;yes,no;yes &WidgetID= Unique Widget ID:;string;DocListBox &HeadBG= Widget Title Background color:;string; &HeadColor= Widget title color:;string;
 */
 /******
 DashboardDocList 3.2
 OnManagerWelcomeHome,OnManagerMainFrameHeaderHTMLBlock
-&wdgVisibility=Show widget for:;menu;All,AdminOnly,AdminExcluded,ThisRoleOnly,ThisUserOnly;All &ThisRole=Show only to this role id:;string;;;enter the role id &ThisUser=Show only to this username:;string;;;enter the username  &wdgTitle= Widget Title:;string;Documents List  &wdgicon= widget icon:;string;fa-pencil  &wdgposition=widget position:;list;1,2,3,4,5,6,7,8,9,10;1 &wdgsizex=widget x size:;list;12,6,4,3;12 &ParentFolder=Parent folder for List documents:;string;0 &ListItems=Max items in List:;string;50 &tablefields= Tv Fields:;string;[+longtitle+],[+description+],[+introtext+],[+documentTags+] &tableheading=TV  heading:;string;Long Title,Description,Introtext,Tags &hideFolders= Hide Folders:;list;yes,no;no &showPublishedOnly= Show Published Only:;list;yes,no;no &dittolevel= Depht:;string;3 &showMoveButton= Show Move Button:;list;yes,no;yes &showPublishButton= Show Publish Button:;list;yes,no;yes &showDeleteButton= Show Delete Button:;list;yes,no;yes &WidgetID= Unique Widget ID:;string;DocListBox &HeadBG= Widget Title Background color:;string; &HeadColor= Widget title color:;string;
+&wdgVisibility=Show widget for:;menu;All,AdminOnly,AdminExcluded,ThisRoleOnly,ThisUserOnly;All &ThisRole=Show only to this role id:;string;;;enter the role id &ThisUser=Show only to this username:;string;;;enter the username  &wdgTitle= Widget Title:;string;Documents List  &wdgicon= widget icon:;string;fa-pencil  &wdgposition=widget position:;list;1,2,3,4,5,6,7,8,9,10;1 &wdgsizex=widget x size:;list;12,6,4,3;12 &ParentFolder=Parent folder for List documents:;string;0 &ListItems=Max items in List:;string;50 &showParent= Show Parent Column:;list;yes,no;yes &tablefields= Tv Fields:;string;[+longtitle+],[+description+],[+introtext+],[+documentTags+] &tableheading=TV  heading:;string;Long Title,Description,Introtext,Tags &hideFolders= Hide Folders:;list;yes,no;no &showPublishedOnly= Show Deleted and Unpublished:;list;yes,no;yes &dittolevel= Depht:;string;3 &showMoveButton= Show Move Button:;list;yes,no;yes &showPublishButton= Show Publish Button:;list;yes,no;yes &showDeleteButton= Show Delete Button:;list;yes,no;yes &WidgetID= Unique Widget ID:;string;DocListBox &HeadBG= Widget Title Background color:;string; &HeadColor= Widget title color:;string;
 ****
 */
 // get manager role
@@ -43,7 +43,6 @@ case 'OnManagerMainFrameHeaderHTMLBlock':
 $manager_theme = $modx->config['manager_theme'];
 if($manager_theme == "EvoFLAT") {
 $cssOutput = '
-
 <script src="../assets/plugins/dashboarddoclist/js/footable.min.js"></script>
 <script>	
 jQuery(function($){
@@ -119,8 +118,14 @@ $parentId = $ParentFolder;
 $dittototal = $ListItems;
 $rowTpl = '@CODE: <tr>
 <td aria-expanded="false" class="footable-toggle"> <span class="label label-info">[+id+]</span></td>
-<td class="footable-toggle"><a target="main" data-title="edit?" class="dataConfirm [[if? &is=`[+published+]:=:0` &then=`unpublished`]] [[if? &is=`[+deleted+]:=:1` &then=`deleted`]]" href="index.php?a=27&id=[+id+]" title="edit">[+pagetitle+]</a></td>
-<td class="footable-toggle text-right text-nowrap">[+editedon:date=`%d-%m-%Y`+]</td>
+<td class="footable-toggle"><a target="main" data-title="edit?" class="dataConfirm [[if? &is=`[+published+]:=:0` &then=`unpublished`]] [[if? &is=`[+deleted+]:=:1` &then=`deleted`]]" href="index.php?a=27&id=[+id+]" title="edit">[+pagetitle+]</a></td> ';
+if ($showParent == yes) {
+$rowTpl .= '
+<td aria-expanded="false" class="footable-toggle"> <span class="label label-info">
+[[if? &is=`[+parent+]:not:0`&then=`<a target="main" href="index.php?a=3&id=[+parent+]" title="view">[[DocInfo? &docid=`[+parent+]` &field=`pagetitle`]]</a>`]]
+</td>';
+}
+$rowTpl .= '<td class="footable-toggle text-right text-nowrap">[+editedon:date=`%d-%m-%Y`+]</td>
 <td style="text-align: right;" class="actions">
 <a target="main" href="index.php?a=27&id=[+id+]" title="edit"><i class="fa fa-pencil-square-o"></i></a> <a href="[(site_url)]index.php?id=[+id+]" target="_blank" title="preview"><i class="fa fa-eye"></i></a> ';
 if ($showMoveButton == yes) { 
@@ -153,10 +158,15 @@ $rowTpl .= '<span class="footable-toggle" style="margin-left:-4px;" title="' . $
 <ul>        
 '.$thtdfields.'
 </ul>
+
 </div>
 </td>
 </tr>
 ';
+if ($showParent == yes) {
+$parentColumnHeader = '
+<th data-type="text">Parent</th> ';
+}
 //DocListerTvFields
 $find = array('[+','+]');
 $replace = array('','');
@@ -195,6 +205,7 @@ $list = $modx->runSnippet('DocLister', $params);
 						<tr>
 							<th data-type="number" style="width: 1%">[%id%]</th>
 							<th data-type="text">[%resource_title%]</th>
+							'.$parentColumnHeader.'
 							<th data-type="date" data-sorted="true" data-direction="DESC" style="width: 1%">[%page_data_edited%]</th>
 							<th data-filterable="false" data-sortable="false" style="width: 1%; text-align: center">[%mgrlog_action%]</th>
 							<th data-filterable="false" data-sortable="false" data-breakpoints="all"></th>
