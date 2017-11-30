@@ -10,11 +10,11 @@ table.footable-details th {display:none;}
 
 span.footable-toggle {display:inline-block;width:20px;cursor:pointer;}
 
-/*hide search filter dropdown*/
+/*hide search filter dropdown*//*
 .footable-filtering-search .btn.dropdown-toggle {
     display: none;
 }
-
+*/
 
 /*widget styles*/
 .btn-group .panel-setting:hover {

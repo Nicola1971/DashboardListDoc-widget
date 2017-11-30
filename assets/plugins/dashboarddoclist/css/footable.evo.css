@@ -1,4 +1,5 @@
 /*
+* modified for evo cms
 * FooTable v3 - FooTable is a jQuery plugin that aims to make HTML tables on smaller devices look awesome.
 * @version 3.1.5
 * @link http://fooplugins.com
@@ -128,9 +129,15 @@
 	border-right: 4px solid transparent;
 	border-left: 4px solid transparent;
 }
+.footable .btn-secondary {
+	border: 1px solid #ddd;
+}
+.footable .btn-secondary:hover, .footable .btn-secondary:active, .footable .btn-secondary:focus {
+	background-color: #FAFAFA;
+}
+
 .footable .btn .caret {
 	margin-left: 0;
-	display:none; /*evo fix*/
 }
 /* form-group */
 .form-group {
