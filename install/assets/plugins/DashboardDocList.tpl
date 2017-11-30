@@ -44,7 +44,7 @@ $manager_theme = $modx->config['manager_theme'];
 if($manager_theme == "EvoFLAT") {
 $cssOutput = '
 
-<script src="../assets/plugins/dashboarddoclist/js/footable.js"></script>
+<script src="../assets/plugins/dashboarddoclist/js/footable.min.js"></script>
 <script>	
 jQuery(function($){
 		$(\'#TableList\').footable({
@@ -66,7 +66,7 @@ jQuery(function($){
 else {
 $cssOutput = '
 
-<script src="../assets/plugins/dashboarddoclist/js/footable.js"></script>
+<script src="../assets/plugins/dashboarddoclist/js/footable.min.js"></script>
 <script>	
 jQuery(function($){
 		$(\'#TableList\').footable({
