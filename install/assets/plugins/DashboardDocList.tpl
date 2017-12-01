@@ -218,7 +218,7 @@ $list = $modx->runSnippet('DocLister', $params);
                 <thead>
 						<tr>
 							<th data-type="number" style="width: 1%">[%id%]</th>
-							<th data-type="text">[%resource_title%]</th>
+							<th style="width: 30%" data-type="text">[%resource_title%]</th>
 							'.$parentColumnHeader.'
 							'.$TvColumnHeader.'
 							<th data-type="date" data-sorted="true" data-direction="DESC" style="width: 1%">[%page_data_edited%]</th>
