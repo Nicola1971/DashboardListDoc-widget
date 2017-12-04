@@ -266,7 +266,7 @@ $list = $modx->runSnippet('DocLister', $params);
 <button type="button" class="btn btn-sm" data-page-size="10">10</button>
 <button type="button" class="btn btn-sm" data-page-size="20">20</button>
 <button type="button" class="btn btn-sm" data-page-size="50">50</button>
-<button type="button" class="btn btn-sm" data-page-size="100">100</button>
+<!---<button type="button" class="btn btn-sm" data-page-size="100">100</button>-->
 </div>
 						<tr>
 							<th data-type="number" style="width: 1%">[%id%]</th>
