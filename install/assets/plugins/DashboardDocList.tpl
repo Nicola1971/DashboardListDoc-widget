@@ -21,7 +21,8 @@ DashboardDocList 3.2.2
 OnManagerWelcomeHome,OnManagerMainFrameHeaderHTMLBlock
 &wdgVisibility=Show widget for:;menu;All,AdminOnly,AdminExcluded,ThisRoleOnly,ThisUserOnly;All &ThisRole=Show only to this role id:;string;;;enter the role id &ThisUser=Show only to this username:;string;;;enter the username  &wdgTitle= Widget Title:;string;Documents List  &wdgicon= widget icon:;string;fa-pencil  &wdgposition=widget position:;list;1,2,3,4,5,6,7,8,9,10;1 &wdgsizex=widget x size:;list;12,6,4,3;12 &ParentFolder=Parent folder for List documents:;string;0 &ListItems=Max items in List:;string;50 &showParent= Show Parent Column:;list;yes,no;yes &TvColumn=Show Tv column:;string;;;enter tv name &tablefields= Overview Tv Fields:;string;[+longtitle+],[+description+],[+introtext+],[+documentTags+] &tableheading=Overview TV headings:;string;Long Title,Description,Introtext,Tags &hideFolders= Hide Folders:;list;yes,no;no &showPublishedOnly= Show Deleted and Unpublished:;list;yes,no;yes &dittolevel= Depht:;string;3 &showMoveButton= Show Move Button:;list;yes,no;yes &showPublishButton= Show Publish Button:;list;yes,no;yes &showDeleteButton= Show Delete Button:;list;yes,no;yes &HeadBG= Widget Title Background color:;string; &HeadColor= Widget title color:;string
 
-***/
+// get language
+global $modx,$_lang;
 // get manager role
 $internalKey = $modx->getLoginUserID();
 $sid = $modx->sid;
@@ -50,7 +51,7 @@ FooTable.MyFiltering = FooTable.Filtering.extend({
 	construct: function(instance){
 		this._super(instance);
 		this.statuses = [\'online\',\'unpublished\',\'deleted\'];
-		this.def = \'Any Status\';
+		this.def = \'All Status\';
 		this.$status = null;
 	},
 	$create: function(){
@@ -122,8 +123,7 @@ $cssOutput = '
 $e->output($jsOutput.$cssOutput);
 break;
 case 'OnManagerWelcomeHome':
-// get language
-global $modx,$_lang;
+
 // get plugin id
 $result = $modx->db->select('id', $this->getFullTableName("site_plugins"), "name='{$modx->event->activePlugin}' AND disabled=0");
 $pluginid = $modx->db->getValue($result);
@@ -254,14 +254,14 @@ $list = $modx->runSnippet('DocLister', $params);
 				'icon' => ''.$wdgicon.'',
 				'title' => ''.$wdgTitle.' '.$button_pl_config.'',
 				'body' => '<div style="min-height:550px" class="widget-stage"><div id ="DashboardList" class="table-responsive">
-				<table data-state="true" data-state-key="DashboardList'.$pluginid.'_state" data-paging-size="10" data-show-toggle="false" data-toggle-column="last" data-toggle-selector=".footable-toggle" data-filter-ignore-case="true" data-filtering="true" data-state-filtering="true" data-filter-exact-match="true" data-filter-dropdown-title="Search in:" class="table data" id="TableList">
+				<table data-state="true" data-state-key="DashboardList'.$pluginid.'_state" data-paging-size="10" data-show-toggle="false" data-toggle-column="last" data-toggle-selector=".footable-toggle" data-filter-ignore-case="true" data-filtering="true" data-state-filtering="true" data-filter-exact-match="true" data-filter-dropdown-title="'.$_lang["search_criteria"].'" data-filter-placeholder="'.$_lang["search"].'" class="table data" id="TableList">
                 <thead>
 						<tr>
 							<th data-type="number" style="width: 1%">[%id%]</th>
 							<th style="width: 30%" data-type="text">[%resource_title%]</th>
 							'.$parentColumnHeader.'
 							'.$TvColumnHeader.'
-							<th data-visible="false" data-name="status" data-filterable="true" data-type="text">status</th>
+							<th data-visible="false" data-name="status" data-filterable="true" data-type="text">'.$_lang["page_data_status"].'</th>
 							<th data-type="date" data-format-string="DD MM YYYY" data-sorted="true" data-direction="DESC" style="width: 1%">[%page_data_edited%]</th>
 							<th data-filterable="false" data-sortable="false" style="width: 1%; text-align: center">[%mgrlog_action%]</th>
 							<th data-filterable="false" data-sortable="false" data-breakpoints="all"></th>
