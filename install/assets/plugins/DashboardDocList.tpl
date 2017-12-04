@@ -186,7 +186,7 @@ $rowTpl .= '<td class="footable-toggle text-right text-nowrap">[+editedon:date=`
 <td style="text-align: right;" class="actions">';
 if($modx->hasPermission('edit_document')) {		
 if ($editInModal == yes) {
-$rowTpl .= '<a style="cursor:pointer" target="main" href="" onclick="parent.modx.popup({url:\''. MODX_MANAGER_URL.'?a=27&id=[+id+]\',title1:\'' . $_lang["edit_resource"] . '\',icon:\'pencil-square-o\',iframe:\'iframe\',selector2:\'\',position:\'center center\',width:\'80%\',height:\'80%\',wrap:\'evo-tab-page-home\',hide:0,hover:0,overlay:1,overlayclose:1})" title="' . $_lang["edit_resource"] . '"><i class="fa fa-pencil-square-o"></i></a>';
+$rowTpl .= '<a style="cursor:pointer" target="main" href="" onclick="parent.modx.popup({url:\''. MODX_MANAGER_URL.'?a=27&id=[+id+]\',title1:\'' . $_lang["edit_resource"] . '\',icon:\'pencil-square-o\',iframe:\'iframe\',selector2:\'\',position:\'center center\',width:\'80%\',height:\'80%\',wrap:\'evo-tab-page-home\',hide:0,hover:0,overlay:1,overlayclose:1})" title="' . $_lang["edit_resource"] . '"><i class="fa fa-external-link"></i></a>';
 }
 else {
 $rowTpl .= '<a target="main" href="index.php?a=27&id=[+id+]" title="' . $_lang["edit_resource"] . '"><i class="fa fa-pencil-square-o"></i></a>';
