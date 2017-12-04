@@ -34,6 +34,7 @@ span.footable-toggle {display:inline-block;width:20px;cursor:pointer;}
 #DashboardList td a.unpublished {color:#B98787;font-style: italic}
 #DashboardList td a.deleted {color:#A52A2A;text-decoration: line-through}
 #DashboardList td a.deleted:hover {color:#A52A2A;text-decoration: line-through}
+#DashboardList td a.notinmenu {color:#888;;font-style: italic}
 /*DARK*/
 
 .dark .footable .pagination > li > a {border-color:#202329; background-color:#383F48}
