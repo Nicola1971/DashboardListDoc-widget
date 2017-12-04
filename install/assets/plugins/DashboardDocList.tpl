@@ -4,7 +4,7 @@
  * Dashboard Documents list widget plugin for Evolution CMS
  * @author    Nicola Lambathakis
  * @category    plugin
- * @version    3.2.4
+ * @version    3.2.5
  * @license	   http://www.gnu.org/copyleft/gpl.html GNU Public License (GPL)
  * @internal    @events OnManagerWelcomeHome,OnManagerMainFrameHeaderHTMLBlock
  * @internal    @installset base
@@ -14,12 +14,12 @@
  * @reportissues https://github.com/Nicola1971/DashboardListDoc-widget/issues
  * @link        
  * @lastupdate  04/12/2017
- * @internal    @properties &wdgVisibility=Show widget for:;menu;All,AdminOnly,AdminExcluded,ThisRoleOnly,ThisUserOnly;All &ThisRole=Show only to this role id:;string;;;enter the role id &ThisUser=Show only to this username:;string;;;enter the username  &wdgTitle= Widget Title:;string;Documents List  &wdgicon= widget icon:;string;fa-pencil  &wdgposition=widget position:;list;1,2,3,4,5,6,7,8,9,10;1 &wdgsizex=widget x size:;list;12,6,4,3;12 &ParentFolder=Parent folder for List documents:;string;0 &ListItems=Max items in List:;string;50 &showStatusFilter= Show Status Filter:;list;yes,no;yes &showParent= Show Parent Column:;list;yes,no;yes &TvColumn=Show Tv column:;string;;;enter tv name &tablefields= Overview Tv Fields:;string;[+longtitle+],[+description+],[+introtext+],[+documentTags+] &tableheading=Overview TV headings:;string;Long Title,Description,Introtext,Tags &hideFolders= Hide Folders:;list;yes,no;no &showPublishedOnly= Show Deleted and Unpublished:;list;yes,no;yes &dittolevel= Depht:;string;3 &showMoveButton= Show Move Button:;list;yes,no;yes &showPublishButton= Show Publish Button:;list;yes,no;yes &showDeleteButton= Show Delete Button:;list;yes,no;yes &HeadBG= Widget Title Background color:;string; &HeadColor= Widget title color:;string
+ * @internal    @properties &wdgVisibility=Show widget for:;menu;All,AdminOnly,AdminExcluded,ThisRoleOnly,ThisUserOnly;All &ThisRole=Show only to this role id:;string;;;enter the role id &ThisUser=Show only to this username:;string;;;enter the username  &wdgTitle= Widget Title:;string;Documents List  &wdgicon= widget icon:;string;fa-pencil  &wdgposition=widget position:;list;1,2,3,4,5,6,7,8,9,10;1 &wdgsizex=widget x size:;list;12,6,4,3;12 &ParentFolder=Parent folder for List documents:;string;0 &ListItems=Max items in List:;string;50 &dittolevel= Depht:;string;3 &hideFolders= Hide Folders:;list;yes,no;no &showUnpublished= Show Deleted and Unpublished:;list;yes,no;yes &showStatusFilter= Show Status Filter:;list;yes,no;yes;;need Show Deleted and Unpublished - YES &showParent= Show Parent Column:;list;yes,no;yes &TvColumn=Show Tv column:;string;;;enter tv name &tablefields= Overview Tv Fields:;string;[+longtitle+],[+description+],[+introtext+],[+documentTags+] &tableheading=Overview TV headings:;string;Long Title,Description,Introtext,Tags &showMoveButton= Show Move Button:;list;yes,no;yes &showPublishButton= Show Publish Button:;list;yes,no;yes &showDeleteButton= Show Delete Button:;list;yes,no;yes &HeadBG= Widget Title Background color:;string; &HeadColor= Widget title color:;string
 */
 /******
-DashboardDocList 3.2.4
+DashboardDocList 3.2.5
 OnManagerWelcomeHome,OnManagerMainFrameHeaderHTMLBlock
-&wdgVisibility=Show widget for:;menu;All,AdminOnly,AdminExcluded,ThisRoleOnly,ThisUserOnly;All &ThisRole=Show only to this role id:;string;;;enter the role id &ThisUser=Show only to this username:;string;;;enter the username  &wdgTitle= Widget Title:;string;Documents List  &wdgicon= widget icon:;string;fa-pencil  &wdgposition=widget position:;list;1,2,3,4,5,6,7,8,9,10;1 &wdgsizex=widget x size:;list;12,6,4,3;12 &ParentFolder=Parent folder for List documents:;string;0 &ListItems=Max items in List:;string;50 &showStatusFilter= Show Status Filter:;list;yes,no;yes &showParent= Show Parent Column:;list;yes,no;yes &TvColumn=Show Tv column:;string;;;enter tv name &tablefields= Overview Tv Fields:;string;[+longtitle+],[+description+],[+introtext+],[+documentTags+] &tableheading=Overview TV headings:;string;Long Title,Description,Introtext,Tags &hideFolders= Hide Folders:;list;yes,no;no &showPublishedOnly= Show Deleted and Unpublished:;list;yes,no;yes &dittolevel= Depht:;string;3 &showMoveButton= Show Move Button:;list;yes,no;yes &showPublishButton= Show Publish Button:;list;yes,no;yes &showDeleteButton= Show Delete Button:;list;yes,no;yes &HeadBG= Widget Title Background color:;string; &HeadColor= Widget title color:;string
+&wdgVisibility=Show widget for:;menu;All,AdminOnly,AdminExcluded,ThisRoleOnly,ThisUserOnly;All &ThisRole=Show only to this role id:;string;;;enter the role id &ThisUser=Show only to this username:;string;;;enter the username  &wdgTitle= Widget Title:;string;Documents List  &wdgicon= widget icon:;string;fa-pencil  &wdgposition=widget position:;list;1,2,3,4,5,6,7,8,9,10;1 &wdgsizex=widget x size:;list;12,6,4,3;12 &ParentFolder=Parent folder for List documents:;string;0 &ListItems=Max items in List:;string;50 &dittolevel= Depht:;string;3 &hideFolders= Hide Folders:;list;yes,no;no &showUnpublished= Show Deleted and Unpublished:;list;yes,no;yes &showStatusFilter= Show Status Filter:;list;yes,no;yes;;need Show Deleted and Unpublished - YES &showParent= Show Parent Column:;list;yes,no;yes &TvColumn=Show Tv column:;string;;;enter tv name &tablefields= Overview Tv Fields:;string;[+longtitle+],[+description+],[+introtext+],[+documentTags+] &tableheading=Overview TV headings:;string;Long Title,Description,Introtext,Tags &showMoveButton= Show Move Button:;list;yes,no;yes &showPublishButton= Show Publish Button:;list;yes,no;yes &showDeleteButton= Show Delete Button:;list;yes,no;yes &HeadBG= Widget Title Background color:;string; &HeadColor= Widget title color:;string
 *******/
 
 // get language
@@ -48,6 +48,7 @@ $jsOutput = '
 <script src="../assets/plugins/dashboarddoclist/js/moment.min.js"></script>
 <script src="../assets/plugins/dashboarddoclist/js/footable.min.js"></script>
 <script>';
+if ($showUnpublished == yes) { 
 if ($showStatusFilter == yes) { 
 $jsOutput .= 'FooTable.MyFiltering = FooTable.Filtering.extend({
 	construct: function(instance){
@@ -93,6 +94,7 @@ $jsOutput .= 'FooTable.MyFiltering = FooTable.Filtering.extend({
 	}
 });
 FooTable.components.register(\'filtering\', FooTable.MyFiltering);';
+}
 }
 $jsOutput .= '
 jQuery(function($){
@@ -245,7 +247,7 @@ $params['tpl'] = $rowTpl;
 $params['tvPrefix'] = '';
 $params['tvList'] = $TvFields;
 $params['display'] = $dittototal;		
-if ($showPublishedOnly == yes) {
+if ($showUnpublished == yes) {
 $params['showNoPublish'] = '1';
 }
 if ($hideFolders == yes) {
