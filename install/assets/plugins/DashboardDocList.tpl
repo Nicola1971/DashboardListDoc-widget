@@ -91,7 +91,6 @@ FooTable.MyFiltering = FooTable.Filtering.extend({
 	}
 });
 FooTable.components.register(\'filtering\', FooTable.MyFiltering);
-
 jQuery(function($){
 		$(\'#TableList\').footable({
 			"paging": {
@@ -107,7 +106,13 @@ jQuery(function($){
 		  filtering: FooTable.MyFiltering
 	        }
 		});
+		$(\'[data-page-size]\').on(\'click\', function(e){
+	e.preventDefault();
+	var newSize = $(this).data(\'pageSize\');
+	FooTable.get(\'#TableList\').pageSize(newSize);
+});
 	});
+
 </script>';
 if($manager_theme == "EvoFLAT") {
 $cssOutput = '
@@ -255,8 +260,14 @@ $list = $modx->runSnippet('DocLister', $params);
 				'icon' => ''.$wdgicon.'',
 				'title' => ''.$wdgTitle.' '.$button_pl_config.'',
 				'body' => '<div style="min-height:550px" class="widget-stage"><div id ="DashboardList" class="table-responsive">
-				<table data-state="true" data-state-key="DashboardList'.$pluginid.'_state" data-paging-size="10" data-show-toggle="false" data-toggle-column="last" data-toggle-selector=".footable-toggle" data-filter-ignore-case="true" data-filtering="true" data-state-filtering="true" data-filter-exact-match="true" data-filter-dropdown-title="'.$_lang["search_criteria"].'" data-filter-placeholder="'.$_lang["search"].'" class="table data" id="TableList">
+				<table data-state="true" data-state-key="DashboardList'.$pluginid.'_state" data-paging-size="10" data-show-toggle="false" data-toggle-column="last" data-toggle-selector=".footable-toggle" data-filter-ignore-case="true" data-filtering="true" data-state-filtering="true" data-filter-exact-match="false" data-filter-dropdown-title="'.$_lang["search_criteria"].'" data-filter-placeholder="'.$_lang["search"].'" data-filter-position="right" class="table data" id="TableList">
                 <thead>
+<div style="position:absolute;top:55px;left:25px;z-index:10;">
+<button type="button" class="btn btn-sm" data-page-size="10">10</button>
+<button type="button" class="btn btn-sm" data-page-size="20">20</button>
+<button type="button" class="btn btn-sm" data-page-size="50">50</button>
+<button type="button" class="btn btn-sm" data-page-size="100">100</button>
+</div>
 						<tr>
 							<th data-type="number" style="width: 1%">[%id%]</th>
 							<th style="width: 30%" data-type="text">[%resource_title%]</th>
@@ -269,7 +280,8 @@ $list = $modx->runSnippet('DocLister', $params);
 						</tr>
 					</thead>                    <tbody>
 '.$list.' 
-</tbody></table></div></div>',
+</tbody></table>
+</div></div>',
 				'hide' => '0'
 			);	
             $e->output(serialize($widgets));
