@@ -4,7 +4,7 @@
  * Dashboard Documents list widget plugin for Evolution CMS
  * @author    Nicola Lambathakis
  * @category    plugin
- * @version    3.2.2
+ * @version    3.2.3
  * @license	   http://www.gnu.org/copyleft/gpl.html GNU Public License (GPL)
  * @internal    @events OnManagerWelcomeHome,OnManagerMainFrameHeaderHTMLBlock
  * @internal    @installset base
@@ -13,11 +13,11 @@
  * @documentation Requirements: This plugin requires Evolution 1.3.1 or later
  * @reportissues https://github.com/Nicola1971/WelcomeStats-EvoDashboard-Plugin/issues
  * @link        
- * @lastupdate  30/11/2017
+ * @lastupdate  04/12/2017
  * @internal    @properties &wdgVisibility=Show widget for:;menu;All,AdminOnly,AdminExcluded,ThisRoleOnly,ThisUserOnly;All &ThisRole=Show only to this role id:;string;;;enter the role id &ThisUser=Show only to this username:;string;;;enter the username  &wdgTitle= Widget Title:;string;Documents List  &wdgicon= widget icon:;string;fa-pencil  &wdgposition=widget position:;list;1,2,3,4,5,6,7,8,9,10;1 &wdgsizex=widget x size:;list;12,6,4,3;12 &ParentFolder=Parent folder for List documents:;string;0 &ListItems=Max items in List:;string;50 &showParent= Show Parent Column:;list;yes,no;yes &TvColumn=Show Tv column:;string;;;enter tv name &tablefields= Overview Tv Fields:;string;[+longtitle+],[+description+],[+introtext+],[+documentTags+] &tableheading=Overview TV headings:;string;Long Title,Description,Introtext,Tags &hideFolders= Hide Folders:;list;yes,no;no &showPublishedOnly= Show Deleted and Unpublished:;list;yes,no;yes &dittolevel= Depht:;string;3 &showMoveButton= Show Move Button:;list;yes,no;yes &showPublishButton= Show Publish Button:;list;yes,no;yes &showDeleteButton= Show Delete Button:;list;yes,no;yes &HeadBG= Widget Title Background color:;string; &HeadColor= Widget title color:;string;
 */
 /******
-DashboardDocList 3.2.2
+DashboardDocList 3.2.3
 OnManagerWelcomeHome,OnManagerMainFrameHeaderHTMLBlock
 &wdgVisibility=Show widget for:;menu;All,AdminOnly,AdminExcluded,ThisRoleOnly,ThisUserOnly;All &ThisRole=Show only to this role id:;string;;;enter the role id &ThisUser=Show only to this username:;string;;;enter the username  &wdgTitle= Widget Title:;string;Documents List  &wdgicon= widget icon:;string;fa-pencil  &wdgposition=widget position:;list;1,2,3,4,5,6,7,8,9,10;1 &wdgsizex=widget x size:;list;12,6,4,3;12 &ParentFolder=Parent folder for List documents:;string;0 &ListItems=Max items in List:;string;50 &showParent= Show Parent Column:;list;yes,no;yes &TvColumn=Show Tv column:;string;;;enter tv name &tablefields= Overview Tv Fields:;string;[+longtitle+],[+description+],[+introtext+],[+documentTags+] &tableheading=Overview TV headings:;string;Long Title,Description,Introtext,Tags &hideFolders= Hide Folders:;list;yes,no;no &showPublishedOnly= Show Deleted and Unpublished:;list;yes,no;yes &dittolevel= Depht:;string;3 &showMoveButton= Show Move Button:;list;yes,no;yes &showPublishButton= Show Publish Button:;list;yes,no;yes &showDeleteButton= Show Delete Button:;list;yes,no;yes &HeadBG= Widget Title Background color:;string; &HeadColor= Widget title color:;string
 
@@ -231,6 +231,7 @@ $params['debug'] = '0';	//enable to debug listing
 $params['id'] = 'doclistwdg';
 $params['parents'] = $parentId;
 $params['depth'] = $dittolevel;
+$params['filters'] = 'private';
 $params['tpl'] = $rowTpl;
 $params['tvPrefix'] = '';
 $params['tvList'] = $TvFields;
