@@ -4,7 +4,7 @@
  * Dashboard Documents list widget plugin for Evolution CMS
  * @author    Nicola Lambathakis
  * @category    plugin
- * @version    3.2.1
+ * @version    3.2.2
  * @license	   http://www.gnu.org/copyleft/gpl.html GNU Public License (GPL)
  * @internal    @events OnManagerWelcomeHome,OnManagerMainFrameHeaderHTMLBlock
  * @internal    @installset base
@@ -17,7 +17,7 @@
  * @internal    @properties &wdgVisibility=Show widget for:;menu;All,AdminOnly,AdminExcluded,ThisRoleOnly,ThisUserOnly;All &ThisRole=Show only to this role id:;string;;;enter the role id &ThisUser=Show only to this username:;string;;;enter the username  &wdgTitle= Widget Title:;string;Documents List  &wdgicon= widget icon:;string;fa-pencil  &wdgposition=widget position:;list;1,2,3,4,5,6,7,8,9,10;1 &wdgsizex=widget x size:;list;12,6,4,3;12 &ParentFolder=Parent folder for List documents:;string;0 &ListItems=Max items in List:;string;50 &showParent= Show Parent Column:;list;yes,no;yes &TvColumn=Show Tv column:;string;;;enter tv name &tablefields= Overview Tv Fields:;string;[+longtitle+],[+description+],[+introtext+],[+documentTags+] &tableheading=Overview TV headings:;string;Long Title,Description,Introtext,Tags &hideFolders= Hide Folders:;list;yes,no;no &showPublishedOnly= Show Deleted and Unpublished:;list;yes,no;yes &dittolevel= Depht:;string;3 &showMoveButton= Show Move Button:;list;yes,no;yes &showPublishButton= Show Publish Button:;list;yes,no;yes &showDeleteButton= Show Delete Button:;list;yes,no;yes &HeadBG= Widget Title Background color:;string; &HeadColor= Widget title color:;string;
 */
 /******
-DashboardDocList 3.2
+DashboardDocList 3.2.2
 OnManagerWelcomeHome,OnManagerMainFrameHeaderHTMLBlock
 &wdgVisibility=Show widget for:;menu;All,AdminOnly,AdminExcluded,ThisRoleOnly,ThisUserOnly;All &ThisRole=Show only to this role id:;string;;;enter the role id &ThisUser=Show only to this username:;string;;;enter the username  &wdgTitle= Widget Title:;string;Documents List  &wdgicon= widget icon:;string;fa-pencil  &wdgposition=widget position:;list;1,2,3,4,5,6,7,8,9,10;1 &wdgsizex=widget x size:;list;12,6,4,3;12 &ParentFolder=Parent folder for List documents:;string;0 &ListItems=Max items in List:;string;50 &showParent= Show Parent Column:;list;yes,no;yes &TvColumn=Show Tv column:;string;;;enter tv name &tablefields= Overview Tv Fields:;string;[+longtitle+],[+description+],[+introtext+],[+documentTags+] &tableheading=Overview TV headings:;string;Long Title,Description,Introtext,Tags &hideFolders= Hide Folders:;list;yes,no;no &showPublishedOnly= Show Deleted and Unpublished:;list;yes,no;yes &dittolevel= Depht:;string;3 &showMoveButton= Show Move Button:;list;yes,no;yes &showPublishButton= Show Publish Button:;list;yes,no;yes &showDeleteButton= Show Delete Button:;list;yes,no;yes &HeadBG= Widget Title Background color:;string; &HeadColor= Widget title color:;string
 
@@ -41,10 +41,56 @@ switch($e->name){
 /*load styles with OnManagerMainFrameHeaderHTMLBlock*/
 case 'OnManagerMainFrameHeaderHTMLBlock':
 $manager_theme = $modx->config['manager_theme'];
-if($manager_theme == "EvoFLAT") {
-$cssOutput = '
+
+$jsOutput = '
+<script src="../assets/plugins/dashboarddoclist/js/moment.min.js"></script>
 <script src="../assets/plugins/dashboarddoclist/js/footable.min.js"></script>
-<script>	
+<script>
+FooTable.MyFiltering = FooTable.Filtering.extend({
+	construct: function(instance){
+		this._super(instance);
+		this.statuses = [\'online\',\'unpublished\',\'deleted\'];
+		this.def = \'Any Status\';
+		this.$status = null;
+	},
+	$create: function(){
+		this._super();
+		var self = this,
+			$form_grp = $(\'<div/>\', {\'class\': \'form-group\'})
+				.append($(\'<label/>\', {\'class\': \'sr-only\', text: \'Status\'}))
+				.prependTo(self.$form);
+
+		self.$status = $(\'<select/>\', { \'class\': \'form-control\' })
+			.on(\'change\', {self: self}, self._onStatusDropdownChanged)
+			.append($(\'<option/>\', {text: self.def}))
+			.appendTo($form_grp);
+
+		$.each(self.statuses, function(i, status){
+			self.$status.append($(\'<option/>\').text(status));
+		});
+	},
+	_onStatusDropdownChanged: function(e){
+		var self = e.data.self,
+			selected = $(this).val();
+		if (selected !== self.def){
+			self.addFilter(\'status\', selected, [\'status\'], false);
+		} else {
+			self.removeFilter(\'status\');
+		}
+		self.filter();
+	},
+	draw: function(){
+		this._super();
+		var status = this.find(\'status\');
+		if (status instanceof FooTable.Filter){
+			this.$status.val(status.query.val());
+		} else {
+			this.$status.val(this.def);
+		}
+	}
+});
+FooTable.components.register(\'filtering\', FooTable.MyFiltering);
+
 jQuery(function($){
 		$(\'#TableList\').footable({
 			"paging": {
@@ -56,35 +102,24 @@ jQuery(function($){
 			"sorting": {
 				"enabled": true
 			},
+			components: {
+		  filtering: FooTable.MyFiltering
+	        }
 		});
 	});
-</script>
+</script>';
+if($manager_theme == "EvoFLAT") {
+$cssOutput = '
 <link type="text/css" rel="stylesheet" href="../assets/plugins/dashboarddoclist/css/footable.evo.css">
 <link type="text/css" rel="stylesheet" href="../assets/plugins/dashboarddoclist/css/list_flat.css">';
+
 }
 else {
 $cssOutput = '
-<script src="../assets/plugins/dashboarddoclist/js/footable.min.js"></script>
-<script>	
-jQuery(function($){
-		$(\'#TableList\').footable({
-			"paging": {
-				"enabled": true
-			},
-			"filtering": {
-				"enabled": true
-			},
-			"sorting": {
-				"enabled": true
-			},
-		});
-	});
-</script>
 <link type="text/css" rel="stylesheet" href="../assets/plugins/dashboarddoclist/css/footable.evo.css">
 <link type="text/css" rel="stylesheet" href="../assets/plugins/dashboarddoclist/css/list.css">';
 		}
-$jsOutput ='';
-$e->output($cssOutput.$jsOutput);
+$e->output($jsOutput.$cssOutput);
 break;
 case 'OnManagerWelcomeHome':
 // get language
@@ -131,7 +166,12 @@ $rowTpl .= '
 [+'.$TvColumn.'+]
 </td>';
 }
-$rowTpl .= '<td class="footable-toggle text-right text-nowrap">[+editedon:date=`%d-%m-%Y`+]</td>
+$rowTpl .= '
+<td aria-expanded="false" class="footable-toggle"> 
+ [[if? &is=`[+deleted+]:=:1` &then=`deleted` &else=`[[if? &is=`[+published+]:=:1` &then=`online` &else=`unpublished`]]`]] 
+</td>';
+		
+$rowTpl .= '<td class="footable-toggle text-right text-nowrap">[+editedon:date=`%d %m %Y`+]</td>
 <td style="text-align: right;" class="actions">
 <a target="main" href="index.php?a=27&id=[+id+]" title="' . $_lang["edit_resource"] . '"><i class="fa fa-pencil-square-o"></i></a> <a href="[(site_url)]index.php?id=[+id+]" target="_blank" title="' . $_lang["preview_resource"] . '"><i class="fa fa-eye"></i></a> ';
 if ($showMoveButton == yes) { 
@@ -213,20 +253,20 @@ $list = $modx->runSnippet('DocLister', $params);
 				'cardAttr' => '',
 				'icon' => ''.$wdgicon.'',
 				'title' => ''.$wdgTitle.' '.$button_pl_config.'',
-				'body' => '<div class="widget-stage"><div id ="DashboardList" class="table-responsive">
-				<table data-state="true" data-state-key="DashboardList'.$pluginid.'_state" data-paging-size="10" data-show-toggle="false" data-toggle-column="last" data-toggle-selector=".footable-toggle" data-filter-dropdown-title="Search in:" class="table data" id="TableList">
+				'body' => '<div style="min-height:550px" class="widget-stage"><div id ="DashboardList" class="table-responsive">
+				<table data-state="true" data-state-key="DashboardList'.$pluginid.'_state" data-paging-size="10" data-show-toggle="false" data-toggle-column="last" data-toggle-selector=".footable-toggle" data-filter-ignore-case="true" data-filtering="true" data-state-filtering="true" data-filter-exact-match="true" data-filter-dropdown-title="Search in:" class="table data" id="TableList">
                 <thead>
 						<tr>
 							<th data-type="number" style="width: 1%">[%id%]</th>
 							<th style="width: 30%" data-type="text">[%resource_title%]</th>
 							'.$parentColumnHeader.'
 							'.$TvColumnHeader.'
-							<th data-type="date" data-sorted="true" data-direction="DESC" style="width: 1%">[%page_data_edited%]</th>
+							<th data-visible="false" data-name="status" data-filterable="true" data-type="text">status</th>
+							<th data-type="date" data-format-string="DD MM YYYY" data-sorted="true" data-direction="DESC" style="width: 1%">[%page_data_edited%]</th>
 							<th data-filterable="false" data-sortable="false" style="width: 1%; text-align: center">[%mgrlog_action%]</th>
 							<th data-filterable="false" data-sortable="false" data-breakpoints="all"></th>
 						</tr>
-					</thead>
-                    <tbody>
+					</thead>                    <tbody>
 '.$list.' 
 </tbody></table></div></div>',
 				'hide' => '0'
