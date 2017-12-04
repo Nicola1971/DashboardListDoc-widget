@@ -4,22 +4,22 @@
  * Dashboard Documents list widget plugin for Evolution CMS
  * @author    Nicola Lambathakis
  * @category    plugin
- * @version    3.2.3
+ * @version    3.2.4
  * @license	   http://www.gnu.org/copyleft/gpl.html GNU Public License (GPL)
  * @internal    @events OnManagerWelcomeHome,OnManagerMainFrameHeaderHTMLBlock
  * @internal    @installset base
  * @internal    @modx_category Dashboard
  * @author      Nicola Lambathakis http://www.tattoocms.it/
- * @documentation Requirements: This plugin requires Evolution 1.3.1 or later
- * @reportissues https://github.com/Nicola1971/WelcomeStats-EvoDashboard-Plugin/issues
+ * @documentation Requirements: This plugin requires Evolution 1.4 or later
+ * @reportissues https://github.com/Nicola1971/DashboardListDoc-widget/issues
  * @link        
  * @lastupdate  04/12/2017
  * @internal    @properties &wdgVisibility=Show widget for:;menu;All,AdminOnly,AdminExcluded,ThisRoleOnly,ThisUserOnly;All &ThisRole=Show only to this role id:;string;;;enter the role id &ThisUser=Show only to this username:;string;;;enter the username  &wdgTitle= Widget Title:;string;Documents List  &wdgicon= widget icon:;string;fa-pencil  &wdgposition=widget position:;list;1,2,3,4,5,6,7,8,9,10;1 &wdgsizex=widget x size:;list;12,6,4,3;12 &ParentFolder=Parent folder for List documents:;string;0 &ListItems=Max items in List:;string;50 &showStatusFilter= Show Status Filter:;list;yes,no;yes &showParent= Show Parent Column:;list;yes,no;yes &TvColumn=Show Tv column:;string;;;enter tv name &tablefields= Overview Tv Fields:;string;[+longtitle+],[+description+],[+introtext+],[+documentTags+] &tableheading=Overview TV headings:;string;Long Title,Description,Introtext,Tags &hideFolders= Hide Folders:;list;yes,no;no &showPublishedOnly= Show Deleted and Unpublished:;list;yes,no;yes &dittolevel= Depht:;string;3 &showMoveButton= Show Move Button:;list;yes,no;yes &showPublishButton= Show Publish Button:;list;yes,no;yes &showDeleteButton= Show Delete Button:;list;yes,no;yes &HeadBG= Widget Title Background color:;string; &HeadColor= Widget title color:;string
 */
 /******
-DashboardDocList 3.2.3
+DashboardDocList 3.2.4
 OnManagerWelcomeHome,OnManagerMainFrameHeaderHTMLBlock
-&wdgVisibility=Show widget for:;menu;All,AdminOnly,AdminExcluded,ThisRoleOnly,ThisUserOnly;All &ThisRole=Show only to this role id:;string;;;enter the role id &ThisUser=Show only to this username:;string;;;enter the username  &wdgTitle= Widget Title:;string;Documents List  &wdgicon= widget icon:;string;fa-pencil  &wdgposition=widget position:;list;1,2,3,4,5,6,7,8,9,10;1 &wdgsizex=widget x size:;list;12,6,4,3;12 &ParentFolder=Parent folder for List documents:;string;0 &ListItems=Max items in List:;string;50 &showParent= Show Parent Column:;list;yes,no;yes &TvColumn=Show Tv column:;string;;;enter tv name &tablefields= Overview Tv Fields:;string;[+longtitle+],[+description+],[+introtext+],[+documentTags+] &tableheading=Overview TV headings:;string;Long Title,Description,Introtext,Tags &hideFolders= Hide Folders:;list;yes,no;no &showPublishedOnly= Show Deleted and Unpublished:;list;yes,no;yes &dittolevel= Depht:;string;3 &showMoveButton= Show Move Button:;list;yes,no;yes &showPublishButton= Show Publish Button:;list;yes,no;yes &showDeleteButton= Show Delete Button:;list;yes,no;yes &HeadBG= Widget Title Background color:;string; &HeadColor= Widget title color:;string
+&wdgVisibility=Show widget for:;menu;All,AdminOnly,AdminExcluded,ThisRoleOnly,ThisUserOnly;All &ThisRole=Show only to this role id:;string;;;enter the role id &ThisUser=Show only to this username:;string;;;enter the username  &wdgTitle= Widget Title:;string;Documents List  &wdgicon= widget icon:;string;fa-pencil  &wdgposition=widget position:;list;1,2,3,4,5,6,7,8,9,10;1 &wdgsizex=widget x size:;list;12,6,4,3;12 &ParentFolder=Parent folder for List documents:;string;0 &ListItems=Max items in List:;string;50 &showStatusFilter= Show Status Filter:;list;yes,no;yes &showParent= Show Parent Column:;list;yes,no;yes &TvColumn=Show Tv column:;string;;;enter tv name &tablefields= Overview Tv Fields:;string;[+longtitle+],[+description+],[+introtext+],[+documentTags+] &tableheading=Overview TV headings:;string;Long Title,Description,Introtext,Tags &hideFolders= Hide Folders:;list;yes,no;no &showPublishedOnly= Show Deleted and Unpublished:;list;yes,no;yes &dittolevel= Depht:;string;3 &showMoveButton= Show Move Button:;list;yes,no;yes &showPublishButton= Show Publish Button:;list;yes,no;yes &showDeleteButton= Show Delete Button:;list;yes,no;yes &HeadBG= Widget Title Background color:;string; &HeadColor= Widget title color:;string
 
 // get language
 global $modx,$_lang;
@@ -46,11 +46,12 @@ $manager_theme = $modx->config['manager_theme'];
 $jsOutput = '
 <script src="../assets/plugins/dashboarddoclist/js/moment.min.js"></script>
 <script src="../assets/plugins/dashboarddoclist/js/footable.min.js"></script>
-<script>
-FooTable.MyFiltering = FooTable.Filtering.extend({
+<script>';
+if ($showStatusFilter == yes) { 
+$jsOutput .= 'FooTable.MyFiltering = FooTable.Filtering.extend({
 	construct: function(instance){
 		this._super(instance);
-		this.statuses = [\'online\',\'unpublished\',\'deleted\'];
+		this.statuses = [\'"published"\',\'"unpublished"\',\'"deleted"\'];
 		this.def = \'All Status\';
 		this.$status = null;
 	},
@@ -74,7 +75,7 @@ FooTable.MyFiltering = FooTable.Filtering.extend({
 		var self = e.data.self,
 			selected = $(this).val();
 		if (selected !== self.def){
-			self.addFilter(\'status\', selected, [\'status\'], false);
+			self.addFilter(\'status\', selected, [\'status\'], false, false, true);
 		} else {
 			self.removeFilter(\'status\');
 		}
@@ -90,7 +91,9 @@ FooTable.MyFiltering = FooTable.Filtering.extend({
 		}
 	}
 });
-FooTable.components.register(\'filtering\', FooTable.MyFiltering);
+FooTable.components.register(\'filtering\', FooTable.MyFiltering);';
+}
+$jsOutput .= '
 jQuery(function($){
 		$(\'#TableList\').footable({
 			"paging": {
@@ -173,7 +176,7 @@ $rowTpl .= '
 }
 $rowTpl .= '
 <td aria-expanded="false" class="footable-toggle"> 
- [[if? &is=`[+deleted+]:=:1` &then=`deleted` &else=`[[if? &is=`[+published+]:=:1` &then=`online` &else=`unpublished`]]`]] 
+ [[if? &is=`[+deleted+]:=:1` &then=`deleted` &else=`[[if? &is=`[+published+]:=:1` &then=`published` &else=`unpublished`]]`]] 
 </td>';
 		
 $rowTpl .= '<td class="footable-toggle text-right text-nowrap">[+editedon:date=`%d %m %Y`+]</td>
