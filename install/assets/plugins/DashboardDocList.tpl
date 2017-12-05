@@ -4,7 +4,7 @@
  * Dashboard Documents list/grid widget plugin for Evolution CMS
  * @author    Nicola Lambathakis
  * @category    plugin
- * @version    3.3
+ * @version    3.3.1
  * @license	   http://www.gnu.org/copyleft/gpl.html GNU Public License (GPL)
  * @internal    @events OnManagerWelcomeHome,OnManagerMainFrameHeaderHTMLBlock
  * @internal    @installset base
@@ -17,7 +17,7 @@
  * @internal    @properties &wdgVisibility=Show widget for:;menu;All,AdminOnly,AdminExcluded,ThisRoleOnly,ThisUserOnly;All &ThisRole=Show only to this role id:;string;;;enter the role id &ThisUser=Show only to this username:;string;;;enter the username  &wdgTitle= Widget Title:;string;Documents List  &wdgicon= widget icon:;string;fa-pencil  &wdgposition=widget position:;list;1,2,3,4,5,6,7,8,9,10;1 &wdgsizex=widget x size:;list;12,6,4,3;12 &ParentFolder=Parent folder for List documents:;string;0 &ListItems=Max items in List:;string;50 &dittolevel= Depht:;string;3 &hideFolders= Hide Folders:;list;yes,no;no &showUnpublished= Show Deleted and Unpublished:;list;yes,no;yes;;Show Deleted and Unpublished resources &showStatusFilter= Show Status Filter:;list;yes,no;yes;;require Show Deleted and Unpublished - YES &showParent= Show Parent Column:;list;yes,no;yes &TvColumn=Show Tv column:;string;;;enter tv name &tablefields= Overview Tv Fields:;string;[+longtitle+],[+description+],[+introtext+],[+documentTags+] &tableheading=Overview TV headings:;string;Long Title,Description,Introtext,Tags &editInModal= Edit docs in modal:;list;yes,no;no;;edit resources in evo modal window &showMoveButton= Show Move Button:;list;yes,no;yes;;hides the button to everyone, even if the user has permissions &showPublishButton= Show Publish Button:;list;yes,no;yes;;hides the button to everyone, even if the user has permissions &showDeleteButton= Show Delete Button:;list;yes,no;yes;;hides the button to everyone, even if the user has permissions &HeadBG= Widget Title Background color:;string; &HeadColor= Widget title color:;string
 */
 /******
-DashboardDocList 3.3
+DashboardDocList 3.3.1
 OnManagerWelcomeHome,OnManagerMainFrameHeaderHTMLBlock
 &wdgVisibility=Show widget for:;menu;All,AdminOnly,AdminExcluded,ThisRoleOnly,ThisUserOnly;All &ThisRole=Show only to this role id:;string;;;enter the role id &ThisUser=Show only to this username:;string;;;enter the username  &wdgTitle= Widget Title:;string;Documents List  &wdgicon= widget icon:;string;fa-pencil  &wdgposition=widget position:;list;1,2,3,4,5,6,7,8,9,10;1 &wdgsizex=widget x size:;list;12,6,4,3;12 &ParentFolder=Parent folder for List documents:;string;0 &ListItems=Max items in List:;string;50 &dittolevel= Depht:;string;3 &hideFolders= Hide Folders:;list;yes,no;no &showUnpublished= Show Deleted and Unpublished:;list;yes,no;yes;;Show Deleted and Unpublished resources &showStatusFilter= Show Status Filter:;list;yes,no;yes;;require Show Deleted and Unpublished - YES &showParent= Show Parent Column:;list;yes,no;yes &TvColumn=Show Tv column:;string;;;enter tv name &tablefields= Overview Tv Fields:;string;[+longtitle+],[+description+],[+introtext+],[+documentTags+] &tableheading=Overview TV headings:;string;Long Title,Description,Introtext,Tags &editInModal= Edit docs in modal:;list;yes,no;no;;edit resources in evo modal window &showMoveButton= Show Move Button:;list;yes,no;yes;;hides the button to everyone, even if the user has permissions &showPublishButton= Show Publish Button:;list;yes,no;yes;;hides the button to everyone, even if the user has permissions &showDeleteButton= Show Delete Button:;list;yes,no;yes;;hides the button to everyone, even if the user has permissions &HeadBG= Widget Title Background color:;string; &HeadColor= Widget title color:;string
 *******/
@@ -38,6 +38,14 @@ else if(($role!=$ThisRole) AND ($wdgVisibility == 'ThisRoleOnly')) {}
 // show widget only to "this" username
 else if(($user!=$ThisUser) AND ($wdgVisibility == 'ThisUserOnly')) {}
 else {
+
+// get plugin id
+$result = $modx->db->select('id', $this->getFullTableName("site_plugins"), "name='{$modx->event->activePlugin}' AND disabled=0");
+$pluginid = $modx->db->getValue($result);
+if($modx->hasPermission('edit_plugin')) {
+$button_pl_config = '<a data-toggle="tooltip" href="javascript:;" title="' . $_lang["settings_config"] . '" class="text-muted pull-right" onclick="parent.modx.popup({url:\''. MODX_MANAGER_URL.'?a=102&id='.$pluginid.'&tab=1\',title1:\'' . $_lang["settings_config"] . '\',icon:\'fa-cog\',iframe:\'iframe\',selector2:\'#tabConfig\',position:\'center center\',width:\'80%\',height:\'80%\',hide:0,hover:0,overlay:1,overlayclose:1})" ><i class="fa fa-cog fa-spin-hover" style="color:'.$HeadColor.';"></i> </a>';
+}
+$modx->setPlaceholder('button_pl_config', $button_pl_config);
 $e = &$modx->Event;
 switch($e->name){
 /*load styles with OnManagerMainFrameHeaderHTMLBlock*/
@@ -117,7 +125,21 @@ jQuery(function($){
 	var newSize = $(this).data(\'pageSize\');
 	FooTable.get(\'#TableList\').pageSize(newSize);
 });
-	});
+    var ActiveID;
+    var activeSizeButton = localStorage.getItem(\'DashboardList'.$pluginid.'_active_btn\');
+    if (activeSizeButton) {
+        ActiveID = activeSizeButton;
+        $(ActiveID).addClass(\'active\');
+    }
+$(\'button.btn-size\').each(function(){
+    $(this).click(function(){
+        $(this).siblings().removeClass(\'active\'); 
+        $(this).toggleClass(\'active\');
+        localStorage.setItem(\'DashboardList'.$pluginid.'_active_btn\', \'#\' + $(this).attr(\'id\'));
+        $(this).addClass(\'active\');
+    });
+});
+});
 
 </script>';
 if($manager_theme == "EvoFLAT") {
@@ -135,13 +157,6 @@ $e->output($jsOutput.$cssOutput);
 break;
 case 'OnManagerWelcomeHome':
 
-// get plugin id
-$result = $modx->db->select('id', $this->getFullTableName("site_plugins"), "name='{$modx->event->activePlugin}' AND disabled=0");
-$pluginid = $modx->db->getValue($result);
-if($modx->hasPermission('edit_plugin')) {
-$button_pl_config = '<a data-toggle="tooltip" href="javascript:;" title="' . $_lang["settings_config"] . '" class="text-muted pull-right" onclick="parent.modx.popup({url:\''. MODX_MANAGER_URL.'?a=102&id='.$pluginid.'&tab=1\',title1:\'' . $_lang["settings_config"] . '\',icon:\'fa-cog\',iframe:\'iframe\',selector2:\'#tabConfig\',position:\'center center\',width:\'80%\',height:\'80%\',hide:0,hover:0,overlay:1,overlayclose:1})" ><i class="fa fa-cog fa-spin-hover" style="color:'.$HeadColor.';"></i> </a>';
-}
-$modx->setPlaceholder('button_pl_config', $button_pl_config);
 
 //output
 $WidgetOutput = isset($WidgetOutput) ? $WidgetOutput : '';
@@ -282,10 +297,10 @@ $list = $modx->runSnippet('DocLister', $params);
 				<table data-state="true" data-state-key="DashboardList'.$pluginid.'_state" data-paging-size="10" data-show-toggle="false" data-toggle-column="last" data-toggle-selector=".footable-toggle" data-filter-ignore-case="true" data-filtering="true" data-state-filtering="true" data-filter-exact-match="false" data-filter-dropdown-title="'.$_lang["search_criteria"].'" data-filter-placeholder="'.$_lang["search"].'" data-filter-position="right" class="table data" id="TableList">
                 <thead>
 <div style="position:absolute;top:55px;left:25px;z-index:10;">
-<button type="button" class="btn btn-sm" data-page-size="10">10</button>
-<button type="button" class="btn btn-sm" data-page-size="20">20</button>
-<button type="button" class="btn btn-sm" data-page-size="50">50</button>
-<button type="button" class="btn btn-sm" data-page-size="100">100</button>
+<button type="button" class="btn btn-sm btn-size" id="page-size-10" data-page-size="10">10</button>
+<button type="button" class="btn btn-sm btn-size" id="page-size-20" data-page-size="20">20</button>
+<button type="button" class="btn btn-sm btn-size" id="page-size-50" data-page-size="50">50</button>
+<button type="button" class="btn btn-sm btn-size" id="page-size-100" data-page-size="100">100</button>
 </div>
 						<tr>
 							<th data-type="number" style="width: 1%">[%id%]</th>

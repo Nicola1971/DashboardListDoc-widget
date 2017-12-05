@@ -21,7 +21,11 @@ span.footable-toggle {display:inline-block;width:20px;cursor:pointer;}
   color: #444!important;
   border:none;
 }
-
+#DashboardList .btn.btn-size.active {
+  background-color: #1377c5;
+  color: #fff;
+  border-color:#1377c5; 
+}
 #DashboardList td.actions .fa {margin-left:6px;}
 #DashboardList td a.unpublished {color:#B68282;font-style: italic}
 #DashboardList td a.deleted {color:#A52A2A;text-decoration: line-through}
