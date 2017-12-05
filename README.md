@@ -13,6 +13,8 @@ Requires: DocLister, DocInfo, If.
 - Filtering (search)
 - Filter options (choose wich column search)
 - Pagination
+- Status Filter (published, unpublished, deleted) [optional]
+- Edit in Evo Modal [optional]
 - Localstorage support: state of pagination , search and sorting is always saved in localhost - so when you go back to the dashboard, you dont need to search or sort again
 
-![doclist wdg32](https://user-images.githubusercontent.com/7342798/33436948-c955ffcc-d5e6-11e7-917e-5cd1e37fcbc7.png)
+![widget-doclist](https://user-images.githubusercontent.com/7342798/33606061-683e9a1c-d9bc-11e7-9a90-aa3fdfd1b9ec.png)
