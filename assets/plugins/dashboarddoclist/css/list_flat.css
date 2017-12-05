@@ -67,7 +67,7 @@ span.footable-toggle {display:inline-block;width:20px;cursor:pointer;}
 .dark #DashboardList .table.data tbody tr:nth-child(2n+1):not(:hover):not(.footable-detail-row) { background-color: #272c33 }
 .dark #DashboardList .table.data tbody tr:hover { background-color: #30364c}
 .dark #DashboardList .table.data tbody tr.footable-detail-row, .dark #DashboardList .table.data tbody tr.footable-detail-row td { background-color: #383f48;}
-.dark #DashboardList .table.data tbody tr.footable-detail-row td:first-child{ border-bottom:1px solid #272c33;}
+.dark #DashboardList .table.data tbody tr.footable-detail-row td:first-child{ border-top:1px solid #30364c; border-bottom:1px solid #272c33;}
 
 .dark #DashboardList .table.data tbody tr.footable-detail-row:hover { background-color: transparent;}
 
