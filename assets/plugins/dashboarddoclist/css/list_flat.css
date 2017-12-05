@@ -2,6 +2,9 @@
 #DashboardList .table.data tbody tr:not(:hover):not(.footable-detail-row) { background-color: #fff }
 #DashboardList .table.data tbody tr:nth-child(2n+1):not(:hover):not(.footable-detail-row) { background-color: #f6f8f8 }
 
+#DashboardList .table.data tbody tr.footable-detail-row, #DashboardList .table.data tbody tr.footable-detail-row td{ background-color: #fff;}
+/*#DashboardList .table.data tbody tr.footable-detail-row:nth-child(2n+1), #DashboardList .table.data tbody tr.footable-detail-row:nth-child(2n+1) td{ background-color: #f6f8f8;}*/
+
 table.footable-details th {display:none;}
 #DashboardList table.footable-details.table.data,
 #DashboardList table.footable-details.table.data tbody tr:nth-child(2n+1):not(:hover),
@@ -37,8 +40,8 @@ span.footable-toggle {display:inline-block;width:20px;cursor:pointer;}
 #DashboardList td a.notinmenu {color:#404040;}
 #DashboardList td .weblinkicon {font-size: 0.75em; color: #404040; }
 /*DARK*/
-.dark #DashboardList td a.notinmenu {color:#888;}
-
+.dark #DashboardList td a.notinmenu {color:#bcbec0;}
+.dark #DashboardList td .weblinkicon {color:#bcbec0;}
 .dark .footable .pagination > li > a {border-color:#202329; background-color:#383F48}
 
 .dark .footable .pagination > li > a:hover,
@@ -59,10 +62,16 @@ span.footable-toggle {display:inline-block;width:20px;cursor:pointer;}
 	background-color: #337ab7;
 	border-color:#202329;
 }
-
+.dark #DashboardList .table.data tbody tr { background-color: transparent;border:none; }
 .dark #DashboardList .table.data tbody tr:not(:hover):not(.footable-detail-row) { background-color: #383f48}
-.dark #DashboardList .table.data tbody tr:nth-child(2n):not(.footable-detail-row) { background-color: #272c33}
+.dark #DashboardList .table.data tbody tr:nth-child(2n+1):not(:hover):not(.footable-detail-row) { background-color: #272c33 }
+.dark #DashboardList .table.data tbody tr:hover { background-color: #30364c}
+.dark #DashboardList .table.data tbody tr.footable-detail-row, .dark #DashboardList .table.data tbody tr.footable-detail-row td { background-color: #383f48;}
+.dark #DashboardList .table.data tbody tr.footable-detail-row td:first-child{ border-bottom:1px solid #272c33;}
 
-.dark #DashboardList .table.data tbody tr:hover:not(.footable-detail-row) { background-color: #30364c}
+.dark #DashboardList .table.data tbody tr.footable-detail-row:hover { background-color: transparent;}
 
-
+.dark #DashboardList .btn, .dark #DashboardList select, .dark #DashboardList th form div ul { background-color: #383f48; color:#FFF; border-color:#48505c}
+.dark #DashboardList th form div ul li a{color:#FFF;}
+.dark #DashboardList .footable .dropdown-menu > li > a:hover,
+.dark #DashboardList .footable .dropdown-menu > li > a:focus{color:#FFF;background-color: #272c33!important;}
