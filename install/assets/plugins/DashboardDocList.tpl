@@ -139,7 +139,7 @@ case 'OnManagerWelcomeHome':
 $result = $modx->db->select('id', $this->getFullTableName("site_plugins"), "name='{$modx->event->activePlugin}' AND disabled=0");
 $pluginid = $modx->db->getValue($result);
 if($modx->hasPermission('edit_plugin')) {
-$button_pl_config = '<a data-toggle="tooltip" href="javascript:;" title="' . $_lang["settings_config"] . '" class="text-muted pull-right" onclick="parent.modx.popup({url:\''. MODX_MANAGER_URL.'?a=102&id='.$pluginid.'&tab=1\',title1:\'' . $_lang["settings_config"] . '\',icon:\'fa-cog\',iframe:\'iframe\',selector2:\'#tabConfig\',position:\'center center\',width:\'80%\',height:\'80%\',wrap:\'evo-tab-page-home\',hide:0,hover:0,overlay:1,overlayclose:1})" ><i class="fa fa-cog fa-spin-hover" style="color:'.$HeadColor.';"></i> </a>';
+$button_pl_config = '<a data-toggle="tooltip" href="javascript:;" title="' . $_lang["settings_config"] . '" class="text-muted pull-right" onclick="parent.modx.popup({url:\''. MODX_MANAGER_URL.'?a=102&id='.$pluginid.'&tab=1\',title1:\'' . $_lang["settings_config"] . '\',icon:\'fa-cog\',iframe:\'iframe\',selector2:\'#tabConfig\',position:\'center center\',width:\'80%\',height:\'80%\',hide:0,hover:0,overlay:1,overlayclose:1})" ><i class="fa fa-cog fa-spin-hover" style="color:'.$HeadColor.';"></i> </a>';
 }
 $modx->setPlaceholder('button_pl_config', $button_pl_config);
 
@@ -186,7 +186,7 @@ $rowTpl .= '<td class="footable-toggle text-right text-nowrap">[+editedon:date=`
 <td style="text-align: right;" class="actions">';
 if($modx->hasPermission('edit_document')) {		
 if ($editInModal == yes) {
-$rowTpl .= '<a style="cursor:pointer" target="main" href="" onclick="parent.modx.popup({url:\''. MODX_MANAGER_URL.'?a=27&id=[+id+]\',title1:\'' . $_lang["edit_resource"] . '\',icon:\'pencil-square-o\',iframe:\'iframe\',selector2:\'\',position:\'center center\',width:\'80%\',height:\'80%\',wrap:\'evo-tab-page-home\',hide:0,hover:0,overlay:1,overlayclose:1})" title="' . $_lang["edit_resource"] . '"><i class="fa fa-external-link"></i></a>';
+$rowTpl .= '<a style="cursor:pointer" target="main" href="" onClick="parent.modx.popup({url:\''. MODX_MANAGER_URL.'?a=27&id=[+id+]&tab=1\',title1:\'' . $_lang["edit_resource"] . '\',icon:\'fa-cog\',iframe:\'iframe\',selector2:\'.tab-page>.container\',position:\'center center\',width:\'80%\',height:\'80%\',wrap:\'body\',hide:0,hover:0,overlay:1,overlayclose:1})"><i class="fa fa-external-link"></i></a>';
 }
 else {
 $rowTpl .= '<a target="main" href="index.php?a=27&id=[+id+]" title="' . $_lang["edit_resource"] . '"><i class="fa fa-pencil-square-o"></i></a>';
@@ -196,12 +196,7 @@ $rowTpl .= '<a href="[(site_url)]index.php?id=[+id+]" target="_blank" title="' .
 
 if($modx->hasPermission('edit_document')) {	
 if ($showMoveButton == yes) { 
-if ($editInModal == yes) {
-$rowTpl .= '<a style="cursor:pointer" target="main" href="" onclick="parent.modx.popup({url:\''. MODX_MANAGER_URL.'?a=51&id=[+id+]\',title1:\'' . $_lang["move_resource"] . '\',icon:\'fa-arrows\',iframe:\'iframe\',selector2:\'\',position:\'center center\',width:\'80%\',height:\'40%\',wrap:\'evo-tab-page-home\',hide:0,hover:0,overlay:1,overlayclose:1})" title="' . $_lang["edit_resource"] . '"><i class="fa fa-arrows"></i></a>';
-}
-else {
 $rowTpl .= '<a target="main" href="index.php?a=51&id=[+id+]" title="' . $_lang["move_resource"] . '"><i class="fa fa-arrows"></i></a> ';
-}
 }
 
 if ($showPublishButton == yes) { 
