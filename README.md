@@ -1,6 +1,6 @@
 # DashboardListDoc-widget
 
-A small Dashboard Documents grid/list widget plugin for Evolution CMS
+A small Dashboard Documents grid/list widget plugin for **Evolution CMS 1.4**
 
 Requires snippets: DocLister, DocInfo, If, PhpThumb.
 
