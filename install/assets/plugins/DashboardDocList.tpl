@@ -4,7 +4,7 @@
  * Dashboard Documents list/grid widget plugin for Evolution CMS
  * @author    Nicola Lambathakis
  * @category    plugin
- * @version    3.3.2
+ * @version    3.3.3
  * @license	   http://www.gnu.org/copyleft/gpl.html GNU Public License (GPL)
  * @internal    @events OnManagerWelcomeHome,OnManagerMainFrameHeaderHTMLBlock
  * @internal    @installset base
@@ -13,13 +13,13 @@
  * @documentation Requirements: This plugin requires Evolution 1.4 or later
  * @reportissues https://github.com/Nicola1971/DashboardListDoc-widget/issues
  * @link        
- * @lastupdate  06/12/2017
- * @internal    @properties &wdgVisibility=Show widget for:;menu;All,AdminOnly,AdminExcluded,ThisRoleOnly,ThisUserOnly;All &ThisRole=Show only to this role id:;string;;;enter the role id &ThisUser=Show only to this username:;string;;;enter the username  &wdgTitle= Widget Title:;string;Documents List  &wdgicon= widget icon:;string;fa-pencil  &wdgposition=widget position:;list;1,2,3,4,5,6,7,8,9,10;1 &wdgsizex=widget x size:;list;12,6,4,3;12 &ParentFolder=Parent folder for List documents:;string;0 &ListItems=Max items in List:;string;50 &dittolevel= Depht:;string;3 &hideFolders= Hide Folders:;list;yes,no;no &showUnpublished= Show Deleted and Unpublished:;list;yes,no;yes;;Show Deleted and Unpublished resources &showStatusFilter= Show Status Filter:;list;yes,no;yes;;require Show Deleted and Unpublished - YES &showParent= Show Parent Column:;list;yes,no;yes &TvColumn=Show Tv column:;string;;;enter tv name &tablefields= Overview Tv Fields:;string;[+longtitle+],[+description+],[+introtext+],[+documentTags+] &tableheading=Overview TV headings:;string;Long Title,Description,Introtext,Tags &ImageTv=Show Image TV:;string;image;;enter tv name &editInModal= Edit docs in modal:;list;yes,no;no;;edit resources in evo modal window &showMoveButton= Show Move Button:;list;yes,no;yes;;hides the button to everyone, even if the user has permissions &showPublishButton= Show Publish Button:;list;yes,no;yes;;hides the button to everyone, even if the user has permissions &showDeleteButton= Show Delete Button:;list;yes,no;yes;;hides the button to everyone, even if the user has permissions &HeadBG= Widget Title Background color:;string; &HeadColor= Widget title color:;string
+ * @lastupdate  07/12/2017
+ * @internal    @properties &wdgVisibility=Show widget for:;menu;All,AdminOnly,AdminExcluded,ThisRoleOnly,ThisUserOnly;All &ThisRole=Show only to this role id:;string;;;enter the role id &ThisUser=Show only to this username:;string;;;enter the username  &wdgTitle= Widget Title:;string;Documents List  &wdgicon= widget icon:;string;fa-pencil  &wdgposition=widget position:;list;1,2,3,4,5,6,7,8,9,10;1 &wdgsizex=widget x size:;list;12,6,4,3;12 &ParentFolder=Parent folder for List documents:;string;0 &ListItems=Max items in List:;string;50 &dittolevel= Depht:;string;3 &hideFolders= Hide Folders:;list;yes,no;no &showUnpublished= Show Deleted and Unpublished:;list;yes,no;yes;;Show Deleted and Unpublished resources &showStatusFilter= Show Status Filter:;list;yes,no;yes;;require Show Deleted and Unpublished - YES &showParent= Show Parent Column:;list;yes,no;yes &TvColumn=Show Tv column:;string;;;enter tv name &tablefields= Overview Tv Fields:;string;[+longtitle+],[+description+],[+introtext+],[+documentTags+] &tableheading=Overview TV headings:;string;Long Title,Description,Introtext,Tags &ImageTv=Show Image TV:;string;image;;enter tv name &editInModal= Edit docs in modal:;list;yes,no;no;;edit and create resources in evo modal window &showMoveButton= Show Move Button:;list;yes,no;yes;;hides the button to everyone, even if the user has permissions &showAddHere= Show Create Resource here Button:;list;yes,no;yes;;hides the button to everyone, even if the user has permissions &showPublishButton= Show Publish Button:;list;yes,no;yes;;hides the button to everyone, even if the user has permissions &showDeleteButton= Show Delete Button:;list;yes,no;yes;;hides the button to everyone, even if the user has permissions &HeadBG= Widget Title Background color:;string; &HeadColor= Widget title color:;string
 */
 /******
-DashboardDocList 3.3.2
+DashboardDocList 3.3.3
 OnManagerWelcomeHome,OnManagerMainFrameHeaderHTMLBlock
-&wdgVisibility=Show widget for:;menu;All,AdminOnly,AdminExcluded,ThisRoleOnly,ThisUserOnly;All &ThisRole=Show only to this role id:;string;;;enter the role id &ThisUser=Show only to this username:;string;;;enter the username  &wdgTitle= Widget Title:;string;Documents List  &wdgicon= widget icon:;string;fa-pencil  &wdgposition=widget position:;list;1,2,3,4,5,6,7,8,9,10;1 &wdgsizex=widget x size:;list;12,6,4,3;12 &ParentFolder=Parent folder for List documents:;string;0 &ListItems=Max items in List:;string;50 &dittolevel= Depht:;string;3 &hideFolders= Hide Folders:;list;yes,no;no &showUnpublished= Show Deleted and Unpublished:;list;yes,no;yes;;Show Deleted and Unpublished resources &showStatusFilter= Show Status Filter:;list;yes,no;yes;;require Show Deleted and Unpublished - YES &showParent= Show Parent Column:;list;yes,no;yes &TvColumn=Show Tv column:;string;;;enter tv name &tablefields= Overview Tv Fields:;string;[+longtitle+],[+description+],[+introtext+],[+documentTags+] &tableheading=Overview TV headings:;string;Long Title,Description,Introtext,Tags &ImageTv=Show Image TV:;string;image;;enter tv name &editInModal= Edit docs in modal:;list;yes,no;no;;edit resources in evo modal window &showMoveButton= Show Move Button:;list;yes,no;yes;;hides the button to everyone, even if the user has permissions &showPublishButton= Show Publish Button:;list;yes,no;yes;;hides the button to everyone, even if the user has permissions &showDeleteButton= Show Delete Button:;list;yes,no;yes;;hides the button to everyone, even if the user has permissions &HeadBG= Widget Title Background color:;string; &HeadColor= Widget title color:;string
+&wdgVisibility=Show widget for:;menu;All,AdminOnly,AdminExcluded,ThisRoleOnly,ThisUserOnly;All &ThisRole=Show only to this role id:;string;;;enter the role id &ThisUser=Show only to this username:;string;;;enter the username  &wdgTitle= Widget Title:;string;Documents List  &wdgicon= widget icon:;string;fa-pencil  &wdgposition=widget position:;list;1,2,3,4,5,6,7,8,9,10;1 &wdgsizex=widget x size:;list;12,6,4,3;12 &ParentFolder=Parent folder for List documents:;string;0 &ListItems=Max items in List:;string;50 &dittolevel= Depht:;string;3 &hideFolders= Hide Folders:;list;yes,no;no &showUnpublished= Show Deleted and Unpublished:;list;yes,no;yes;;Show Deleted and Unpublished resources &showStatusFilter= Show Status Filter:;list;yes,no;yes;;require Show Deleted and Unpublished - YES &showParent= Show Parent Column:;list;yes,no;yes &TvColumn=Show Tv column:;string;;;enter tv name &tablefields= Overview Tv Fields:;string;[+longtitle+],[+description+],[+introtext+],[+documentTags+] &tableheading=Overview TV headings:;string;Long Title,Description,Introtext,Tags &ImageTv=Show Image TV:;string;image;;enter tv name &editInModal= Edit docs in modal:;list;yes,no;no;;edit and create resources in evo modal window &showMoveButton= Show Move Button:;list;yes,no;yes;;hides the button to everyone, even if the user has permissions &showAddHere= Show Create Resource here Button:;list;yes,no;yes;;hides the button to everyone, even if the user has permissions &showPublishButton= Show Publish Button:;list;yes,no;yes;;hides the button to everyone, even if the user has permissions &showDeleteButton= Show Delete Button:;list;yes,no;yes;;hides the button to everyone, even if the user has permissions &HeadBG= Widget Title Background color:;string; &HeadColor= Widget title color:;string
 *******/
 
 // get language
@@ -120,12 +120,12 @@ jQuery(function($){
 		  filtering: FooTable.MyFiltering
 	        }
 		});
-		$(\'[data-page-size]\').on(\'click\', function(e){
+$(\'[data-page-size]\').on(\'click\', function(e){
 	e.preventDefault();
 	var newSize = $(this).data(\'pageSize\');
 	FooTable.get(\'#TableList\').pageSize(newSize);
 });
-    var ActiveID;
+ var ActiveID;
     var activeSizeButton = localStorage.getItem(\'DashboardList'.$pluginid.'_active_btn\');
     if (activeSizeButton) {
         ActiveID = activeSizeButton;
@@ -139,6 +139,7 @@ $(\'button.btn-size\').each(function(){
         $(this).addClass(\'active\');
     });
 });
+
 });
 
 </script>';
@@ -197,7 +198,7 @@ $rowTpl .= '<td class="footable-toggle text-right text-nowrap">[+editedon:date=`
 <td style="text-align: right;" class="actions">';
 if($modx->hasPermission('edit_document')) {		
 if ($editInModal == yes) {
-$rowTpl .= '<a style="cursor:pointer" target="main" href="" onClick="parent.modx.popup({url:\''. MODX_MANAGER_URL.'?a=27&id=[+id+]&tab=1\',title1:\'' . $_lang["edit_resource"] . '\',icon:\'fa-cog\',iframe:\'iframe\',selector2:\'.tab-page>.container\',position:\'center center\',width:\'80%\',height:\'80%\',wrap:\'body\',hide:0,hover:0,overlay:1,overlayclose:1})"><i class="fa fa-external-link"></i></a>';
+$rowTpl .= '<a style="cursor:pointer" target="main" href="" onClick="parent.modx.popup({url:\''. MODX_MANAGER_URL.'?a=27&id=[+id+]&tab=1\',title1:\'' . $_lang["edit_resource"] . '\',icon:\'fa-pencil-square-o\',iframe:\'iframe\',selector2:\'.tab-page>.container\',position:\'center center\',width:\'80%\',height:\'80%\',wrap:\'body\',hide:0,hover:0,overlay:1,overlayclose:1})"><i class="fa fa-external-link"></i></a>';
 }
 else {
 $rowTpl .= '<a target="main" href="index.php?a=27&id=[+id+]" title="' . $_lang["edit_resource"] . '"><i class="fa fa-pencil-square-o"></i></a>';
@@ -209,7 +210,7 @@ if($modx->hasPermission('edit_document')) {
 if ($showMoveButton == yes) { 
 $rowTpl .= '<a target="main" href="index.php?a=51&id=[+id+]" title="' . $_lang["move_resource"] . '"><i class="fa fa-arrows"></i></a> ';
 }
-
+	
 if ($showPublishButton == yes) { 
 $rowTpl .= '[[if? &is=`[+deleted+]:=:0` &then=`[[if? &is=`[+published+]:=:1` &then=` 
 <a target="main" href="index.php?a=62&id=[+id+]" class="confirm" onClick="window.location.reload();" title="' . $_lang["unpublish_resource"] . '"><i class="fa fa-arrow-down"></i></a>  
@@ -222,6 +223,14 @@ $rowTpl .= '[[if? &is=`[+deleted+]:=:0` &then=`[[if? &is=`[+published+]:=:1` &th
 ';
 }
 } 
+if ($showAddHere == yes) { 
+if ($editInModal == yes) {
+$rowTpl .= '<a style="cursor:pointer" target="main" href="" onClick="parent.modx.popup({url:\''. MODX_MANAGER_URL.'?a=4&pid=[+id+]\',title1:\'' . $_lang["create_resource_here"] . '\',icon:\'fa-file-o\',iframe:\'iframe\',selector2:\'.tab-page>.container\',position:\'center center\',width:\'80%\',height:\'80%\',wrap:\'body\',hide:0,hover:0,overlay:1,overlayclose:1})"><i class="fa fa-file-o"></i></a>';
+}
+else {
+$rowTpl .= '<a target="main" href="index.php?a=4&pid=[+id+]" title="' . $_lang["create_resource_here"] . '"><i class="fa fa-file-o"></i></a> ';
+}
+}
 if ($showDeleteButton == yes) { 
 if($modx->hasPermission('delete_document')) {
 $rowTpl .= '[[if? &is=`[+deleted+]:=:0` &then=` 
@@ -249,7 +258,7 @@ $rowTpl .= '
 ';
 if ($showParent == yes) {
 $parentColumnHeader = '
-<th data-type="text">[%resource_parent%]</th> ';
+<th data-breakpoints="xs" data-type="text">[%resource_parent%]</th> ';
 }
 $ImageTV = isset($ImageTV) ? $ImageTV : '';
 if ($ImageTv != '') {
@@ -310,7 +319,7 @@ $list = $modx->runSnippet('DocLister', $params);
 						<tr>
 							<th data-type="number" style="width: 1%">[%id%]</th>
 							<th style="width: 30%" data-type="text">[%resource_title%]</th>
-							'.$parentColumnHeader.'
+							'.$parentColumnHeader.'							
 							'.$TvColumnHeader.'
 							<th data-visible="false" data-name="status" data-filterable="true" data-type="text">'.$_lang["page_data_status"].'</th>
 							<th data-type="date" data-format-string="DD MM YYYY" data-sorted="true" data-direction="DESC" style="width: 1%">[%page_data_edited%]</th>
