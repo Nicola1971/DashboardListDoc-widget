@@ -2,7 +2,7 @@
 
 Dashboard Documents grid/list widget plugin for Evolution CMS
 
-Requires: DocLister, DocInfo, If.
+Requires snippets: DocLister, DocInfo, If, PhpThumb.
 
 ## Features:
 - Configurable toggle overview row with tvs
