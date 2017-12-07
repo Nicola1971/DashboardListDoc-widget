@@ -17,4 +17,8 @@ Requires snippets: DocLister, DocInfo, If, PhpThumb.
 - Edit in Evo Modal [optional]
 - Localstorage support: state of pagination , search and sorting is always saved in localhost - so when you go back to the dashboard, you dont need to search or sort again
 
-![widget-doclist](https://user-images.githubusercontent.com/7342798/33606061-683e9a1c-d9bc-11e7-9a90-aa3fdfd1b9ec.png)
+![doclist333](https://user-images.githubusercontent.com/7342798/33715917-865d2b64-db54-11e7-9eba-89f12b368be5.png)
+
+## To Do
+
+- Ajax load of resources
