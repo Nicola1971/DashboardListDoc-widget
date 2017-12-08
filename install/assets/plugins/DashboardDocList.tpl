@@ -41,6 +41,23 @@ else if(($role!=$ThisRole) AND ($wdgVisibility == 'ThisRoleOnly')) {}
 else if(($user!=$ThisUser) AND ($wdgVisibility == 'ThisUserOnly')) {}
 else {
 
+// get language
+global $modx,$_lang;
+// get manager role
+$internalKey = $modx->getLoginUserID();
+$sid = $modx->sid;
+$role = $_SESSION['mgrRole'];
+$user = $_SESSION['mgrShortname'];
+// show widget only to Admin role 1
+if(($role!=1) AND ($wdgVisibility == 'AdminOnly')) {}
+// show widget to all manager users excluded Admin role 1
+else if(($role==1) AND ($wdgVisibility == 'AdminExcluded')) {}
+// show widget only to "this" role id
+else if(($role!=$ThisRole) AND ($wdgVisibility == 'ThisRoleOnly')) {}
+// show widget only to "this" username
+else if(($user!=$ThisUser) AND ($wdgVisibility == 'ThisUserOnly')) {}
+else {
+
 // get plugin id
 $result = $modx->db->select('id', $this->getFullTableName("site_plugins"), "name='{$modx->event->activePlugin}' AND disabled=0");
 $pluginid = $modx->db->getValue($result);
@@ -275,13 +292,17 @@ $parentColumnHeader = '
 }
 $ImageTV = isset($ImageTV) ? $ImageTV : '';
 
-//DocListerTvFields
+//DocListerTvs
 $find = array('[+','+]');
 $replace = array('','');
 $DocListerTvs = str_replace($find,$replace,$tablefields);
 $DocListerTvFields = $DocListerTvs;
-if ($TvColumn !== '') {
-$TvFields = ''.$ImageTv.','.$DocListerTvFields.','.$TvColumn.'';
+//DocListerTvs
+$findtv = array('[+','+]');
+$replacetv = array('','');
+$TvColumnList = str_replace($find,$replace,$TvColumn);
+if ($TvColumn != '') {
+$TvFields = ''.$ImageTv.','.$DocListerTvFields.','.$TvColumnList.'';
 $TvColumnHeader = '
 <th data-type="text">'.$TvColumn.'</th> ';
 }
