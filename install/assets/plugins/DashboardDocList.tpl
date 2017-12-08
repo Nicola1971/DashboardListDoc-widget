@@ -41,23 +41,6 @@ else if(($role!=$ThisRole) AND ($wdgVisibility == 'ThisRoleOnly')) {}
 else if(($user!=$ThisUser) AND ($wdgVisibility == 'ThisUserOnly')) {}
 else {
 
-// get language
-global $modx,$_lang;
-// get manager role
-$internalKey = $modx->getLoginUserID();
-$sid = $modx->sid;
-$role = $_SESSION['mgrRole'];
-$user = $_SESSION['mgrShortname'];
-// show widget only to Admin role 1
-if(($role!=1) AND ($wdgVisibility == 'AdminOnly')) {}
-// show widget to all manager users excluded Admin role 1
-else if(($role==1) AND ($wdgVisibility == 'AdminExcluded')) {}
-// show widget only to "this" role id
-else if(($role!=$ThisRole) AND ($wdgVisibility == 'ThisRoleOnly')) {}
-// show widget only to "this" username
-else if(($user!=$ThisUser) AND ($wdgVisibility == 'ThisUserOnly')) {}
-else {
-
 // get plugin id
 $result = $modx->db->select('id', $this->getFullTableName("site_plugins"), "name='{$modx->event->activePlugin}' AND disabled=0");
 $pluginid = $modx->db->getValue($result);
@@ -226,7 +209,7 @@ $rowTpl .= '<td class="footable-toggle text-right text-nowrap">[+editedon:date=`
 <td style="text-align: right;" class="actions">';
 if($modx->hasPermission('edit_document')) {		
 if ($editInModal == yes) {
-$rowTpl .= '<a style="cursor:pointer" target="main" href="" onClick="parent.modx.popup({url:\''. MODX_MANAGER_URL.'?a=27&id=[+id+]&tab=1\',title1:\'' . $_lang["edit_resource"] . '\',icon:\'fa-pencil-square-o\',iframe:\'iframe\',selector2:\'.tab-page>.container\',position:\'center center\',width:\'80%\',height:\'80%\',wrap:\'body\',hide:0,hover:0,overlay:1,overlayclose:1})"><i class="fa fa-external-link"></i></a>';
+$rowTpl .= '<a title="' . $_lang["edit_resource"] . '" style="cursor:pointer" href="" onClick="parent.modx.popup({url:\''. MODX_MANAGER_URL.'?a=27&id=[+id+]&tab=1\',title1:\'' . $_lang["edit_resource"] . '\',icon:\'fa-pencil-square-o\',iframe:\'iframe\',selector2:\'.tab-page>.container\',position:\'center center\',width:\'80%\',height:\'80%\',wrap:\'body\',hide:0,hover:0,overlay:1,overlayclose:1})"><i class="fa fa-external-link"></i></a>';
 }
 else {
 $rowTpl .= '<a target="main" href="index.php?a=27&id=[+id+]" title="' . $_lang["edit_resource"] . '"><i class="fa fa-pencil-square-o"></i></a>';
@@ -252,7 +235,7 @@ $rowTpl .= '[[if? &is=`[+deleted+]:=:0` &then=`[[if? &is=`[+published+]:=:1` &th
 } 
 if ($showAddHere == yes) { 
 if ($editInModal == yes) {
-$rowTpl .= '<a style="cursor:pointer" target="main" href="" onClick="parent.modx.popup({url:\''. MODX_MANAGER_URL.'?a=4&pid=[+id+]\',title1:\'' . $_lang["create_resource_here"] . '\',icon:\'fa-file-o\',iframe:\'iframe\',selector2:\'.tab-page>.container\',position:\'center center\',width:\'80%\',height:\'80%\',wrap:\'body\',hide:0,hover:0,overlay:1,overlayclose:1})"><i class="fa fa-file-o"></i></a>';
+$rowTpl .= '<a title="' . $_lang["create_resource_here"] . '" style="cursor:pointer" href="" onClick="parent.modx.popup({url:\''. MODX_MANAGER_URL.'?a=4&pid=[+id+]\',title1:\'' . $_lang["create_resource_here"] . '\',icon:\'fa-file-o\',iframe:\'iframe\',selector2:\'.tab-page>.container\',position:\'center center\',width:\'80%\',height:\'80%\',wrap:\'body\',hide:0,hover:0,overlay:1,overlayclose:1})"><i class="fa fa-file-o"></i></a>';
 }
 else {
 $rowTpl .= '<a target="main" href="index.php?a=4&pid=[+id+]" title="' . $_lang["create_resource_here"] . '"><i class="fa fa-file-o"></i></a> ';
