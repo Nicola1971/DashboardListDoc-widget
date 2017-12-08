@@ -141,7 +141,7 @@ $(\'button.btn-size\').each(function(){
         $(this).addClass(\'active\');
     });
 });
-
+$("div#DashboardList").show();
 });
 
 </script>';
@@ -321,7 +321,7 @@ $list = $modx->runSnippet('DocLister', $params);
 				'cardAttr' => '',
 				'icon' => ''.$wdgicon.'',
 				'title' => ''.$wdgTitle.' '.$button_pl_config.'',
-				'body' => '<div style="min-height:550px" class="widget-stage"><div id ="DashboardList" class="table-responsive">
+				'body' => '<div style="min-height:550px" class="widget-stage"><div style="display:none;" id="DashboardList" class="table-responsive">
 				<table data-state="true" data-state-key="DashboardList'.$pluginid.'_state" data-paging-size="10" data-show-toggle="false" data-toggle-column="last" data-toggle-selector=".footable-toggle" data-filter-ignore-case="true" data-filtering="true" data-state-filtering="true" data-filter-exact-match="false" data-filter-dropdown-title="'.$_lang["search_criteria"].'" data-filter-placeholder="'.$_lang["search"].'" data-filter-position="right" class="table data" id="TableList">
                 <thead>
 <div style="position:absolute;top:55px;left:25px;z-index:10;">
