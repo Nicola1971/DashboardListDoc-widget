@@ -342,9 +342,11 @@ $list = $modx->runSnippet('DocLister', $params);
 				<table data-state="true" data-state-key="DashboardList'.$pluginid.'_state" data-paging-size="10" data-show-toggle="false" data-toggle-column="last" data-toggle-selector=".footable-toggle" data-filter-ignore-case="true" data-filtering="true" data-state-filtering="true" data-filter-exact-match="false" data-filter-dropdown-title="'.$_lang["search_criteria"].'" data-filter-placeholder="'.$_lang["search"].'" data-filter-position="right" class="table data" id="TableList">
                 <thead>
 <div style="position:absolute;top:55px;left:25px;z-index:10;">
+<button type="button" class="btn btn-sm btn-size" id="page-size-5" data-page-size="5">5</button>
 <button type="button" class="btn btn-sm btn-size" id="page-size-10" data-page-size="10">10</button>
-<button type="button" class="btn btn-sm btn-size" id="page-size-20" data-page-size="20">20</button>
+<button type="button" class="btn btn-sm btn-size" id="page-size-25" data-page-size="25">25</button>
 <button type="button" class="btn btn-sm btn-size" id="page-size-50" data-page-size="50">50</button>
+<button type="button" class="btn btn-sm btn-size" id="page-size-75" data-page-size="75">75</button>
 <button type="button" class="btn btn-sm btn-size" id="page-size-100" data-page-size="100">100</button>
 </div>
 						<tr>
