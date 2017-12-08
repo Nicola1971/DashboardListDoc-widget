@@ -107,7 +107,7 @@ FooTable.components.register(\'filtering\', FooTable.MyFiltering);';
 }
 }
 $jsOutput .= '
-jQuery(function($){
+jQuery(document).ready(function($){
 		$(\'#TableList\').footable({
 			"paging": {
 				"enabled": true
