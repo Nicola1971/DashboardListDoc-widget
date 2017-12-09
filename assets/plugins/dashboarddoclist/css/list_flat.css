@@ -62,14 +62,14 @@ span.footable-toggle {display:inline-block;width:20px;cursor:pointer;}
 /*DARK*/
 .dark #DashboardList td a.notinmenu {color:#bcbec0;}
 .dark #DashboardList td .weblinkicon {color:#bcbec0;}
-.dark .footable .pagination > li > a {border-color:#202329; background-color:#383F48}
+.dark .footable .pagination > li > a {border-color:var(--dark-grey); background-color:var(--default-grey); color: #fff;}
 
 .dark .footable .pagination > li > a:hover,
 .dark .footable .pagination > li > span:hover,
 .dark .footable .pagination > li > a:focus,
 .dark .footable .pagination > li > span:focus {
 	color: #fff;
-	border-color:#202329; background-color:#383F48
+	border-color:var(--dark-grey); background-color:var(--medium-grey)
 }
 
 .dark .footable .pagination > .active > a,
@@ -79,7 +79,7 @@ span.footable-toggle {display:inline-block;width:20px;cursor:pointer;}
 .dark .footable .pagination > .active > a:focus,
 .dark .footable .pagination > .active > span:focus {
 	color: #fff;
-	background-color: #1377c5;
+	background-color: var(--main-color);
 	border-color:#202329;
 }
 .dark #DashboardList .table.data tbody tr { background-color: transparent;border:none; }
