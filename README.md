@@ -1,4 +1,4 @@
-# DashboardListDoc-widget
+# DashboardListDoc-widget v2 RC3.3.5
 
 A small Dashboard Documents grid/list widget plugin for **Evolution CMS 1.4**
 
