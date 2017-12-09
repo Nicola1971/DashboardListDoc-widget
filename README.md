@@ -82,6 +82,6 @@ note: hides the button to everyone, even if the user has permissions
 
 
 
-## To Do
+# To Do
 
-- Ajax pagination/load of resources
+- **Ajax** pagination/load of resources
