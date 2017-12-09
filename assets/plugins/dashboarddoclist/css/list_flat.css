@@ -122,10 +122,10 @@ li.parentname:hover {color:#FFF;cursor:default;}
     list-style-type: none;
 }
 .context-menu ul li:hover {
-    background-color: #1377c5;
+    background-color: var(--main-color);
 }
 .context-menu ul li:hover a {
-    background-color: #1377c5;
+    background-color: var(--main-color);
     text-decoration:none;
     color: #fff!important;
 }
