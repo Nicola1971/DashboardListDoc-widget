@@ -43,7 +43,7 @@ span.footable-toggle {display:inline-block;width:20px;cursor:pointer;}
     font-family: sans-serif;
     background: #FFF;
     color: #333;
-    border-radius: 5px;
+    border-radius: 3px;
     padding: 0;
 }
 /* Each of the items in the list */
