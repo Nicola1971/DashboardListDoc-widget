@@ -4,6 +4,8 @@ A small Dashboard Documents grid/list widget plugin for **Evolution CMS 1.4** ba
 
 Requires snippets: DocLister, DocInfo, If, PhpThumb.
 
+![doclist333](https://user-images.githubusercontent.com/7342798/33715917-865d2b64-db54-11e7-9eba-89f12b368be5.png)
+
 ## Features:
 - **Configurable toggle overview row with tvs** (add any tv to the resource toggle overview)
 - Main **Doclister parameters** available in plugin config
@@ -21,7 +23,9 @@ Requires snippets: DocLister, DocInfo, If, PhpThumb.
 - **Edit in Evo Modal**: edit and create documents in Evo (1.4) modal/popup [optional]
 - **Full Localstorage support**: state of pagination , search and sorting is always saved in localhost - so when you go back to the dashboard, you dont need to search or sort again
 
-![doclist333](https://user-images.githubusercontent.com/7342798/33715917-865d2b64-db54-11e7-9eba-89f12b368be5.png)
+![doclist-image-overview](https://user-images.githubusercontent.com/7342798/33797559-a030c3b8-dd0a-11e7-8478-d91035e31c86.png)
+![doclist-inline-img](https://user-images.githubusercontent.com/7342798/33797565-a85b0896-dd0a-11e7-8c91-ac1f8d7f02ce.png)
+![doclist-ctx](https://user-images.githubusercontent.com/7342798/33797568-b059e99a-dd0a-11e7-806b-0089f6982d55.png)
 
 ## Settings Parameters
 
