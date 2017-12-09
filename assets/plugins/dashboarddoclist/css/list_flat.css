@@ -1,9 +1,7 @@
 #DashboardList .table.data tbody tr:not(:hover) { background-color: transparent;border:none; }
 #DashboardList .table.data tbody tr:not(:hover):not(.footable-detail-row) { background-color: #fff }
 #DashboardList .table.data tbody tr:nth-child(2n+1):not(:hover):not(.footable-detail-row) { background-color: #f6f8f8 }
-
 #DashboardList .table.data tbody tr.footable-detail-row, #DashboardList .table.data tbody tr.footable-detail-row td{ background-color: #fff;}
-/*#DashboardList .table.data tbody tr.footable-detail-row:nth-child(2n+1), #DashboardList .table.data tbody tr.footable-detail-row:nth-child(2n+1) td{ background-color: #f6f8f8;}*/
 
 table.footable-details th {display:none;}
 #DashboardList table.footable-details.table.data,
@@ -12,11 +10,7 @@ table.footable-details th {display:none;}
 #DashboardList table.footable-details.table.data tbody tr:hover { border:none; background-color: transparent;}
 
 span.footable-toggle {display:inline-block;width:20px;cursor:pointer;}
-
-
-.footable .btn-secondary {
-	border: 1px solid #ddd;
-}
+.footable .btn-secondary {border: 1px solid #ddd;}
 
 .footable .btn .caret {
 	margin-left: 0;
@@ -33,9 +27,9 @@ span.footable-toggle {display:inline-block;width:20px;cursor:pointer;}
   border:none;
 }
 #DashboardList .btn.btn-size.active {
-  background-color: #1377c5;
+  background-color: var(--main-color);
   color: #fff;
-  border-color:#1377c5; 
+  border-color:var(--main-color); 
 }
 #DashboardList td.actions .fa {margin-left:6px;}
 #DashboardList td a.unpublished {color:#B68282;font-style: italic}
@@ -43,6 +37,28 @@ span.footable-toggle {display:inline-block;width:20px;cursor:pointer;}
 #DashboardList td a.deleted:hover {color:#A52A2A;text-decoration: line-through}
 #DashboardList td a.notinmenu {color:#404040;}
 #DashboardList td .weblinkicon {font-size: 0.75em; color: #404040; }
+
+.footable .pagination > li > a,
+.footable .pagination > li > span,
+.footable .pagination > li > a:hover,
+.footable .pagination > li > span:hover,
+.footable .pagination > li > a:focus,
+.footable .pagination > li > span:focus {
+	color: var(--main-color);
+}
+.footable .pagination > .active > a,
+.footable .pagination > .active > span,
+.footable .pagination > .active > a:hover,
+.footable .pagination > .active > span:hover,
+.footable .pagination > .active > a:focus,
+.footable .pagination > .active > span:focus {
+	background-color: var(--main-color);
+	border-color: var(--main-color);
+}
+.footable .btn-primary {
+	background-color: var(--main-color);
+	border-color: var(--main-color);
+}
 /*DARK*/
 .dark #DashboardList td a.notinmenu {color:#bcbec0;}
 .dark #DashboardList td .weblinkicon {color:#bcbec0;}
