@@ -9,9 +9,10 @@ Requires snippets: DocLister, DocInfo, If, PhpThumb.
 - Doclister parameters available in plugin config
 - Actions buttons: edit, preview, move, publish/unpublish, create resource here, delete, overview (you can hide from plugin settings: move, publish/unpublish, create resource here, delete)
 - show/hide **parent column** (click on parent name to view children tab)
-- show/hide **custom tv column**
-- image tv in overview
-- Sortable columns (title/parent/date/custom tv column)
+- right click Context Menu on Parent field (view childern, edit, add resource here, add weblink here)
+- **tv columns**: add custom tv in sortable columns
+- image tv in overview or column
+- Sortable columns (title/parent/date/custom tv columns)
 - Filtering (search)
 - Filter options (choose "search in")
 - Pagination
