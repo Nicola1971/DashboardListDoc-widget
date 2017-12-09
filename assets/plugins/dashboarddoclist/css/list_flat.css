@@ -97,7 +97,8 @@ span.footable-toggle {display:inline-block;width:20px;cursor:pointer;}
 .dark #DashboardList .footable .dropdown-menu > li > a:focus{color:#FFF;background-color: #272c33!important;}
 
 /*right click*/
-li.parentname:hover {color:#FFF;cursor:default;}
+li.parentname {color:var(--main-color);}
+.dark li.parentname {color:#fff;}
   .context-menu ul{ 
     z-index: 1000;
     position: absolute;
@@ -121,11 +122,20 @@ li.parentname:hover {color:#FFF;cursor:default;}
     cursor: pointer;
     list-style-type: none;
 }
+.context-menu ul li a{
+    color: #333;
+}
 .context-menu ul li:hover {
     background-color: var(--main-color);
 }
+
 .context-menu ul li:hover a {
     background-color: var(--main-color);
     text-decoration:none;
     color: #fff!important;
 }
+.dark .context-menu ul li a{ 
+    color: #FFF;
+}
+.context-menu ul li.parentname:hover{cursor:default;background-color:transparent;}
+.dark .context-menu ul li.parentname:hover{color:#FFF;}

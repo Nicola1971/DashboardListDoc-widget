@@ -34,7 +34,8 @@ span.footable-toggle {display:inline-block;width:20px;cursor:pointer;}
 #DashboardList td .weblinkicon {font-size: 0.75em; color: #404040; }
 
 /*right click*/
-li.parentname:hover {color:#FFF;cursor:default;}
+.context-menu ul li.parentname {color:#1377c5;}
+.context-menu ul li.parentname:hover {cursor:default;background-color:transparent;}
   .context-menu ul{ 
     z-index: 1000;
     position: absolute;
@@ -52,6 +53,9 @@ li.parentname:hover {color:#FFF;cursor:default;}
     padding: 8px 12px;
     cursor: pointer;
     list-style-type: none;
+}
+.context-menu ul li a{
+    color: #333;
 }
 .context-menu ul li:hover {
     background-color: #1377c5;
