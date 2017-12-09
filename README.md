@@ -35,7 +35,7 @@ Requires snippets: DocLister, DocInfo, If, PhpThumb.
 
 ![doclist-ctx](https://user-images.githubusercontent.com/7342798/33797568-b059e99a-dd0a-11e7-806b-0089f6982d55.png)
 
-# Settings Parameters
+# Plugin Settings
 
 ### Widget Permissions Settings
 
