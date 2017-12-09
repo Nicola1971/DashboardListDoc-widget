@@ -34,6 +34,7 @@ span.footable-toggle {display:inline-block;width:20px;cursor:pointer;}
 #DashboardList td .weblinkicon {font-size: 0.75em; color: #404040; }
 
 /*right click*/
+li.parentname:hover {color:#FFF;cursor:default;}
   .context-menu ul{ 
     z-index: 1000;
     position: absolute;

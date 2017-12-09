@@ -81,6 +81,7 @@ span.footable-toggle {display:inline-block;width:20px;cursor:pointer;}
 .dark #DashboardList .footable .dropdown-menu > li > a:focus{color:#FFF;background-color: #272c33!important;}
 
 /*right click*/
+li.parentname:hover {color:#FFF;cursor:default;}
   .context-menu ul{ 
     z-index: 1000;
     position: absolute;
