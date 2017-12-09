@@ -60,7 +60,7 @@ Requires snippets: DocLister, DocInfo, If, PhpThumb.
 * **Hide Folders**: addWhereList isfolder=0
 * **Show Deleted and Unpublished**: showNoPublish
 
-### Widget UI & grid Settings
+### Widget & Grid Settings
 
 * **Show Status Filter**: Show published/unpublished/deleted dropdown select filter (require Show Deleted and Unpublished - ```YES```)
 * **Show Parent Column**: Show Resource Parent Column
