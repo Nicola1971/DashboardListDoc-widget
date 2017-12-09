@@ -39,46 +39,46 @@ Requires snippets: DocLister, DocInfo, If, PhpThumb.
 
 ### Widget Permissions Settings
 
-* Show widget for: All, Admin Only , Excluded Admin, This Role only*, This user only**
-* Show only to this role id: enter the role id*
-* Show only to this username: enter the username**
+* **Show widget for**: All, Admin Only , Excluded Admin, This Role only*, This user only**
+* **Show only to this role id**: enter the role id*
+* **Show only to this username**: enter the username**
 
 ### Widget Style Settings
 
-* Widget Title: 
-* Widget icon: font awesome icon
-* Widget position: sort widget position
-* Widget x size: width in bootstrap col-
-* Widget Title Background color:
-* Widget title color:
+* **Widget Title**: 
+* **Widget icon**: font awesome icon
+* **Widget position**: sort widget position
+* **Widget x size**: width in bootstrap col-
+* **Widget Title Background color**:
+* **Widget title color**:
 
 ### Doclister params Settings
 
-* Parent folder for List documents: parents
-* Max items in List: display
-* Depht: depth 
-* Hide Folders: addWhereList isfolder=0
-* Show Deleted and Unpublished: showNoPublish
+* **Parent folder for List documents**: parents
+* **Max items in List**: display
+* **Depht**: depth 
+* **Hide Folders**: addWhereList isfolder=0
+* **Show Deleted and Unpublished**: showNoPublish
 
 ### Widget UI & grid Settings
 
-* Show Status Filter: Show published/unpublished/deleted dropdown select filter (require Show Deleted and Unpublished - YES)
-* Show Parent Column: Show Resource Parent Column
-* Tv columns: The list of tvs to add as sortable columns. example: [+longtitle+],[+menuindex+]
-* Tv Sort type: Sort mode for tv columns- text(for any text tv)/number(for numbers tv, like price)/date(date is not yet supported). example for longtitle and menuindex: text,number
-* Show Image TV: enter tv name. ie: image
-* Show image Tv in: choose where show the image thumbnail: overview row or column
-* Overview Tv Fields: The list of tvs to add in toogle overview row. example [+longtitle+],[+description+],[+introtext+],[+documentTags+]
-* Overview TV headings: titles for tvs in overview. example: Long Title,Description,Introtext,Tags
-* Edit docs in modal: edit and create resources in new evo 1.4 modal window
+* **Show Status Filter**: Show published/unpublished/deleted dropdown select filter (require Show Deleted and Unpublished - ```YES```)
+* **Show Parent Column**: Show Resource Parent Column
+* **Tv column**: The list of tvs to add as sortable columns. example: ```[+longtitle+],[+menuindex+]```
+* **Tv Sort type**: Sort mode for tv columns- text(for any text tv)/number(for numbers tv, like price)/date(date is not yet supported). example for longtitle and menuindex: ```text,number```
+* **Show Image TV**: enter tv name. ie: ```image```
+* **how image Tv in**: choose where show the image thumbnail: ```overview``` row or ```column```
+* **verview Tv Fields**: The list of tvs to add in toogle overview row. example ```[+longtitle+],[+description+],[+introtext+],[+documentTags+]```
+* **Overview TV headings**: titles for tvs in overview. example: ```Long Title,Description,Introtext,Tags```
+* **Edit docs in modal**: edit and create resources in new evo 1.4 modal window
 
 ### Buttons (show/hide) Settings
 
 note: hides the button to everyone, even if the user has permissions
-* Show Move Button
-* Show Create Resource here Button
-* Show Publish Button
-* Show Delete Button
+* **Show Move Button**
+* **Show Create Resource here Button**
+* **Show Publish Button**
+* **Show Delete Button**
 
 
 
