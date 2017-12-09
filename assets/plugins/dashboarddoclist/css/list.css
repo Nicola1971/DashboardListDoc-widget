@@ -32,3 +32,31 @@ span.footable-toggle {display:inline-block;width:20px;cursor:pointer;}
 #DashboardList td a.deleted:hover {color:#A52A2A;text-decoration: line-through}
 #DashboardList td a.notinmenu {color:#404040;}
 #DashboardList td .weblinkicon {font-size: 0.75em; color: #404040; }
+
+/*right click*/
+  .context-menu ul{ 
+    z-index: 1000;
+/*    position: absolute;*/
+    overflow: hidden;
+    border: 1px solid #CCC;
+    white-space: nowrap;
+    font-family: sans-serif;
+    background: #FFF;
+    color: #333;
+    border-radius: 5px;
+    padding: 0;
+}
+/* Each of the items in the list */
+.context-menu ul li {
+    padding: 8px 12px;
+    cursor: pointer;
+    list-style-type: none;
+}
+.context-menu ul li:hover {
+    background-color: #1377c5;
+}
+.context-menu ul li:hover a {
+    background-color: #1377c5;
+    text-decoration:none;
+    color: #fff!important;
+}

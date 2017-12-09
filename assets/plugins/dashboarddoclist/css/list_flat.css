@@ -79,3 +79,36 @@ span.footable-toggle {display:inline-block;width:20px;cursor:pointer;}
 .dark #DashboardList th form div ul li a{color:#FFF;}
 .dark #DashboardList .footable .dropdown-menu > li > a:hover,
 .dark #DashboardList .footable .dropdown-menu > li > a:focus{color:#FFF;background-color: #272c33!important;}
+
+/*right click*/
+  .context-menu ul{ 
+    z-index: 1000;
+/*    position: absolute;*/
+    overflow: hidden;
+    border: 1px solid #CCC;
+    white-space: nowrap;
+    font-family: sans-serif;
+    background: #FFF;
+    color: #333;
+    border-radius: 5px;
+    padding: 0;
+}
+.dark .context-menu ul{ 
+    background: #383f48;
+    border-color: #272c33;
+    color: #FFF;
+}
+/* Each of the items in the list */
+.context-menu ul li {
+    padding: 8px 12px;
+    cursor: pointer;
+    list-style-type: none;
+}
+.context-menu ul li:hover {
+    background-color: #1377c5;
+}
+.context-menu ul li:hover a {
+    background-color: #1377c5;
+    text-decoration:none;
+    color: #fff!important;
+}
