@@ -23,11 +23,19 @@ Requires snippets: DocLister, DocInfo, If, PhpThumb.
 - **Edit in Evo Modal**: edit and create documents in Evo (1.4) modal/popup [optional]
 - **Full Localstorage support**: state of pagination , search and sorting is always saved in localhost - so when you go back to the dashboard, you dont need to search or sort again
 
+### Tv image in overview row
+
 ![doclist-image-overview](https://user-images.githubusercontent.com/7342798/33797559-a030c3b8-dd0a-11e7-8478-d91035e31c86.png)
+
+### Tv image in column
+
 ![doclist-inline-img](https://user-images.githubusercontent.com/7342798/33797565-a85b0896-dd0a-11e7-8c91-ac1f8d7f02ce.png)
+
+### Parent resource column Context Menu
+
 ![doclist-ctx](https://user-images.githubusercontent.com/7342798/33797568-b059e99a-dd0a-11e7-806b-0089f6982d55.png)
 
-## Settings Parameters
+# Settings Parameters
 
 ### Widget Permissions Settings
 
