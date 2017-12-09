@@ -4,7 +4,7 @@
  * Dashboard Documents list/grid widget plugin for Evolution CMS
  * @author    Nicola Lambathakis
  * @category    plugin
- * @version    3.3.5
+ * @version    3.3.4
  * @license	   http://www.gnu.org/copyleft/gpl.html GNU Public License (GPL)
  * @internal    @events OnManagerWelcomeHome,OnManagerMainFrameHeaderHTMLBlock
  * @internal    @installset base
@@ -19,7 +19,7 @@
 */
 
 /******
-DashboardDocList 3.3.5
+DashboardDocList 3.3.4
 OnManagerWelcomeHome,OnManagerMainFrameHeaderHTMLBlock
 &wdgVisibility=Show widget for:;menu;All,AdminOnly,AdminExcluded,ThisRoleOnly,ThisUserOnly;All &ThisRole=Show only to this role id:;string;;;enter the role id &ThisUser=Show only to this username:;string;;;enter the username  &wdgTitle= Widget Title:;string;Documents List  &wdgicon= widget icon:;string;fa-pencil  &wdgposition=widget position:;list;1,2,3,4,5,6,7,8,9,10;1 &wdgsizex=widget x size:;list;12,6,4,3;12 &ParentFolder=Parent folder for List documents:;string;0 &ListItems=Max items in List:;string;50 &dittolevel= Depht:;string;3 &hideFolders= Hide Folders:;list;yes,no;no &showUnpublished= Show Deleted and Unpublished:;list;yes,no;yes;;Show Deleted and Unpublished resources &showStatusFilter= Show Status Filter:;list;yes,no;yes;;require Show Deleted and Unpublished - YES &showParent= Show Parent Column:;list;yes,no;yes &TvColumn=Tv columns:;string;[+longtitle+],[+menuindex+] &TvSortType=Tv Sort type:;string;text,number &ImageTv=Show Image TV:;string;image;;enter tv name &ShowImageIn=Show image Tv in:;list;overview,column;overview &tablefields= Overview Tv Fields:;string;[+longtitle+],[+description+],[+introtext+],[+documentTags+] &tableheading=Overview TV headings:;string;Long Title,Description,Introtext,Tags &editInModal= Edit docs in modal:;list;yes,no;no;;edit and create resources in evo modal window &showMoveButton= Show Move Button:;list;yes,no;yes;;hides the button to everyone, even if the user has permissions &showAddHere= Show Create Resource here Button:;list;yes,no;yes;;hides the button to everyone, even if the user has permissions &showPublishButton= Show Publish Button:;list;yes,no;yes;;hides the button to everyone, even if the user has permissions &showDeleteButton= Show Delete Button:;list;yes,no;yes;;hides the button to everyone, even if the user has permissions &HeadBG= Widget Title Background color:;string; &HeadColor= Widget title color:;string
 *******/
@@ -55,21 +55,6 @@ case 'OnManagerMainFrameHeaderHTMLBlock':
 $manager_theme = $modx->config['manager_theme'];
 
 $jsOutput = '
-<script>
-    var mouseX;
-    var mouseY;
-    $(document).mousemove(function(e) {
-       mouseX = e.pageX; 
-       mouseY = e.pageY;
-    });  
-    $(document).bind("mousedown", function (e) {
-    // If the clicked element is not the menu
-    if (!$(e.target).parents(".context-menu").length > 0) {    
-        // Hide it
-        $(".context-menu").hide(100);
-    }
-  });
-</script>
 <script src="../assets/plugins/dashboarddoclist/js/moment.min.js"></script>
 <script src="../assets/plugins/dashboarddoclist/js/footable.min.js"></script>
 <script>';
@@ -209,21 +194,11 @@ $ImageTVHead = '<th data-filterable="false" data-sortable="false">'.$ImageTv.'</
 }
 }
 $rowTpl .= '<td class="footable-toggle"><a target="main" data-title="edit?" class="dataConfirm [[if? &is=`[+published+]:=:0` &then=`unpublished`]] [[if? &is=`[+deleted+]:=:1` &then=`deleted`]] [[if? &is=`[+hidemenu+]:is:1:and:[+published+]:is:1` &then=`notinmenu`]]" href="index.php?a=27&id=[+id+]" title="' . $_lang["edit_resource"] . '">[+pagetitle+]</a>[[if? &is=`[+type+]:is:reference` &then=` <i class="weblinkicon fa fa-link"></i>`]]</td> ';	
-		
 if ($showParent == yes) {
 $rowTpl .= '
-<td aria-expanded="false" class="footable-toggle" oncontextmenu ="event.preventDefault();$(\'#context-menu\').show();$(\'#context-menu\').offset({\'top\':mouseY,\'left\':mouseX})"> 
+<td aria-expanded="false" class="footable-toggle"> 
 [[if? &is=`[+parent+]:not:0`&then=`<a target="main" href="index.php?a=3&id=[+parent+]&tab=1" title="'.$_lang["view_child_resources_in_container"].'">[[DocInfo? &docid=`[+parent+]` &field=`pagetitle`]]</a>`]]
-</td>
-<div class="context-menu" id="context-menu" style="display:none;position:absolute;z-index:99">
-    <ul>
-      <li><a target="main" href="index.php?a=3&id=[+parent+]&tab=1"><i class="fa fa-list fa-fw"></i>  '.$_lang["view_child_resources_in_container"].'</a></li>';	
-if($modx->hasPermission('edit_document')) {	
-$rowTpl .= '<li><a target="main" href="index.php?a=4&pid=[+parent+]"><i class="fa fa-file-o fa-fw"></i>  ' . $_lang["create_resource_here"] . '</a></li>      
-      <li><a target="main" href="index.php?a=27&id=[+parent+]"><i class="fa fa-pencil-square-o fa-fw"></i>  ' . $_lang["edit_resource"] . '</a></li>
-';
-}
-$rowTpl .= '</ul></div>';
+</td>';
 }
 $rowTpl .= $TvTDs;
 $rowTpl .= '
@@ -372,7 +347,6 @@ $list = $modx->runSnippet('DocLister', $params);
 					</thead>                    <tbody>
 '.$list.' 
 </tbody></table>
-
 </div></div>',
 				'hide' => '0'
 			);	
