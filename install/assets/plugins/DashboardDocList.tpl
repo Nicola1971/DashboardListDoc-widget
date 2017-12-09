@@ -55,6 +55,21 @@ case 'OnManagerMainFrameHeaderHTMLBlock':
 $manager_theme = $modx->config['manager_theme'];
 
 $jsOutput = '
+<script>
+    var mouseX;
+    var mouseY;
+    $(document).mousemove(function(e) {
+       mouseX = e.pageX; 
+       mouseY = e.pageY;
+    });  
+    $(document).bind("mousedown", function (e) {
+    // If the clicked element is not the menu
+    if (!$(e.target).parents(".context-menu").length > 0) {    
+        // Hide it
+        $(".context-menu").hide(100);
+    }
+  });
+</script>
 <script src="../assets/plugins/dashboarddoclist/js/moment.min.js"></script>
 <script src="../assets/plugins/dashboarddoclist/js/footable.min.js"></script>
 <script>';
@@ -194,11 +209,22 @@ $ImageTVHead = '<th data-filterable="false" data-sortable="false">'.$ImageTv.'</
 }
 }
 $rowTpl .= '<td class="footable-toggle"><a target="main" data-title="edit?" class="dataConfirm [[if? &is=`[+published+]:=:0` &then=`unpublished`]] [[if? &is=`[+deleted+]:=:1` &then=`deleted`]] [[if? &is=`[+hidemenu+]:is:1:and:[+published+]:is:1` &then=`notinmenu`]]" href="index.php?a=27&id=[+id+]" title="' . $_lang["edit_resource"] . '">[+pagetitle+]</a>[[if? &is=`[+type+]:is:reference` &then=` <i class="weblinkicon fa fa-link"></i>`]]</td> ';	
+		
 if ($showParent == yes) {
 $rowTpl .= '
-<td aria-expanded="false" class="footable-toggle"> 
+<td aria-expanded="false" oncontextmenu ="event.preventDefault();$(\'#[+id+]context-menu\').show();$(\'#context-menu\').offset({\'top\':mouseY,\'left\':mouseX})"> 
 [[if? &is=`[+parent+]:not:0`&then=`<a target="main" href="index.php?a=3&id=[+parent+]&tab=1" title="'.$_lang["view_child_resources_in_container"].'">[[DocInfo? &docid=`[+parent+]` &field=`pagetitle`]]</a>`]]
-</td>';
+<div class="context-menu" id="[+id+]context-menu" style="display:none;z-index:99">
+    <ul>
+      <li><a target="main" href="index.php?a=3&id=[+parent+]&tab=1"><i class="fa fa-list fa-fw"></i>  '.$_lang["view_child_resources_in_container"].'</a></li>';	
+if($modx->hasPermission('edit_document')) {	
+$rowTpl .= '<li><a target="main" href="index.php?a=4&pid=[+parent+]"><i class="fa fa-file-o fa-fw"></i>  ' . $_lang["create_resource_here"] . '</a></li>      
+      <li><a target="main" href="index.php?a=27&id=[+parent+]"><i class="fa fa-pencil-square-o fa-fw"></i>  ' . $_lang["edit_resource"] . '</a></li>
+</td>
+
+';
+}
+$rowTpl .= '</ul></div>';
 }
 $rowTpl .= $TvTDs;
 $rowTpl .= '
@@ -347,6 +373,7 @@ $list = $modx->runSnippet('DocLister', $params);
 					</thead>                    <tbody>
 '.$list.' 
 </tbody></table>
+
 </div></div>',
 				'hide' => '0'
 			);	
