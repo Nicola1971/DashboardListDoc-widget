@@ -212,7 +212,7 @@ $rowTpl .= '<td class="footable-toggle"><a target="main" data-title="edit?" clas
 		
 if ($showParent == yes) {
 $rowTpl .= '
-<td aria-expanded="false" oncontextmenu ="event.preventDefault();$(\'#[+id+]context-menu\').show();$(\'#context-menu\').offset({\'top\':mouseY,\'left\':mouseX})"> 
+<td aria-expanded="false" [[if? &is=`[+parent+]:not:0`&then=`oncontextmenu ="event.preventDefault();$(\'#[+id+]context-menu\').show();$(\'#context-menu\').offset({\'top\':mouseY,\'left\':mouseX})"`]]> 
 [[if? &is=`[+parent+]:not:0`&then=`<a target="main" href="index.php?a=3&id=[+parent+]&tab=1" title="'.$_lang["view_child_resources_in_container"].'">[[DocInfo? &docid=`[+parent+]` &field=`pagetitle`]]</a>`]]
 <div class="context-menu" id="[+id+]context-menu" style="display:none;z-index:99">
     <ul>
