@@ -83,7 +83,7 @@ span.footable-toggle {display:inline-block;width:20px;cursor:pointer;}
 /*right click*/
   .context-menu ul{ 
     z-index: 1000;
-/*    position: absolute;*/
+  position: absolute;
     overflow: hidden;
     border: 1px solid #CCC;
     white-space: nowrap;
