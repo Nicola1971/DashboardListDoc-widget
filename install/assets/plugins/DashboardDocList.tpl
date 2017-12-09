@@ -217,12 +217,13 @@ $rowTpl .= '
 </td>
 <div class="context-menu" id="context-menu" style="display:none;position:absolute;z-index:99">
     <ul>
-      <li><a target="main" href="index.php?a=3&id=[+parent+]&tab=1"><i class="fa fa-list fa-fw"></i>  '.$_lang["view_child_resources_in_container"].'</a></li>     
-      <li><a target="main" href="index.php?a=4&pid=[+parent+]"><i class="fa fa-file-o fa-fw"></i>  ' . $_lang["create_resource_here"] . '</a></li>      
+      <li><a target="main" href="index.php?a=3&id=[+parent+]&tab=1"><i class="fa fa-list fa-fw"></i>  '.$_lang["view_child_resources_in_container"].'</a></li>';	
+if($modx->hasPermission('edit_document')) {	
+$rowTpl .= '<li><a target="main" href="index.php?a=4&pid=[+parent+]"><i class="fa fa-file-o fa-fw"></i>  ' . $_lang["create_resource_here"] . '</a></li>      
       <li><a target="main" href="index.php?a=27&id=[+parent+]"><i class="fa fa-pencil-square-o fa-fw"></i>  ' . $_lang["edit_resource"] . '</a></li>
-    </ul>
-</div>
 ';
+}
+$rowTpl .= '</ul></div>';
 }
 $rowTpl .= $TvTDs;
 $rowTpl .= '
