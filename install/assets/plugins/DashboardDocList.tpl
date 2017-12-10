@@ -173,7 +173,7 @@ $cssOutput = '
 }
 $e->output($jsOutput.$cssOutput);
 break;
-/*rebder the widget on OnManagerWelcomeHome*/
+/*render the widget on OnManagerWelcomeHome*/
 case 'OnManagerWelcomeHome':
 //output
 $WidgetOutput = isset($WidgetOutput) ? $WidgetOutput : '';
