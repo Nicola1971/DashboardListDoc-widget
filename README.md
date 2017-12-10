@@ -1,4 +1,4 @@
-# DashboardListDoc-widget v2 RC3.3.6
+# DashboardListDoc-widget v2 RC3.3.7
 
 A small Dashboard Documents grid/list widget plugin for **Evolution CMS 1.4** based on DocLister
 
@@ -62,6 +62,7 @@ Requires snippets: DocLister, DocInfo, If, PhpThumb.
 
 ### Widget & Grid Settings
 
+* **Show Create Resource Buttons**: Show header Create Resource Buttons buttons (parent id from parents parameter)
 * **Show Status Filter**: Show published/unpublished/deleted dropdown select filter (require Show Deleted and Unpublished - ```YES```)
 * **Display Title in title column**: choose which title display in title column (pagetitle/longtitle/menutile)
 * **Show Parent Column**: Show Resource Parent Column
