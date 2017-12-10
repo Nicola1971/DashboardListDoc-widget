@@ -33,7 +33,7 @@ Requires snippets: DocLister, DocInfo, If, PhpThumb.
 
 ### Parent resource column Context Menu
 
-![doclist-ctx](https://user-images.githubusercontent.com/7342798/33797568-b059e99a-dd0a-11e7-806b-0089f6982d55.png)
+![lisdoc-wdg2](https://user-images.githubusercontent.com/7342798/33806991-609b99aa-ddd0-11e7-87f6-5c3e8a69d0a2.png)
 
 # Plugin Settings
 
