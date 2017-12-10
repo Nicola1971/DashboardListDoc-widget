@@ -167,7 +167,7 @@ $cssOutput = '
 }
 $e->output($jsOutput.$cssOutput);
 break;
-/*rebder the widget on OnManagerWelcomeHome*/
+/*render the widget on OnManagerWelcomeHome*/
 case 'OnManagerWelcomeHome':
 //output
 $WidgetOutput = isset($WidgetOutput) ? $WidgetOutput : '';
@@ -221,11 +221,12 @@ foreach (array_combine($TvColumns, $TvTypes) as $TvTD => $TvType){
 //ID column	
 $rowTpl = '@CODE: <tr>
 <td aria-expanded="false" class="footable-toggle"> <span class="label label-info">[+id+]</span></td> ';
+		
 //Image column	
 if ($ImageTv != '') {
 if ($ShowImageIn == column) {
-$rowTpl .= '<td aria-expanded="false" class="footable-toggle" ><img width="70" class="img-thumbnail-sm" src="../[[phpthumb? &input=`[+'.$ImageTv.'+]` &options=`w=70,h=70,q=60,zc=C`]]" alt="[+title+]"> </td> ';
-$ImageTVHead = '<th data-filterable="false" data-sortable="false" style="text-align:center"><i class="icon-imagetv fa fa-2x fa-camera" aria-hidden="true"></i></th> ';
+$rowTpl .= '<td aria-expanded="false" class="footable-toggle" ><img class="img-thumbnail-sm" src="../[[phpthumb? &input=`[+'.$ImageTv.'+]` &options=`w=70,h=70,q=60,zc=C`]]" alt="[+title+]"> </td> ';
+$ImageTVHead = '<th width="100" data-filterable="false" data-sortable="false" style="text-align:center"><i class="icon-imagetv fa fa-2x fa-camera" aria-hidden="true"></i></th> ';
 }
 }
 //Title column		
