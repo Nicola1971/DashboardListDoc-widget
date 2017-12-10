@@ -59,7 +59,8 @@ span.footable-toggle {display:inline-block;width:20px;cursor:pointer;}
 	background-color: var(--main-color);
 	border-color: var(--main-color);
 }
-
+.icon-imagetv {color: #dfdfdf;}
+.dark .icon-imagetv {color: var(--medium-grey);}
 /*DARK*/
 .dark #DashboardList td a.notinmenu {color:#bcbec0;}
 .dark #DashboardList td .weblinkicon {color:#bcbec0;}

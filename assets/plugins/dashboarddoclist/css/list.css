@@ -9,7 +9,7 @@ table.footable-details th {display:none;}
 #DashboardList table.footable-details.table.data tbody tr:hover { border:none; background-color: transparent;}
 
 span.footable-toggle {display:inline-block;width:20px;cursor:pointer;}
-
+.icon-imagetv {color: #dfdfdf;}
 /*hide search filter dropdown*//*
 .footable-filtering-search .btn.dropdown-toggle {
     display: none;
