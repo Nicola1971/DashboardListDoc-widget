@@ -19,12 +19,6 @@
 *
 */
 
-/******
-DashboardDocList 3.3.7
-OnManagerWelcomeHome,OnManagerMainFrameHeaderHTMLBlock
-&wdgVisibility=Show widget for:;menu;All,AdminOnly,AdminExcluded,ThisRoleOnly,ThisUserOnly;All &ThisRole=Show only to this role id:;string;;;enter the role id &ThisUser=Show only to this username:;string;;;enter the username  &wdgTitle= Widget Title:;string;Documents List  &wdgicon= widget icon:;string;fa-pencil  &wdgposition=widget position:;list;1,2,3,4,5,6,7,8,9,10;1 &wdgsizex=widget x size:;list;12,6,4,3;12 &ParentFolder=Parent folder for List documents:;string;0 &ListItems=Max items in List:;string;50 &dittolevel= Depht:;string;3 &hideFolders= Hide Folders:;list;yes,no;no &showUnpublished= Show Deleted and Unpublished:;list;yes,no;yes;;Show Deleted and Unpublished resources &showAddButtons= Show Create Resource Buttons:;list;yes,no;no;;show header add buttons &showStatusFilter= Show Status Filter:;list;yes,no;yes;;require Show Deleted and Unpublished - YES &DisplayTitle= Display Title in title column:;list;pagetitle,longtitle,menutitle;pagetitle;;choose which title display in title column &showParent= Show Parent Column:;list;yes,no;yes &TvColumn=Tv Columns:;string;[+longtitle+],[+menuindex+] &TvSortType=Tv Column Sort type:;string;text,number &ImageTv=Show Image TV:;string;image;;enter tv name &ShowImageIn=Show image Tv in:;list;overview,column;overview &tablefields= Overview Tv Fields:;string;[+longtitle+],[+description+],[+introtext+],[+documentTags+] &tableheading=Overview TV headings:;string;Long Title,Description,Introtext,Tags &editInModal= Edit docs in modal:;list;yes,no;no;;edit and create resources in evo modal window &showMoveButton= Show Move Button:;list;yes,no;yes;;hides the button to everyone, even if the user has permissions &showAddHere= Show Create Resource here Button:;list;yes,no;yes;;hides the button to everyone, even if the user has permissions &showPublishButton= Show Publish Button:;list;yes,no;yes;;hides the button to everyone, even if the user has permissions &showDeleteButton= Show Delete Button:;list;yes,no;yes;;hides the button to everyone, even if the user has permissions &HeadBG= Widget Title Background color:;string; &HeadColor= Widget title color:;string
-*******/
-
 // get global language
 global $modx,$_lang;
 // get manager role
@@ -173,7 +167,7 @@ $cssOutput = '
 }
 $e->output($jsOutput.$cssOutput);
 break;
-/*render the widget on OnManagerWelcomeHome*/
+/*rebder the widget on OnManagerWelcomeHome*/
 case 'OnManagerWelcomeHome':
 //output
 $WidgetOutput = isset($WidgetOutput) ? $WidgetOutput : '';
@@ -181,25 +175,6 @@ $TvColumn = isset($TvColumn) ? $TvColumn : '';
 $tablefields = isset($tablefields) ? $tablefields : '[+longtitle+],[+description+],[+introtext+],[+documentTags+]';
 $tableheading = isset($tableheading) ? $tableheading : 'Long Title,Description,Introtext,Tags';
 		
-//get Tv vars Heading Titles from Module configuration (ie: Page Title,Description,Date)
-$tharr = explode(",","$tableheading");
-$tdarr = explode(",","$tablefields");
-foreach (array_combine($tharr, $tdarr) as $thval => $tdval){
-    $thtdfields .=  "
-    <li><b>" . $thval . "</b>: " . $tdval . "</li>
-    ";
-}
-//get tv columns
-$TvColumns = explode(",","$TvColumn");
-$TvTypes = explode(",","$TvSortType");
-foreach (array_combine($TvColumns, $TvTypes) as $TvTD => $TvType){
-    $TvTDs .=  '<td aria-expanded="false" class="footable-toggle">'.$TvTD.'</td>';
-	$find = array('[+','+]');
-	$replace = array('','');
-	$getTvName = str_replace($find,$replace,$TvTD);
-	$TvName = $getTvName;
-	$TvColumnsHeaders .= '<th data-breakpoints="xs" data-type="'.$TvType.'">'.$TvName.'</th> ';
-}
 //Header create resource in parent buttons
 if ($showAddButtons == yes) { 
 	if($modx->hasPermission('edit_document')) {	
@@ -221,16 +196,36 @@ foreach ($Parents as $Parent){
 	}
 	}
 }
+}		
+//get Tv vars Heading Titles from Module configuration (ie: Page Title,Description,Date)
+$tharr = explode(",","$tableheading");
+$tdarr = explode(",","$tablefields");
+foreach (array_combine($tharr, $tdarr) as $thval => $tdval){
+    $thtdfields .=  "
+    <li><b>" . $thval . "</b>: " . $tdval . "</li>
+    ";
+}
+//get tv columns
+$TvColumns = explode(",","$TvColumn");
+$TvTypes = explode(",","$TvSortType");
+foreach (array_combine($TvColumns, $TvTypes) as $TvTD => $TvType){
+    $TvTDs .=  '<td aria-expanded="false" class="footable-toggle">'.$TvTD.'</td>';
+	$find = array('[+','+]');
+	$replace = array('','');
+	$getTvName = str_replace($find,$replace,$TvTD);
+	$TvName = $getTvName;
+	$TvColumnsHeaders .= '<th data-breakpoints="xs" data-type="'.$TvType.'">'.$TvName.'</th> ';
 }
 
+////////////Columns
 //ID column	
 $rowTpl = '@CODE: <tr>
 <td aria-expanded="false" class="footable-toggle"> <span class="label label-info">[+id+]</span></td> ';
 //Image column	
 if ($ImageTv != '') {
 if ($ShowImageIn == column) {
-$rowTpl .= '<td aria-expanded="false" class="footable-toggle" ><img width="50px" class="img-responsive img-thumbnail" src="../[[phpthumb? &input=`[+'.$ImageTv.'+]` &options=`w=50,h=50,q=60,zc=C`]]" alt="[+title+]"> </td> ';
-$ImageTVHead = '<th data-filterable="false" data-sortable="false">'.$ImageTv.'</th> ';
+$rowTpl .= '<td aria-expanded="false" class="footable-toggle" ><img width="70" class="img-thumbnail-sm" src="../[[phpthumb? &input=`[+'.$ImageTv.'+]` &options=`w=70,h=70,q=60,zc=C`]]" alt="[+title+]"> </td> ';
+$ImageTVHead = '<th data-filterable="false" data-sortable="false" style="text-align:center"><i class="icon-imagetv fa fa-2x fa-camera" aria-hidden="true"></i></th> ';
 }
 }
 //Title column		
@@ -262,7 +257,7 @@ $rowTpl .= '
 </td>';	
 
 //DATE column
-$rowTpl .= '<td class="footable-toggle text-right text-nowrap">[+editedon:date=`%d %m %Y`+]</td>
+$rowTpl .= '<td style="white-space: nowrap" class="footable-toggle text-right text-nowrap">[+editedon:date=`%d %m %Y`+]</td>
 <td style="text-align: right;" class="actions">';
 		
 //Action buttons 
@@ -384,8 +379,8 @@ $list = $modx->runSnippet('DocLister', $params);
 				'cardAttr' => '',
 				'icon' => ''.$wdgicon.'',
 				'title' => ''.$wdgTitle.' '.$button_pl_config.'',
-				'body' => '<div style="min-height:550px" class="widget-stage"><div style="display:none;" id="DashboardList" class="table-responsive">
-				<table width="100%" data-state="true" data-state-key="DashboardList'.$pluginid.'_state" data-paging-size="10" data-show-toggle="false" data-toggle-column="last" data-toggle-selector=".footable-toggle" data-filter-ignore-case="true" data-filtering="true" data-state-filtering="true" data-filter-exact-match="false" data-filter-dropdown-title="'.$_lang["search_criteria"].'" data-filter-placeholder="'.$_lang["element_filter_msg"].'" data-filter-position="right" class="table data" id="TableList">
+				'body' => '<div class="widget-stage"><div style="display:none;" id="DashboardList" class="table-responsive">
+				<table data-state="true" data-state-key="DashboardList'.$pluginid.'_state" data-paging-size="10" data-show-toggle="false" data-toggle-column="last" data-toggle-selector=".footable-toggle" data-filter-ignore-case="true" data-filtering="true" data-state-filtering="true" data-filter-exact-match="false" data-filter-dropdown-title="'.$_lang["search_criteria"].'" data-filter-placeholder="'.$_lang["element_filter_msg"].'" data-filter-position="right" class="table data" id="TableList">
                 <thead>
 <div style="position:absolute;top:55px;left:25px;z-index:10;">
 <button type="button" class="btn btn-sm btn-size" id="page-size-5" data-page-size="5">5</button>
@@ -399,7 +394,7 @@ $list = $modx->runSnippet('DocLister', $params);
 						<tr>
 							<th data-type="number" style="width: 1%">[%id%]</th>
 							'.$ImageTVHead.'
-							<th style="width: 30%" data-type="text">[%resource_title%]</th>
+							<th style="width: 25%" data-type="text">[%resource_title%]</th>
 							
 							'.$parentColumnHeader.'							
 							'.$TvColumnsHeaders.'
