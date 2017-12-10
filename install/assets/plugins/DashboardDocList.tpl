@@ -245,7 +245,7 @@ $rowTpl = '@CODE: <tr>
 //Image column	
 if ($ImageTv != '') {
 if ($ShowImageIn == column) {
-$rowTpl .= '<td aria-expanded="false" class="footable-toggle" ><img class="img-thumbnail-sm" src="../[[phpthumb? &input=`[+'.$ImageTv.'+]` &options=`w=70,h=70,q=60,zc=C`]]" alt="[+title+]"> </td> ';
+$rowTpl .= '<td aria-expanded="false" class="footable-toggle" ><img class="footable-toggle img-thumbnail-sm" src="../[[phpthumb? &input=`[+'.$ImageTv.'+]` &options=`w=70,h=70,q=60,zc=C`]]" alt="[+title+]"> </td> ';
 $ImageTVHead = '<th width="100" data-filterable="false" data-sortable="false" style="text-align:center"><i class="icon-imagetv fa fa-2x fa-camera" aria-hidden="true"></i></th> ';
 }
 }
