@@ -27,11 +27,7 @@ Requires snippets: DocLister, DocInfo, If, PhpThumb.
 
 ![doclist-image-overview](https://user-images.githubusercontent.com/7342798/33797559-a030c3b8-dd0a-11e7-8478-d91035e31c86.png)
 
-### Tv image in column
-
-![doclist-inline-img](https://user-images.githubusercontent.com/7342798/33797565-a85b0896-dd0a-11e7-8c91-ac1f8d7f02ce.png)
-
-### Parent resource column Context Menu
+### Tv image in column & Parent resource Context Menu
 
 ![lisdoc-wdg2](https://user-images.githubusercontent.com/7342798/33806991-609b99aa-ddd0-11e7-87f6-5c3e8a69d0a2.png)
 
