@@ -4,7 +4,7 @@
  * Dashboard    Documents list/grid widget plugin for Evolution CMS
  * @author      Nicola Lambathakis
  * @category    plugin
- * @version     3.3.6
+ * @version     3.3.7
  * @license	    http://www.gnu.org/copyleft/gpl.html GNU Public License (GPL)
  * @internal    @events OnManagerWelcomeHome,OnManagerMainFrameHeaderHTMLBlock
  * @internal    @installset base
@@ -14,15 +14,15 @@
  * @documentation https://github.com/Nicola1971/DashboardListDoc-widget/
  * @reportissues https://github.com/Nicola1971/DashboardListDoc-widget/issues
  * @link        
- * @lastupdate  09/12/2017
- * @internal    @properties &wdgVisibility=Show widget for:;menu;All,AdminOnly,AdminExcluded,ThisRoleOnly,ThisUserOnly;All &ThisRole=Show only to this role id:;string;;;enter the role id &ThisUser=Show only to this username:;string;;;enter the username  &wdgTitle= Widget Title:;string;Documents List  &wdgicon= widget icon:;string;fa-pencil  &wdgposition=widget position:;list;1,2,3,4,5,6,7,8,9,10;1 &wdgsizex=widget x size:;list;12,6,4,3;12 &ParentFolder=Parent folder for List documents:;string;0 &ListItems=Max items in List:;string;50 &dittolevel= Depht:;string;3 &hideFolders= Hide Folders:;list;yes,no;no &showUnpublished= Show Deleted and Unpublished:;list;yes,no;yes;;Show Deleted and Unpublished resources &showStatusFilter= Show Status Filter:;list;yes,no;yes;;require Show Deleted and Unpublished - YES &DisplayTitle= Display Title in title column:;list;pagetitle,longtitle,menutitle;pagetitle;;choose which title display in title column &showParent= Show Parent Column:;list;yes,no;yes &TvColumn=Tv Columns:;string;[+longtitle+],[+menuindex+] &TvSortType=Tv Column Sort type:;string;text,number &ImageTv=Show Image TV:;string;image;;enter tv name &ShowImageIn=Show image Tv in:;list;overview,column;overview &tablefields= Overview Tv Fields:;string;[+longtitle+],[+description+],[+introtext+],[+documentTags+] &tableheading=Overview TV headings:;string;Long Title,Description,Introtext,Tags &editInModal= Edit docs in modal:;list;yes,no;no;;edit and create resources in evo modal window &showMoveButton= Show Move Button:;list;yes,no;yes;;hides the button to everyone, even if the user has permissions &showAddHere= Show Create Resource here Button:;list;yes,no;yes;;hides the button to everyone, even if the user has permissions &showPublishButton= Show Publish Button:;list;yes,no;yes;;hides the button to everyone, even if the user has permissions &showDeleteButton= Show Delete Button:;list;yes,no;yes;;hides the button to everyone, even if the user has permissions &HeadBG= Widget Title Background color:;string; &HeadColor= Widget title color:;string
+ * @lastupdate  10/12/2017
+ * @internal    @properties &wdgVisibility=Show widget for:;menu;All,AdminOnly,AdminExcluded,ThisRoleOnly,ThisUserOnly;All &ThisRole=Show only to this role id:;string;;;enter the role id &ThisUser=Show only to this username:;string;;;enter the username  &wdgTitle= Widget Title:;string;Documents List  &wdgicon= widget icon:;string;fa-pencil  &wdgposition=widget position:;list;1,2,3,4,5,6,7,8,9,10;1 &wdgsizex=widget x size:;list;12,6,4,3;12 &ParentFolder=Parent folder for List documents:;string;0 &ListItems=Max items in List:;string;50 &dittolevel= Depht:;string;3 &hideFolders= Hide Folders:;list;yes,no;no &showUnpublished= Show Deleted and Unpublished:;list;yes,no;yes;;Show Deleted and Unpublished resources &showAddButtons= Show Create Resource Buttons:;list;yes,no;no;;show header add buttons &showStatusFilter= Show Status Filter:;list;yes,no;yes;;require Show Deleted and Unpublished - YES &DisplayTitle= Display Title in title column:;list;pagetitle,longtitle,menutitle;pagetitle;;choose which title display in title column &showParent= Show Parent Column:;list;yes,no;yes &TvColumn=Tv Columns:;string;[+longtitle+],[+menuindex+] &TvSortType=Tv Column Sort type:;string;text,number &ImageTv=Show Image TV:;string;image;;enter tv name &ShowImageIn=Show image Tv in:;list;overview,column;overview &tablefields= Overview Tv Fields:;string;[+longtitle+],[+description+],[+introtext+],[+documentTags+] &tableheading=Overview TV headings:;string;Long Title,Description,Introtext,Tags &editInModal= Edit docs in modal:;list;yes,no;no;;edit and create resources in evo modal window &showMoveButton= Show Move Button:;list;yes,no;yes;;hides the button to everyone, even if the user has permissions &showAddHere= Show Create Resource here Button:;list;yes,no;yes;;hides the button to everyone, even if the user has permissions &showPublishButton= Show Publish Button:;list;yes,no;yes;;hides the button to everyone, even if the user has permissions &showDeleteButton= Show Delete Button:;list;yes,no;yes;;hides the button to everyone, even if the user has permissions &HeadBG= Widget Title Background color:;string; &HeadColor= Widget title color:;string
 *
 */
 
 /******
-DashboardDocList 3.3.6
+DashboardDocList 3.3.7
 OnManagerWelcomeHome,OnManagerMainFrameHeaderHTMLBlock
-&wdgVisibility=Show widget for:;menu;All,AdminOnly,AdminExcluded,ThisRoleOnly,ThisUserOnly;All &ThisRole=Show only to this role id:;string;;;enter the role id &ThisUser=Show only to this username:;string;;;enter the username  &wdgTitle= Widget Title:;string;Documents List  &wdgicon= widget icon:;string;fa-pencil  &wdgposition=widget position:;list;1,2,3,4,5,6,7,8,9,10;1 &wdgsizex=widget x size:;list;12,6,4,3;12 &ParentFolder=Parent folder for List documents:;string;0 &ListItems=Max items in List:;string;50 &dittolevel= Depht:;string;3 &hideFolders= Hide Folders:;list;yes,no;no &showUnpublished= Show Deleted and Unpublished:;list;yes,no;yes;;Show Deleted and Unpublished resources &showStatusFilter= Show Status Filter:;list;yes,no;yes;;require Show Deleted and Unpublished - YES &DisplayTitle= Display Title in title column:;list;pagetitle,longtitle,menutitle;pagetitle;;choose which title display in title column &showParent= Show Parent Column:;list;yes,no;yes &TvColumn=Tv Columns:;string;[+longtitle+],[+menuindex+] &TvSortType=Tv Column Sort type:;string;text,number &ImageTv=Show Image TV:;string;image;;enter tv name &ShowImageIn=Show image Tv in:;list;overview,column;overview &tablefields= Overview Tv Fields:;string;[+longtitle+],[+description+],[+introtext+],[+documentTags+] &tableheading=Overview TV headings:;string;Long Title,Description,Introtext,Tags &editInModal= Edit docs in modal:;list;yes,no;no;;edit and create resources in evo modal window &showMoveButton= Show Move Button:;list;yes,no;yes;;hides the button to everyone, even if the user has permissions &showAddHere= Show Create Resource here Button:;list;yes,no;yes;;hides the button to everyone, even if the user has permissions &showPublishButton= Show Publish Button:;list;yes,no;yes;;hides the button to everyone, even if the user has permissions &showDeleteButton= Show Delete Button:;list;yes,no;yes;;hides the button to everyone, even if the user has permissions &HeadBG= Widget Title Background color:;string; &HeadColor= Widget title color:;string
+&wdgVisibility=Show widget for:;menu;All,AdminOnly,AdminExcluded,ThisRoleOnly,ThisUserOnly;All &ThisRole=Show only to this role id:;string;;;enter the role id &ThisUser=Show only to this username:;string;;;enter the username  &wdgTitle= Widget Title:;string;Documents List  &wdgicon= widget icon:;string;fa-pencil  &wdgposition=widget position:;list;1,2,3,4,5,6,7,8,9,10;1 &wdgsizex=widget x size:;list;12,6,4,3;12 &ParentFolder=Parent folder for List documents:;string;0 &ListItems=Max items in List:;string;50 &dittolevel= Depht:;string;3 &hideFolders= Hide Folders:;list;yes,no;no &showUnpublished= Show Deleted and Unpublished:;list;yes,no;yes;;Show Deleted and Unpublished resources &showAddButtons= Show Create Resource Buttons:;list;yes,no;no;;show header add buttons &showStatusFilter= Show Status Filter:;list;yes,no;yes;;require Show Deleted and Unpublished - YES &DisplayTitle= Display Title in title column:;list;pagetitle,longtitle,menutitle;pagetitle;;choose which title display in title column &showParent= Show Parent Column:;list;yes,no;yes &TvColumn=Tv Columns:;string;[+longtitle+],[+menuindex+] &TvSortType=Tv Column Sort type:;string;text,number &ImageTv=Show Image TV:;string;image;;enter tv name &ShowImageIn=Show image Tv in:;list;overview,column;overview &tablefields= Overview Tv Fields:;string;[+longtitle+],[+description+],[+introtext+],[+documentTags+] &tableheading=Overview TV headings:;string;Long Title,Description,Introtext,Tags &editInModal= Edit docs in modal:;list;yes,no;no;;edit and create resources in evo modal window &showMoveButton= Show Move Button:;list;yes,no;yes;;hides the button to everyone, even if the user has permissions &showAddHere= Show Create Resource here Button:;list;yes,no;yes;;hides the button to everyone, even if the user has permissions &showPublishButton= Show Publish Button:;list;yes,no;yes;;hides the button to everyone, even if the user has permissions &showDeleteButton= Show Delete Button:;list;yes,no;yes;;hides the button to everyone, even if the user has permissions &HeadBG= Widget Title Background color:;string; &HeadColor= Widget title color:;string
 *******/
 
 // get language
@@ -73,6 +73,7 @@ $jsOutput = '
 </script>
 <script src="../assets/plugins/dashboarddoclist/js/moment.min.js"></script>
 <script src="../assets/plugins/dashboarddoclist/js/footable.min.js"></script>
+
 <script>';
 if ($showUnpublished == yes) { 
 if ($showStatusFilter == yes) { 
@@ -199,7 +200,22 @@ foreach (array_combine($TvColumns, $TvTypes) as $TvTD => $TvType){
 	$getTvName = str_replace($find,$replace,$TvTD);
 	$TvName = $getTvName;
 	$TvColumnsHeaders .= '<th data-breakpoints="xs" data-type="'.$TvType.'">'.$TvName.'</th> ';
-}		
+}
+//parent buttons
+if ($showAddButtons == yes) { 
+$Parents = explode(",","$ParentFolder");
+foreach ($Parents as $Parent){
+	if ($Parent != '0') {
+	$ParentT = $modx->getPageInfo($Parent,'*','pagetitle');
+	$ParentTitle = $ParentT['pagetitle'];
+	}
+	else {	
+	$ParentTitle = "root";}
+    $ParentsButtons .=  "
+	<a target=\"main\" href=\"index.php?a=4&pid=$Parent\" title=\"" . $_lang["create_resource_here"] . "\" class=\"btn btn-sm btn-success\"><i class=\"fa fa-file-o fa-fw\"></i> " . $ParentTitle . " </a>
+    ";
+}
+}
 $parentId = $ParentFolder;	
 $rowTpl = '@CODE: <tr>
 <td aria-expanded="false" class="footable-toggle"> <span class="label label-info">[+id+]</span></td> ';
@@ -357,6 +373,7 @@ $list = $modx->runSnippet('DocLister', $params);
 <button type="button" class="btn btn-sm btn-size" id="page-size-50" data-page-size="50">50</button>
 <button type="button" class="btn btn-sm btn-size" id="page-size-75" data-page-size="75">75</button>
 <button type="button" class="btn btn-sm btn-size" id="page-size-100" data-page-size="100">100</button>
+'.$ParentsButtons.'
 </div>
 						<tr>
 							<th data-type="number" style="width: 1%">[%id%]</th>
