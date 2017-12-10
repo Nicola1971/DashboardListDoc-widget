@@ -61,8 +61,14 @@ span.footable-toggle {display:inline-block;width:20px;cursor:pointer;}
 }
 .icon-imagetv {color: #dfdfdf;}
 .dark .icon-imagetv {color: var(--medium-grey);}
+.dark .img-thumbnail-sm {
+    background: var(--medium-grey);
+    border: 1px solid var(--main-color);
+    border-radius: 4px;
+    padding: 2px;
+}
 /*DARK*/
-.dark #DashboardList td a.notinmenu {color:#bcbec0;}
+.dark #DashboardList td a.notinmenu {color:#dcdcdc;}
 .dark #DashboardList td .weblinkicon {color:#bcbec0;}
 .dark .footable .pagination > li > a {border-color:var(--dark-grey); background-color:var(--default-grey); color: #fff;}
 

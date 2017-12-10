@@ -763,4 +763,9 @@ table.footable-editing.footable-editing-always-show button.footable-add {
 }
 */
 
-
+.img-thumbnail-sm {
+    background: #fff;
+    border: 1px solid #bbb;
+    border-radius: 4px;
+    padding: 2px;
+}
