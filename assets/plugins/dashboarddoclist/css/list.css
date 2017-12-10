@@ -45,17 +45,23 @@ span.footable-toggle {display:inline-block;width:20px;cursor:pointer;}
     font-family: sans-serif;
     background: #FFF;
     color: #333;
-    border-radius: 3px;
+    border-radius: 0.25rem; 
+    -webkit-box-shadow: 0 0.5rem 2rem rgba(0, 0, 0, 0.3); 
+    box-shadow: 0 0.5rem 2rem rgba(0, 0, 0, 0.3); 
     padding: 0;
 }
 /* Each of the items in the list */
 .context-menu ul li {
-    padding: 8px 12px;
+    padding: 5px 12px 5px 10px;
     cursor: pointer;
     list-style-type: none;
 }
 .context-menu ul li a{
     color: #333;
+}
+.context-menu ul li a .fa{
+    font-size:0.9rem;
+    vertical-align:middle;
 }
 .context-menu ul li:hover {
     background-color: #1377c5;

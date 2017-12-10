@@ -59,6 +59,7 @@ span.footable-toggle {display:inline-block;width:20px;cursor:pointer;}
 	background-color: var(--main-color);
 	border-color: var(--main-color);
 }
+
 /*DARK*/
 .dark #DashboardList td a.notinmenu {color:#bcbec0;}
 .dark #DashboardList td .weblinkicon {color:#bcbec0;}
@@ -100,15 +101,16 @@ span.footable-toggle {display:inline-block;width:20px;cursor:pointer;}
 li.parentname {color:var(--main-color);}
 .dark li.parentname {color:#fff;}
   .context-menu ul{ 
-    z-index: 1000;
-    position: absolute;
+    z-index: 10000;
+    position: absolute;      
     overflow: hidden;
     border: 1px solid #CCC;
     white-space: nowrap;
-    font-family: sans-serif;
     background: #FFF;
     color: #333;
-    border-radius: 3px;
+    border-radius: 0.25rem; 
+    -webkit-box-shadow: 0 0.5rem 2rem rgba(0, 0, 0, 0.3); 
+    box-shadow: 0 0.5rem 2rem rgba(0, 0, 0, 0.3); 
     padding: 0;
 }
 .dark .context-menu ul{ 
@@ -118,12 +120,16 @@ li.parentname {color:var(--main-color);}
 }
 /* Each of the items in the list */
 .context-menu ul li {
-    padding: 8px 12px;
+    padding: 5px 12px 5px 10px;
     cursor: pointer;
     list-style-type: none;
 }
 .context-menu ul li a{
     color: #333;
+}
+.context-menu ul li a .fa{
+    font-size:0.9rem;
+    vertical-align:middle;
 }
 .context-menu ul li:hover {
     background-color: var(--main-color);
@@ -139,3 +145,14 @@ li.parentname {color:var(--main-color);}
 }
 .context-menu ul li.parentname:hover{cursor:default;background-color:transparent;}
 .dark .context-menu ul li.parentname:hover{color:#FFF;}
+
+.dark #DashboardList .btn-success {
+	color: #fff;
+	background-color: #5cb85c; 
+	border-color: #5cb85c; 
+}
+.dark #DashboardList .btn-success:hover {
+	color: #fff;
+	background-color: #449d44; 
+	border-color: #449d44; 
+}
