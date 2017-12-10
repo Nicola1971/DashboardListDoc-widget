@@ -25,7 +25,7 @@ OnManagerWelcomeHome,OnManagerMainFrameHeaderHTMLBlock
 &wdgVisibility=Show widget for:;menu;All,AdminOnly,AdminExcluded,ThisRoleOnly,ThisUserOnly;All &ThisRole=Show only to this role id:;string;;;enter the role id &ThisUser=Show only to this username:;string;;;enter the username  &wdgTitle= Widget Title:;string;Documents List  &wdgicon= widget icon:;string;fa-pencil  &wdgposition=widget position:;list;1,2,3,4,5,6,7,8,9,10;1 &wdgsizex=widget x size:;list;12,6,4,3;12 &ParentFolder=Parent folder for List documents:;string;0 &ListItems=Max items in List:;string;50 &dittolevel= Depht:;string;3 &hideFolders= Hide Folders:;list;yes,no;no &showUnpublished= Show Deleted and Unpublished:;list;yes,no;yes;;Show Deleted and Unpublished resources &showAddButtons= Show Create Resource Buttons:;list;yes,no;no;;show header add buttons &showStatusFilter= Show Status Filter:;list;yes,no;yes;;require Show Deleted and Unpublished - YES &DisplayTitle= Display Title in title column:;list;pagetitle,longtitle,menutitle;pagetitle;;choose which title display in title column &showParent= Show Parent Column:;list;yes,no;yes &TvColumn=Tv Columns:;string;[+longtitle+],[+menuindex+] &TvSortType=Tv Column Sort type:;string;text,number &ImageTv=Show Image TV:;string;image;;enter tv name &ShowImageIn=Show image Tv in:;list;overview,column;overview &tablefields= Overview Tv Fields:;string;[+longtitle+],[+description+],[+introtext+],[+documentTags+] &tableheading=Overview TV headings:;string;Long Title,Description,Introtext,Tags &editInModal= Edit docs in modal:;list;yes,no;no;;edit and create resources in evo modal window &showMoveButton= Show Move Button:;list;yes,no;yes;;hides the button to everyone, even if the user has permissions &showAddHere= Show Create Resource here Button:;list;yes,no;yes;;hides the button to everyone, even if the user has permissions &showPublishButton= Show Publish Button:;list;yes,no;yes;;hides the button to everyone, even if the user has permissions &showDeleteButton= Show Delete Button:;list;yes,no;yes;;hides the button to everyone, even if the user has permissions &HeadBG= Widget Title Background color:;string; &HeadColor= Widget title color:;string
 *******/
 
-// get language
+// get global language
 global $modx,$_lang;
 // get manager role
 $internalKey = $modx->getLoginUserID();
@@ -51,10 +51,9 @@ $button_pl_config = '<a data-toggle="tooltip" href="javascript:;" title="' . $_l
 $modx->setPlaceholder('button_pl_config', $button_pl_config);
 $e = &$modx->Event;
 switch($e->name){
-/*load styles with OnManagerMainFrameHeaderHTMLBlock*/
+/*load js and styles on OnManagerMainFrameHeaderHTMLBlock*/
 case 'OnManagerMainFrameHeaderHTMLBlock':
 $manager_theme = $modx->config['manager_theme'];
-
 $jsOutput = '
 <script>
     var mouseX;
@@ -73,8 +72,9 @@ $jsOutput = '
 </script>
 <script src="../assets/plugins/dashboarddoclist/js/moment.min.js"></script>
 <script src="../assets/plugins/dashboarddoclist/js/footable.min.js"></script>
+<script>
+';
 
-<script>';
 if ($showUnpublished == yes) { 
 if ($showStatusFilter == yes) { 
 $jsOutput .= 'FooTable.MyFiltering = FooTable.Filtering.extend({
@@ -90,7 +90,6 @@ $jsOutput .= 'FooTable.MyFiltering = FooTable.Filtering.extend({
 			$form_grp = $(\'<div/>\', {\'class\': \'form-group\'})
 				.append($(\'<label/>\', {\'class\': \'sr-only\', text: \'Status\'}))
 				.prependTo(self.$form);
-
 		self.$status = $(\'<select/>\', { \'class\': \'form-control\' })
 			.on(\'change\', {self: self}, self._onStatusDropdownChanged)
 			.append($(\'<option/>\', {text: self.def}))
@@ -158,7 +157,7 @@ $(\'button.btn-size\').each(function(){
         $(this).addClass(\'active\');
     });
 });
-$("div#DashboardList").show();
+$("div#DashboardList").fadeIn();
 });
 
 </script>';
@@ -174,6 +173,7 @@ $cssOutput = '
 }
 $e->output($jsOutput.$cssOutput);
 break;
+/*rebder the widget on OnManagerWelcomeHome*/
 case 'OnManagerWelcomeHome':
 //output
 $WidgetOutput = isset($WidgetOutput) ? $WidgetOutput : '';
@@ -182,7 +182,6 @@ $tablefields = isset($tablefields) ? $tablefields : '[+longtitle+],[+description
 $tableheading = isset($tableheading) ? $tableheading : 'Long Title,Description,Introtext,Tags';
 		
 //get Tv vars Heading Titles from Module configuration (ie: Page Title,Description,Date)
-//get Tv vars fields from Plugin configuration (ie: [+pagetitle+],[+description+],[+date+])
 $tharr = explode(",","$tableheading");
 $tdarr = explode(",","$tablefields");
 foreach (array_combine($tharr, $tdarr) as $thval => $tdval){
@@ -190,7 +189,7 @@ foreach (array_combine($tharr, $tdarr) as $thval => $tdval){
     <li><b>" . $thval . "</b>: " . $tdval . "</li>
     ";
 }
-//tv columns
+//get tv columns
 $TvColumns = explode(",","$TvColumn");
 $TvTypes = explode(",","$TvSortType");
 foreach (array_combine($TvColumns, $TvTypes) as $TvTD => $TvType){
@@ -201,8 +200,9 @@ foreach (array_combine($TvColumns, $TvTypes) as $TvTD => $TvType){
 	$TvName = $getTvName;
 	$TvColumnsHeaders .= '<th data-breakpoints="xs" data-type="'.$TvType.'">'.$TvName.'</th> ';
 }
-//parent buttons
+//Header create resource in parent buttons
 if ($showAddButtons == yes) { 
+	if($modx->hasPermission('edit_document')) {	
 $Parents = explode(",","$ParentFolder");
 foreach ($Parents as $Parent){
 	if ($Parent != '0') {
@@ -210,23 +210,33 @@ foreach ($Parents as $Parent){
 	$ParentTitle = $ParentT['pagetitle'];
 	}
 	else {	
-	$ParentTitle = "root";}
+	$ParentTitle = "<i class=\"fa fa-sitemap\"></i> Root";}
+	if ($editInModal == yes) {
+	$ParentsButtons .= '<a class="btn btn-sm btn-success" title="' . $_lang["create_resource_here"] . '" style="cursor:pointer" href="" onClick="parent.modx.popup({url:\''. MODX_MANAGER_URL.'?a=4&pid='.$Parent.'\',title1:\'' . $_lang["create_resource_here"] . '\',icon:\'fa-file-o\',iframe:\'iframe\',selector2:\'.tab-page>.container\',position:\'center center\',width:\'80%\',height:\'80%\',wrap:\'body\',hide:0,hover:0,overlay:1,overlayclose:1})"><i class="fa fa-file-o fa-fw"></i>  ' . $ParentTitle . '</a> ';
+	}
+	else {
     $ParentsButtons .=  "
 	<a target=\"main\" href=\"index.php?a=4&pid=$Parent\" title=\"" . $_lang["create_resource_here"] . "\" class=\"btn btn-sm btn-success\"><i class=\"fa fa-file-o fa-fw\"></i> " . $ParentTitle . " </a>
     ";
+	}
+	}
 }
 }
-$parentId = $ParentFolder;	
+
+//ID column	
 $rowTpl = '@CODE: <tr>
 <td aria-expanded="false" class="footable-toggle"> <span class="label label-info">[+id+]</span></td> ';
+//Image column	
 if ($ImageTv != '') {
 if ($ShowImageIn == column) {
 $rowTpl .= '<td aria-expanded="false" class="footable-toggle" ><img width="50px" class="img-responsive img-thumbnail" src="../[[phpthumb? &input=`[+'.$ImageTv.'+]` &options=`w=50,h=50,q=60,zc=C`]]" alt="[+title+]"> </td> ';
 $ImageTVHead = '<th data-filterable="false" data-sortable="false">'.$ImageTv.'</th> ';
 }
 }
+//Title column		
 $rowTpl .= '<td class="footable-toggle"><a target="main" data-title="edit?" class="dataConfirm [[if? &is=`[+published+]:=:0` &then=`unpublished`]] [[if? &is=`[+deleted+]:=:1` &then=`deleted`]] [[if? &is=`[+hidemenu+]:is:1:and:[+published+]:is:1` &then=`notinmenu`]]" href="index.php?a=27&id=[+id+]" title="' . $_lang["edit_resource"] . '">[[if? &is=`[+'.$DisplayTitle.'+]:!empty` &then=`[+'.$DisplayTitle.'+]` &else=[+title+]`]]</a>[[if? &is=`[+type+]:is:reference` &then=` <i class="weblinkicon fa fa-link"></i>`]]</td> ';	
-		
+
+//Parent column	and context menu	
 if ($showParent == yes) {
 $rowTpl .= '
 <td aria-expanded="false" [[if? &is=`[+parent+]:not:0`&then=`oncontextmenu ="event.preventDefault();$(\'#[+id+]context-menu\').show();$(\'#context-menu\').offset({\'top\':mouseY,\'left\':mouseX})"`]]> 
@@ -242,13 +252,20 @@ $rowTpl .= '<li><a target="main" href="index.php?a=27&id=[+parent+]"><i class="f
 }
 $rowTpl .= '<li><a href="[(site_url)]index.php?id=[+parent+]" target="_blank" title="' . $_lang["preview_resource"] . '"><i class="fa fa-eye""></i>  '.$_lang["preview_resource"].'</a></li></td></ul></div>';
 }
+//TVs columns		
 $rowTpl .= $TvTDs;
+		
+//Status column	(hidden)	
 $rowTpl .= '
 <td aria-expanded="false" class="footable-toggle"> 
  [[if? &is=`[+deleted+]:=:1` &then=`deleted` &else=`[[if? &is=`[+published+]:=:1` &then=`published` &else=`unpublished`]]`]] 
-</td>';		
+</td>';	
+
+//DATE column
 $rowTpl .= '<td class="footable-toggle text-right text-nowrap">[+editedon:date=`%d %m %Y`+]</td>
 <td style="text-align: right;" class="actions">';
+		
+//Action buttons 
 if($modx->hasPermission('edit_document')) {		
 if ($editInModal == yes) {
 $rowTpl .= '<a title="' . $_lang["edit_resource"] . '" style="cursor:pointer" href="" onClick="parent.modx.popup({url:\''. MODX_MANAGER_URL.'?a=27&id=[+id+]&tab=1\',title1:\'' . $_lang["edit_resource"] . '\',icon:\'fa-pencil-square-o\',iframe:\'iframe\',selector2:\'.tab-page>.container\',position:\'center center\',width:\'80%\',height:\'80%\',wrap:\'body\',hide:0,hover:0,overlay:1,overlayclose:1})"><i class="fa fa-external-link"></i></a>';
@@ -263,6 +280,7 @@ if ($showMoveButton == yes) {
 $rowTpl .= '<a target="main" href="index.php?a=51&id=[+id+]" title="' . $_lang["move_resource"] . '"><i class="fa fa-arrows"></i></a> ';
 }
 	
+//Publish btn	
 if ($showPublishButton == yes) { 
 $rowTpl .= '[[if? &is=`[+deleted+]:=:0` &then=`[[if? &is=`[+published+]:=:1` &then=` 
 <a target="main" href="index.php?a=62&id=[+id+]" class="confirm" onClick="window.location.reload();" title="' . $_lang["unpublish_resource"] . '"><i class="fa fa-arrow-down"></i></a>  
@@ -274,7 +292,8 @@ $rowTpl .= '[[if? &is=`[+deleted+]:=:0` &then=`[[if? &is=`[+published+]:=:1` &th
 `]]
 ';
 }
-} 
+}
+//add resource here btn
 if ($showAddHere == yes) { 
 if ($editInModal == yes) {
 $rowTpl .= '<a title="' . $_lang["create_resource_here"] . '" style="cursor:pointer" href="" onClick="parent.modx.popup({url:\''. MODX_MANAGER_URL.'?a=4&pid=[+id+]\',title1:\'' . $_lang["create_resource_here"] . '\',icon:\'fa-file-o\',iframe:\'iframe\',selector2:\'.tab-page>.container\',position:\'center center\',width:\'80%\',height:\'80%\',wrap:\'body\',hide:0,hover:0,overlay:1,overlayclose:1})"><i class="fa fa-file-o"></i></a>';
@@ -283,6 +302,7 @@ else {
 $rowTpl .= '<a target="main" href="index.php?a=4&pid=[+id+]" title="' . $_lang["create_resource_here"] . '"><i class="fa fa-file-o"></i></a> ';
 }
 }
+//delete btn
 if ($showDeleteButton == yes) { 
 if($modx->hasPermission('delete_document')) {
 $rowTpl .= '[[if? &is=`[+deleted+]:=:0` &then=` 
@@ -292,7 +312,7 @@ $rowTpl .= '[[if? &is=`[+deleted+]:=:0` &then=`
 `]]';
 }
 }
-		
+//overview btn		
 $rowTpl .= '<span class="footable-toggle" style="margin-left:-4px;" title="' . $_lang["resource_overview"] . '"><i class="footable-toggle fa fa-info"></i></span></td>
 
 <td class="resource-details">';
@@ -311,6 +331,7 @@ $rowTpl .= '
 </td>
 </tr>
 ';
+//headers		
 if ($showParent == yes) {
 $parentColumnHeader = '
 <th data-breakpoints="xs" data-type="text">[%resource_parent%]</th> ';
@@ -334,7 +355,7 @@ $TvColumnHeader = '
 else {
 $TvFields = ''.$ImageTv.','.$DocListerTvFields.'';
 }
-
+$parentId = $ParentFolder;
 // DocLister parameters
 $params['debug'] = '0';	//enable to debug listing
 $params['id'] = 'doclistwdg';
@@ -364,7 +385,7 @@ $list = $modx->runSnippet('DocLister', $params);
 				'icon' => ''.$wdgicon.'',
 				'title' => ''.$wdgTitle.' '.$button_pl_config.'',
 				'body' => '<div style="min-height:550px" class="widget-stage"><div style="display:none;" id="DashboardList" class="table-responsive">
-				<table data-state="true" data-state-key="DashboardList'.$pluginid.'_state" data-paging-size="10" data-show-toggle="false" data-toggle-column="last" data-toggle-selector=".footable-toggle" data-filter-ignore-case="true" data-filtering="true" data-state-filtering="true" data-filter-exact-match="false" data-filter-dropdown-title="'.$_lang["search_criteria"].'" data-filter-placeholder="'.$_lang["search"].'" data-filter-position="right" class="table data" id="TableList">
+				<table width="100%" data-state="true" data-state-key="DashboardList'.$pluginid.'_state" data-paging-size="10" data-show-toggle="false" data-toggle-column="last" data-toggle-selector=".footable-toggle" data-filter-ignore-case="true" data-filtering="true" data-state-filtering="true" data-filter-exact-match="false" data-filter-dropdown-title="'.$_lang["search_criteria"].'" data-filter-placeholder="'.$_lang["element_filter_msg"].'" data-filter-position="right" class="table data" id="TableList">
                 <thead>
 <div style="position:absolute;top:55px;left:25px;z-index:10;">
 <button type="button" class="btn btn-sm btn-size" id="page-size-5" data-page-size="5">5</button>
