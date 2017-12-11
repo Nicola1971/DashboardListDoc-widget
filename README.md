@@ -22,6 +22,7 @@ Requires snippets: DocLister, DocInfo, If, PhpThumb.
 - **Status Filter** (published, unpublished, deleted) [optional]
 - **Edit in Evo Modal**: edit and create documents in Evo (1.4) modal/popup [optional]
 - **Full Localstorage support**: state of pagination , search and sorting is always saved in localhost - so when you go back to the dashboard, you dont need to search or sort again
+- **Multilanguage** 
 
 ### Tv image in overview row
 
