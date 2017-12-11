@@ -1,7 +1,8 @@
 /**
  * DashboardDocList 
  *
- * Dashboard    Documents list/grid widget plugin for Evolution CMS
+ * Dashboard Documents list/grid widget plugin
+ *
  * @category    plugin
  * @version     2.0 RC4
  * @author      Nicola Lambathakis http://www.tattoocms.it/ https://github.com/Nicola1971/
