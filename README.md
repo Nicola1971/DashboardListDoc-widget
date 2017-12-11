@@ -61,7 +61,7 @@ Requires snippets: DocLister, DocInfo, If, PhpThumb.
 * **Show Create Resource Buttons**: Show header Create Resource Buttons buttons (parent id from parents parameter)
 * **Show Status Filter**: Show published/unpublished/deleted dropdown select filter (require Show Deleted and Unpublished - ```YES```)
 * **Display Title in title column**: choose which title display in title column (pagetitle/longtitle/menutile)
-* **Show Parent Column**: Show Resource Parent Column
+* **Show Parent Column**: Show Resource Parent Column (and right click context menu)
 * **Show User Column**: Show User Column from createdby or publishedby or editedby (default : createdby)
 * **Show Date Column**: Show Date Column from createdon or publishedon or editedon (default : editedon)
 * **Tv column**: The list of tvs to add as sortable columns. example: ```[+longtitle+],[+menuindex+]```
