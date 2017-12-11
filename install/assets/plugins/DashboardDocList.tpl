@@ -18,7 +18,7 @@
 
 */
 
-//lang
+//languages
 // get global language
 global $modx,$_lang;
 //get custom language
