@@ -270,21 +270,6 @@ $rowTpl .= '
  [[if? &is=`[+deleted+]:=:1` &then=`' . $_LDlang["deleted"] . '` &else=`[[if? &is=`[+published+]:=:1` &then=`' . $_LDlang["published"] . '` &else=`' . $_LDlang["unpublished"] . '`]]`]] 
 </td>';	
 
-//USER column
-if ($showUser == 'createdby') { 
-$rowTpl .= '<td style="white-space: nowrap" class="footable-toggle text-nowrap">[+user.username.createdby+]</td>';
-$userColHead = '<th data-type="text">[%user%]</th>';
-}
-else if ($showUser == 'publishedby') { 
-$rowTpl .= '<td style="white-space: nowrap" class="footable-toggle text-nowrap">[+user.username.publishedby+]</td>';
-$userColHead = '<th data-type="text">[%user%]</th>';
-}
-else if ($showUser == 'editedby') { 
-$rowTpl .= '<td style="white-space: nowrap" class="footable-toggle text-nowrap">[+user.username.editedby+]</td>';
-$userColHead = '<th data-type="text">[%user%]</th>';
-}
-else {}	
-
 //DATE column
 if ($showDate == 'createdon') { 
 $rowTpl .= '<td style="white-space: nowrap;" class="footable-toggle text-nowrap">[+createdon:date=`' . $DLdate . '`+]</td>';
@@ -299,6 +284,22 @@ $rowTpl .= '<td style="white-space: nowrap;" class="footable-toggle text-nowrap"
 $dateColHead = '<th data-type="date" data-format-string="'.$dateFormat.'" data-sorted="true" data-direction="DESC" style="width: 1%; text-align:right;">[%page_data_edited%]</th>';
 }
 else {}	
+
+//USER column
+if ($showUser == 'createdby') { 
+$rowTpl .= '<td style="white-space: nowrap" class="footable-toggle text-nowrap">[+user.username.createdby+]</td>';
+$userColHead = '<th data-type="text">[%user%]</th>';
+}
+else if ($showUser == 'publishedby') { 
+$rowTpl .= '<td style="white-space: nowrap" class="footable-toggle text-nowrap">[+user.username.publishedby+]</td>';
+$userColHead = '<th data-type="text">[%user%]</th>';
+}
+else if ($showUser == 'editedby') { 
+$rowTpl .= '<td style="white-space: nowrap" class="footable-toggle text-nowrap">[+user.username.editedby+]</td>';
+$userColHead = '<th data-type="text">[%user%]</th>';
+}
+else {}	
+		
 $rowTpl .='<td style="text-align: right;" class="actions">';	
 //Action buttons 
 if($modx->hasPermission('edit_document')) {		
@@ -445,9 +446,8 @@ $list = $modx->runSnippet('DocLister', $params);
 							'.$parentColumnHeader.'							
 							'.$TvColumnsHeaders.'
 							<th data-visible="false" data-name="status" data-filterable="true" data-type="text">'.$_lang["page_data_status"].'</th>
-							'.$userColHead.'
 							'.$dateColHead.'
-							
+							'.$userColHead.'						
 							<th data-filterable="false" data-sortable="false" style="width: 1%; text-align:center;">[%mgrlog_action%]</th>
 							<th data-filterable="false" data-sortable="false" data-breakpoints="all"></th>
 						</tr>
