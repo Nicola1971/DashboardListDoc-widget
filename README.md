@@ -65,7 +65,7 @@ Requires snippets: DocLister, DocInfo, If, PhpThumb.
 * **Show Parent Column**: Show Resource Parent Column (and right click context menu)
 * **Show User Column**: Show User Column from ```createdby``` or ```publishedby``` or ```editedby``` (default : createdby)
 * **Show Date Column**: Show Date Column from ```createdon``` or ```publishedon``` or ```editedon``` (default : editedon)
-* **Date Column Format**: Shose date column format: ```DD MM YYYY``` or ```MM DD YYYY``` or ```YYYY MM DD```  (default : DD MM YYYY)
+* **Date Column Format**: Choose date column format: ```DD MM YYYY``` or ```MM DD YYYY``` or ```YYYY MM DD```  (default : DD MM YYYY)
 * **Tv column**: The list of tvs to add as sortable columns. example: ```[+longtitle+],[+menuindex+]```
 * **Tv Sort type**: Sort mode for tv columns- text(for any text tv)/number(for numbers tv, like price)/date(date is not yet supported). example for longtitle and menuindex: ```text,number```
 * **Show Image TV**: enter tv name. ie: ```image```
