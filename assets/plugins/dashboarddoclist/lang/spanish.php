@@ -10,12 +10,12 @@
 //   GNU General Public License (GPL - http://www.gnu.org/copyleft/gpl.html)
 //
 
-$_LDlang['all_status'] = 'Todo el estado';
+$_LDlang['all_status'] = 'Todos estados';
 $_LDlang['published'] = 'publicado';
-$_LDlang['unpublished'] = 'inédito';
+$_LDlang['unpublished'] = 'no publicado';
 $_LDlang["deleted"] = 'borrado';
 
-$_LDlang["Showing"] = 'Demostración';
+$_LDlang["Showing"] = 'Mostrando';
 $_LDlang["of"] = 'de';
 $_LDlang["pages"] = 'Páginas';
 $_LDlang["total_rows"] = 'Filas totales';
