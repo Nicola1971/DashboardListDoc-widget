@@ -62,7 +62,8 @@ Requires snippets: DocLister, DocInfo, If, PhpThumb.
 * **Show Status Filter**: Show published/unpublished/deleted dropdown select filter (require Show Deleted and Unpublished - ```YES```)
 * **Display Title in title column**: choose which title display in title column (pagetitle/longtitle/menutile)
 * **Show Parent Column**: Show Resource Parent Column
-* **Show User Column**: Show User Column from createdby or publishedby or editedby 
+* **Show User Column**: Show User Column from createdby or publishedby or editedby (default : createdby)
+* **Show Date Column**: Show Date Column from createdon or publishedon or editedon (default : editedon)
 * **Tv column**: The list of tvs to add as sortable columns. example: ```[+longtitle+],[+menuindex+]```
 * **Tv Sort type**: Sort mode for tv columns- text(for any text tv)/number(for numbers tv, like price)/date(date is not yet supported). example for longtitle and menuindex: ```text,number```
 * **Show Image TV**: enter tv name. ie: ```image```
