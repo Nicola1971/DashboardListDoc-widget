@@ -441,7 +441,7 @@ $list = $modx->runSnippet('DocLister', $params);
 						<tr>
 							<th data-type="number" style="width: 1%">[%id%]</th>
 							'.$ImageTVHead.'
-							<th style="width: 25%" data-type="text">[%resource_title%]</th>
+							<th data-type="text">[%resource_title%]</th>
 							
 							'.$parentColumnHeader.'							
 							'.$TvColumnsHeaders.'
