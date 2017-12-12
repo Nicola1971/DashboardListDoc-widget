@@ -137,6 +137,7 @@ li.parentname {color:var(--main-color);}
 .context-menu ul li a .fa{
     font-size:0.9rem;
     vertical-align:middle;
+	margin-top:-4px;
 }
 .context-menu ul li:hover {
     background-color: var(--main-color);

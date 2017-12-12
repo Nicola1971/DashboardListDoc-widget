@@ -62,6 +62,7 @@ span.footable-toggle {display:inline-block;width:20px;cursor:pointer;}
 .context-menu ul li a .fa{
     font-size:0.9rem;
     vertical-align:middle;
+	margin-top:-4px;
 }
 .context-menu ul li:hover {
     background-color: #1377c5;
