@@ -1,4 +1,4 @@
-# DashboardListDoc widget v2 RC4.2
+# DashboardListDoc widget v2 
 
 A small Dashboard Documents grid/list widget plugin for **Evolution CMS 1.4** based on DocLister
 
@@ -70,7 +70,7 @@ Requires snippets: DocLister, DocInfo, If, PhpThumb.
 * **Tv Sort type**: Sort mode for tv columns- text(for any text tv)/number(for numbers tv, like price)/date(date is not yet supported). example for longtitle and menuindex: ```text,number```
 * **Show Image TV**: enter tv name. ie: ```image```
 * **how image Tv in**: choose where show the image thumbnail: ```overview``` row or ```column```
-* **verview Tv Fields**: The list of tvs to add in toogle overview row. example ```[+longtitle+],[+description+],[+introtext+],[+documentTags+]```
+* **Overview Tv Fields**: The list of tvs to add in toogle overview row. example ```[+longtitle+],[+description+],[+introtext+],[+documentTags+]```
 * **Overview TV headings**: titles for tvs in overview. example: ```Long Title,Description,Introtext,Tags```
 * **Edit docs in modal**: edit and create resources in new evo 1.4 modal window
 
