@@ -4,7 +4,7 @@
  * Dashboard Documents list/grid widget plugin
  *
  * @category plugin
- * @version 2.0 RC4.2
+ * @version 2.0 RC4.2.1
  * @author Nicola Lambathakis http://www.tattoocms.it/ https://github.com/Nicola1971/
  * @license http://www.gnu.org/copyleft/gpl.html GNU Public License (GPL)
  * @internal @events OnManagerWelcomeHome,OnManagerMainFrameHeaderHTMLBlock
@@ -430,6 +430,7 @@ $list = $modx->runSnippet('DocLister', $params);
 				<table data-state="true" data-state-key="DashboardList'.$pluginid.'_state" data-paging-size="10" data-show-toggle="false" data-toggle-column="last" data-toggle-selector=".footable-toggle" data-filter-ignore-case="true" data-filtering="true" data-state-filtering="true" data-filter-exact-match="false" data-filter-dropdown-title="'.$_lang["search_criteria"].'" data-filter-placeholder="'.$_lang["element_filter_msg"].'" data-filter-position="right" class="table data" id="TableList">
                 <thead>
 <div style="position:absolute;top:55px;left:25px;z-index:10;" class="hidden-xs-down">
+<button type="button" class="btn btn-sm btn-primary" onClick="window.location.reload();" title="' . $_LDlang["update"] . '"><i class="fa fa-refresh" aria-hidden="true"></i></button>
 <button type="button" class="btn btn-sm btn-size" id="page-size-5" data-page-size="5">5</button>
 <button type="button" class="btn btn-sm btn-size" id="page-size-10" data-page-size="10">10</button>
 <button type="button" class="btn btn-sm btn-size" id="page-size-25" data-page-size="25">25</button>
