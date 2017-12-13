@@ -19,3 +19,4 @@ $_LDlang["Showing"] = 'показ';
 $_LDlang["of"] = 'из';
 $_LDlang["pages"] = 'страницы';
 $_LDlang["total_rows"] = 'Всего строк';
+$_LDlang["update"] = 'обновления';

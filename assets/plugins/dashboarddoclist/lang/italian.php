@@ -19,3 +19,4 @@ $_LDlang["Showing"] = 'Mostrando';
 $_LDlang["of"] = 'di';
 $_LDlang["pages"] = 'Pagine';
 $_LDlang["total_rows"] = 'Risultati';
+$_LDlang["update"] = 'Aggiorna';
