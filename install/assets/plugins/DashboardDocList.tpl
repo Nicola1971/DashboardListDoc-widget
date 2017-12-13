@@ -342,9 +342,9 @@ $rowTpl .= '<a class="hidden-xs-down" target="main" href="index.php?a=4&pid=[+id
 if ($showDeleteButton == yes) { 
 if($modx->hasPermission('delete_document')) {
 $rowTpl .= '[[if? &is=`[+deleted+]:=:0` &then=` 
-<a target="main" href="index.php?a=6&id=[+id+]" title="' . $_lang["delete_resource"] . '"  onClick="window.location.reload()();"><i class="fa fa-trash"></i></a>  
+<a target="main" href="index.php?a=6&id=[+id+]" title="' . $_lang["delete_resource"] . '"  onClick="window.location.reload();"><i class="fa fa-trash"></i></a>  
 `&else=`
-<a target="main" href="index.php?a=63&id=[+id+]" title="' . $_lang["undelete_resource"] . '"  onClick="window.location.reload()();"><i class="fa fa-arrow-circle-o-up"></i></a>  
+<a target="main" href="index.php?a=63&id=[+id+]" title="' . $_lang["undelete_resource"] . '"  onClick="window.location.reload();"><i class="fa fa-arrow-circle-o-up"></i></a>  
 `]]';
 }
 }
@@ -430,13 +430,13 @@ $list = $modx->runSnippet('DocLister', $params);
 				<table data-state="true" data-state-key="DashboardList'.$pluginid.'_state" data-paging-size="10" data-show-toggle="false" data-toggle-column="last" data-toggle-selector=".footable-toggle" data-filter-ignore-case="true" data-filtering="true" data-state-filtering="true" data-filter-exact-match="false" data-filter-dropdown-title="'.$_lang["search_criteria"].'" data-filter-placeholder="'.$_lang["element_filter_msg"].'" data-filter-position="right" class="table data" id="TableList">
                 <thead>
 <div style="position:absolute;top:55px;left:25px;z-index:10;" class="hidden-xs-down">
-<button type="button" class="btn btn-sm btn-primary" onClick="window.location.reload();" title="' . $_LDlang["update"] . '"><i class="fa fa-refresh" aria-hidden="true"></i></button>
-<button type="button" class="btn btn-sm btn-size" id="page-size-5" data-page-size="5">5</button>
-<button type="button" class="btn btn-sm btn-size" id="page-size-10" data-page-size="10">10</button>
-<button type="button" class="btn btn-sm btn-size" id="page-size-25" data-page-size="25">25</button>
-<button type="button" class="btn btn-sm btn-size" id="page-size-50" data-page-size="50">50</button>
-<button type="button" class="btn btn-sm btn-size" id="page-size-75" data-page-size="75">75</button>
-<button type="button" class="btn btn-sm btn-size" id="page-size-100" data-page-size="100">100</button>
+<button type="button" class="btn btn-sm btn-success" onClick="window.location.reload();" title="' . $_LDlang["update"] . '"><i class="fa fa-refresh" aria-hidden="true"></i></button>
+<button type="button" class="btn btn-sm btn-secondary btn-size" id="page-size-5" data-page-size="5">5</button>
+<button type="button" class="btn btn-sm btn-secondary btn-size" id="page-size-10" data-page-size="10">10</button>
+<button type="button" class="btn btn-sm btn-secondary btn-size" id="page-size-25" data-page-size="25">25</button>
+<button type="button" class="btn btn-sm btn-secondary btn-size" id="page-size-50" data-page-size="50">50</button>
+<button type="button" class="btn btn-sm btn-secondary btn-size" id="page-size-75" data-page-size="75">75</button>
+<button type="button" class="btn btn-sm btn-secondary btn-size" id="page-size-100" data-page-size="100">100</button>
 <div style="display:inline-block;margin-left:15px">'.$ParentsButtons.'</div>
 </div>
 						<tr>
