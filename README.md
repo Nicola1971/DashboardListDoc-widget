@@ -1,4 +1,4 @@
-# DashboardListDoc widget v2.0.1 
+# DashboardListDoc widget v2.0.3 
 
 A small Dashboard Documents grid/list widget plugin for **Evolution CMS 1.4** based on DocLister
 
@@ -9,7 +9,7 @@ Requires snippets: DocLister, DocInfo, If, PhpThumb.
 ## Features:
 - **Configurable toggle overview row with tvs** (add any tv to the resource toggle overview)
 - Main **Doclister parameters** available in plugin config
-- **More actions buttons**: edit, preview, move, publish/unpublish, create resource here, delete, overview 
+- **More actions buttons**: edit, preview, move, publish/unpublish, duplicate, create resource here, delete, overview 
 - **Hide some actions buttons to get more space**: you can hide from plugin settings: move, publish/unpublish, create resource here, delete
 - **parent column** (click on parent name to view children tab)  [optional]
 - **right click Context Menu on Parent** field (view childern, edit, add resource here, add weblink here)
