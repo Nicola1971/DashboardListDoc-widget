@@ -357,7 +357,7 @@ $rowTpl .= '<a class="hidden-xs-down" target="main" href="index.php?a=51&id=[+id
 }
 //Duplicate btn
 if ($showDuplicateButton == yes) { 
-$rowTpl .= '<a target="main" class="btn-duplicate hidden-xs-down" href="index.php?a=94&id=[+id+]" onClick="window.location.reload();" title="' . $_lang["resource_duplicate"] . '"><i class="fa fa-clone"></i></a> ';
+$rowTpl .= '<a target="main" class="btn-duplicate hidden-xs-down" href="index.php?a=94&id=[+id+]" title="' . $_lang["resource_duplicate"] . '"><i class="fa fa-clone"></i></a> ';
 }	
 //Publish btn	
 if ($showPublishButton == yes) { 
