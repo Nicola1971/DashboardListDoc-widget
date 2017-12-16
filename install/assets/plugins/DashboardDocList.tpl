@@ -4,7 +4,7 @@
  * Dashboard Documents list/grid widget plugin
  *
  * @category plugin
- * @version 2.0.3
+ * @version 2.0.4
  * @author Nicola Lambathakis http://www.tattoocms.it/ https://github.com/Nicola1971/
  * @license http://www.gnu.org/copyleft/gpl.html GNU Public License (GPL)
  * @internal @events OnManagerWelcomeHome,OnManagerWelcomePrerender
@@ -12,7 +12,7 @@
  * @internal @installset base, sample
  * @internal @modx_category Dashboard
  * @internal    @disabled 0
- * @lastupdate  11-12-2017
+ * @lastupdate  16-12-2017
  * @documentation Requirements: This plugin requires Evolution 1.4 or later
  * @documentation https://github.com/Nicola1971/DashboardListDoc-widget/
  * @reportissues https://github.com/Nicola1971/DashboardListDoc-widget/issues 
@@ -159,9 +159,48 @@ $(\'button.btn-size\').each(function(){
         $(this).addClass(\'active\');
     });
 });
+$("#TableList").on("click", ".btn-delete", function(){
+   trID = $(this).closest("tr").attr("id");
+        r = confirm("' . $_lang["delete_resource"] . ' ID:"+trID+" - ' . $_lang["confirm_delete_resource"] . '");
+        if(r) {
+          	  alert(trID+" ' . $_LDlang["deleted"] . '");
+              window.location.reload();
+            }
+  });
+$("#TableList").on("click", ".btn-undelete", function(){
+   trID = $(this).closest("tr").attr("id");
+        r = confirm("' . $_lang["undelete_resource"] . ' ID:"+trID+" - ' . $_lang["confirm_undelete"] . '");
+        if(r) {
+          	  alert(trID+" ' . $_lang["undeleted"] . '");
+              window.location.reload();
+            }
+  });
+$("#TableList").on("click", ".btn-unpublish", function(){
+   trID = $(this).closest("tr").attr("id");
+        r = confirm("' . $_lang["unpublish_resource"] . ' ID:"+trID+" - ' . $_lang["confirm_unpublish"] . '");
+        if(r) {
+          	  alert(trID+" ' . $_LDlang["unpublished"] . '");
+              window.location.reload();
+            }
+  });
+$("#TableList").on("click", ".btn-publish", function(){
+   trID = $(this).closest("tr").attr("id");
+        r = confirm("' . $_lang["publish_resource"] . ' ID:"+trID+" - ' . $_lang["confirm_publish"] . '");
+        if(r) {
+          	  alert(trID+" ' . $_LDlang["published"] . '");
+              window.location.reload();
+            }
+  });
+$("#TableList").on("click", ".btn-duplicate", function(){
+   trID = $(this).closest("tr").attr("id");
+        r = confirm("' . $_lang["resource_duplicate"] . ' ID:"+trID+" - ' . $_lang["confirm_duplicate_record"] . '");
+        if(r) {
+          	//alert(trID+" ' . $_lang["duplicated"] . '");
+              window.location.reload();
+            }
+  });
 $("div#DashboardList").fadeIn();
 });
-
 </script>';
 if($manager_theme == "EvoFLAT") {
 $cssOutput = '
@@ -232,7 +271,7 @@ $DLdate = str_replace($find,$replace,$dateFormat);
 		
 ////////////Columns
 //ID column	
-$rowTpl = '@CODE: <tr>
+$rowTpl = '@CODE: <tr id="[+id+]">
 <td aria-expanded="false" class="footable-toggle"> <span class="label label-info">[+id+]</span></td> ';
 		
 //Image column	
@@ -318,14 +357,14 @@ $rowTpl .= '<a class="hidden-xs-down" target="main" href="index.php?a=51&id=[+id
 }
 //Duplicate btn
 if ($showDuplicateButton == yes) { 
-$rowTpl .= '<a target="main" class="hidden-xs-down" href="index.php?a=94&id=[+id+]" onClick="window.location.reload();" title="' . $_lang["resource_duplicate"] . '"><i class="fa fa-clone"></i></a> ';
+$rowTpl .= '<a target="main" class="btn-duplicate hidden-xs-down" href="index.php?a=94&id=[+id+]" onClick="window.location.reload();" title="' . $_lang["resource_duplicate"] . '"><i class="fa fa-clone"></i></a> ';
 }	
 //Publish btn	
 if ($showPublishButton == yes) { 
 $rowTpl .= '[[if? &is=`[+deleted+]:=:0` &then=`[[if? &is=`[+published+]:=:1` &then=` 
-<a target="main" href="index.php?a=62&id=[+id+]" class="hidden-xs-down confirm" onClick="window.location.reload();" title="' . $_lang["unpublish_resource"] . '"><i class="fa fa-arrow-down"></i></a>  
+<a class="btn-unpublish hidden-xs-down" target="main" href="index.php?a=62&id=[+id+]" title="' . $_lang["unpublish_resource"] . '"><i class="fa fa-arrow-down"></i></a>  
 `&else=`
-<a target="main" href="index.php?a=61&id=[+id+]" class="hidden-xs-down confirm" onClick="window.location.reload();" title="' . $_lang["publish_resource"] . '"><i class="fa fa-arrow-up"></i></a>  
+<a class="btn-publish hidden-xs-down" target="main" href="index.php?a=61&id=[+id+]" title="' . $_lang["publish_resource"] . '"><i class="fa fa-arrow-up"></i></a>  
 `]]
 `&else=`
 <span style="opacity:0; margin-right:-6px;" class="hidden-xs-down text-muted" title="publish"><i class="fa fa-arrow-up"></i></span>  
@@ -346,9 +385,9 @@ $rowTpl .= '<a class="hidden-xs-down" target="main" href="index.php?a=4&pid=[+id
 if ($showDeleteButton == yes) { 
 if($modx->hasPermission('delete_document')) {
 $rowTpl .= '[[if? &is=`[+deleted+]:=:0` &then=` 
-<a target="main" href="index.php?a=6&id=[+id+]" title="' . $_lang["delete_resource"] . '"  onClick="window.location.reload();"><i class="fa fa-trash"></i></a>  
+<a class="btn-delete" target="main" href="index.php?a=6&id=[+id+]" title="' . $_lang["delete_resource"] . '"><i class="fa fa-trash"></i></a>  
 `&else=`
-<a target="main" href="index.php?a=63&id=[+id+]" title="' . $_lang["undelete_resource"] . '"  onClick="window.location.reload();"><i class="fa fa-arrow-circle-o-up"></i></a>  
+<a class="btn-undelete" target="main" href="index.php?a=63&id=[+id+]" title="' . $_lang["undelete_resource"] . '"><i class="fa fa-arrow-circle-o-up"></i></a>  
 `]]';
 }
 }
