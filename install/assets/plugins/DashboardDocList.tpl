@@ -179,7 +179,7 @@ $("#TableList").on("click", ".btn-unpublish", function(){
    trID = $(this).closest("tr").attr("id");
         r = confirm("' . $_lang["unpublish_resource"] . ' ID:"+trID+" - ' . $_lang["confirm_unpublish"] . '");
         if(r) {
-          	  alert(trID+" ' . $_LDlang["unpublished"] . '");
+          	 // alert(trID+" ' . $_LDlang["unpublished"] . '");
               window.location.reload();
             }
   });
@@ -187,7 +187,7 @@ $("#TableList").on("click", ".btn-publish", function(){
    trID = $(this).closest("tr").attr("id");
         r = confirm("' . $_lang["publish_resource"] . ' ID:"+trID+" - ' . $_lang["confirm_publish"] . '");
         if(r) {
-          	  alert(trID+" ' . $_LDlang["published"] . '");
+          	  //alert(trID+" ' . $_LDlang["published"] . '");
               window.location.reload();
             }
   });
