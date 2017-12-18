@@ -170,6 +170,7 @@ event.preventDefault();
 event.stopPropagation();
  trID = $(this).closest("tr").attr("id");
 $.confirm({
+	escapeKey: \'cancel\',
     type: \'red\',
     theme: \''.$confirmTheme.'\',
     animateFromElement: false,
@@ -220,6 +221,7 @@ event.preventDefault();
 event.stopPropagation();
  trID = $(this).closest("tr").attr("id");
 $.confirm({
+	escapeKey: \'cancel\',
     type: \'orange\',
     theme: \''.$confirmTheme.'\',
     animateFromElement: false,
@@ -270,6 +272,7 @@ event.preventDefault();
 event.stopPropagation();
  trID = $(this).closest("tr").attr("id");
 $.confirm({
+	escapeKey: \'cancel\',
     type: \'orange\',
     theme: \''.$confirmTheme.'\',
     animateFromElement: false,
@@ -320,6 +323,7 @@ event.preventDefault();
 event.stopPropagation();
  trID = $(this).closest("tr").attr("id");
 $.confirm({
+	escapeKey: \'cancel\',
     type: \'orange\',
     theme: \''.$confirmTheme.'\',
     animateFromElement: false,
@@ -369,6 +373,7 @@ event.preventDefault();
 event.stopPropagation();
  trID = $(this).closest("tr").attr("id");
 $.confirm({
+	escapeKey: \'cancel\',
     type: \'orange\',
     theme: \''.$confirmTheme.'\',
     animateFromElement: false,
