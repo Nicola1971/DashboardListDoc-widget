@@ -12,7 +12,7 @@
 
 $_LDlang['all_status'] = 'Tutti';
 $_LDlang['published'] = 'pubblicato';
-$_LDlang['unpublished'] = 'non pubblicato';
+$_LDlang['unpublished'] = 'ritirato';
 $_LDlang["deleted"] = 'cancellato';
 
 $_LDlang["Showing"] = 'Mostrando';

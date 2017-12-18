@@ -1,14 +1,14 @@
 /**
- * DashboardDocList 
+ * DashboardListDoc 
  *
  * Dashboard Documents list/grid widget plugin
  *
  * @category plugin
- * @version 2.0.4
+ * @version 2.0.5.1
  * @author Nicola Lambathakis http://www.tattoocms.it/ https://github.com/Nicola1971/
  * @license http://www.gnu.org/copyleft/gpl.html GNU Public License (GPL)
  * @internal @events OnManagerWelcomeHome,OnManagerWelcomePrerender
- * @internal @properties &wdgVisibility=Show widget for:;menu;All,AdminOnly,AdminExcluded,ThisRoleOnly,ThisUserOnly;All &ThisRole=Show only to this role id:;string;;;enter the role id &ThisUser=Show only to this username:;string;;;enter the username &wdgTitle= Widget Title:;string;Documents List  &wdgicon=widget icon:;string;fa-pencil &wdgposition=widget position:;list;1,2,3,4,5,6,7,8,9,10;1 &wdgsizex=widget width:;list;12,6,4,3;12 &ParentFolder=Parent folder for List documents:;string;0 &ListItems=Max items in List:;string;50 &dittolevel=Depht:;string;3 &hideFolders=Hide Folders:;list;yes,no;no &showUnpublished=Show Deleted and Unpublished:;list;yes,no;yes;;Show Deleted and Unpublished resources &showAddButtons=Show Create Resource Buttons:;list;yes,no;no;;show header add buttons &showStatusFilter=Show Status Filter:;list;yes,no;yes;;require Show Deleted and Unpublished - YES &DisplayTitle=Display Title in title column:;list;pagetitle,longtitle,menutitle;pagetitle;;choose which title display in title column &showParent=Show Parent Column:;list;yes,no;yes &showUser=Show User Column:;list;createdby,publishedby,editedby,no;createdby &showDate=Show Date Column:;list;createdon,publishedon,editedon,no;editedon &dateFormat=Date Column Format:;list;DD MM YYYY,MM DD YYYY,YYYY MM DD;DD MM YYYY &TvColumn=Tv Columns:;string;[+longtitle+],[+menuindex+] &TvSortType=Tv Column Sort type:;string;text,number &ImageTv=Show Image TV:;string;image;;enter tv name &ShowImageIn=Show image Tv in:;list;overview,column;overview &tablefields=Overview Tv Fields:;string;[+longtitle+],[+description+],[+introtext+],[+documentTags+] &tableheading=Overview TV headings:;string;Long Title,Description,Introtext,Tags &editInModal=Edit docs in modal:;list;yes,no;no;;edit and create resources in evo modal window &showMoveButton=Show Move Button:;list;yes,no;yes;;hides the button to everyone, even if the user has permissions &showAddHere=Show Create Resource here Button:;list;yes,no;yes;;hides the button to everyone, even if the user has permissions &showDuplicateButton=Show Duplicate Button:;list;yes,no;yes;;hides the button to everyone, even if the user has permissions &showPublishButton=Show Publish Button:;list;yes,no;yes;;hides the button to everyone, even if the user has permissions &showDeleteButton=Show Delete Button:;list;yes,no;yes;;hides the button to everyone, even if the user has permissions &HeadBG=Widget Title Background color:;string; &HeadColor=Widget title color:;string
+ * @internal @properties &wdgVisibility=Show widget for:;menu;All,AdminOnly,AdminExcluded,ThisRoleOnly,ThisUserOnly;All &ThisRole=Show only to this role id:;string;;;enter the role id &ThisUser=Show only to this username:;string;;;enter the username &wdgTitle= Widget Title:;string;Documents List  &wdgicon=widget icon:;string;fa-pencil &wdgposition=widget position:;list;1,2,3,4,5,6,7,8,9,10;1 &wdgsizex=widget width:;list;12,6,4,3;12 &ParentFolder=Parent folder for List documents:;string;0 &ListItems=Max items in List:;string;50 &dittolevel=Depht:;string;3 &hideFolders=Hide Folders:;list;yes,no;no &showUnpublished=Show Deleted and Unpublished:;list;yes,no;yes;;Show Deleted and Unpublished resources &showAddButtons=Show Create Resource Buttons:;list;yes,no;no;;show header add buttons &showStatusFilter=Show Status Filter:;list;yes,no;yes;;require Show Deleted and Unpublished - YES &DisplayTitle=Display Title in title column:;list;pagetitle,longtitle,menutitle;pagetitle;;choose which title display in title column &showParent=Show Parent Column:;list;yes,no;yes &showUser=Show User Column:;list;createdby,publishedby,editedby,no;createdby &showDate=Show Date Column:;list;createdon,publishedon,editedon,no;editedon &dateFormat=Date Column Format:;list;DD MM YYYY,MM DD YYYY,YYYY MM DD;DD MM YYYY &TvColumn=Tv Columns:;string;[+longtitle+],[+menuindex+] &TvSortType=Tv Column Sort type:;string;text,number &ImageTv=Show Image TV:;string;image;;enter tv name &ShowImageIn=Show image Tv in:;list;overview,column;overview &tablefields=Overview Tv Fields:;string;[+longtitle+],[+description+],[+introtext+],[+documentTags+] &tableheading=Overview TV headings:;string;Long Title,Description,Introtext,Tags &editInModal=Edit docs in modal:;list;yes,no;no;;edit and create resources in evo modal window &showMoveButton=Show Move Button:;list;yes,no;yes;;hides the button to everyone, even if the user has permissions &showAddHere=Show Create Resource here Button:;list;yes,no;yes;;hides the button to everyone, even if the user has permissions &showDuplicateButton=Show Duplicate Button:;list;yes,no;yes;;hides the button to everyone, even if the user has permissions &showPublishButton=Show Publish Button:;list;yes,no;yes;;hides the button to everyone, even if the user has permissions &showDeleteButton=Show Delete Button:;list;yes,no;yes;;hides the button to everyone, even if the user has permissions &HeadBG=Widget Title Background color:;string; &HeadColor=Widget title color:;string  &confirmTheme=jquery confirm Theme:;list;modern,light,dark,supervan,material,bootstrap;modern;;theme styles for confim alert windows
  * @internal @installset base, sample
  * @internal @modx_category Dashboard
  * @internal    @disabled 0
@@ -55,6 +55,11 @@ switch($e->name){
 /*load js and styles on OnManagerWelcomePrerender*/
 case 'OnManagerWelcomePrerender':
 $manager_theme = $modx->config['manager_theme'];
+$confirmTheme = isset($confirmTheme) ? $confirmTheme : 'modern';
+//clean languages confirms
+$confirm_delete_resource = str_replace(array('\'', '"'), '', $_lang["confirm_delete_resource"]);
+$confirm_publish = str_replace(array('\'', '"'), '', $_lang["confirm_publish"]);
+$confirm_unpublish = str_replace(array('\'', '"'), '', $_lang["confirm_unpublish"]);
 $jsOutput = '
 <script>
     var mouseX;
@@ -73,6 +78,7 @@ $jsOutput = '
 </script>
 <script src="../assets/plugins/dashboarddoclist/js/moment.min.js"></script>
 <script src="../assets/plugins/dashboarddoclist/js/footable.min.js"></script>
+<script src="../assets/plugins/dashboarddoclist/js/jquery-confirm.min.js"></script>
 <script>
 ';
 
@@ -159,58 +165,267 @@ $(\'button.btn-size\').each(function(){
         $(this).addClass(\'active\');
     });
 });
-$("#TableList").on("click", ".btn-delete", function(){
-   trID = $(this).closest("tr").attr("id");
-        r = confirm("' . $_lang["delete_resource"] . ' ID:"+trID+" - ' . $_lang["confirm_delete_resource"] . '");
-        if(r) {
-          	  alert(trID+" ' . $_LDlang["deleted"] . '");
-              window.location.reload();
+$("#TableList").on("click", ".btn-delete" , function(){
+event.preventDefault();
+event.stopPropagation();
+ trID = $(this).closest("tr").attr("id");
+$.confirm({
+    type: \'red\',
+    theme: \''.$confirmTheme.'\',
+    animateFromElement: false,
+	useBootstrap: false,
+    animation: \'top\',
+    closeAnimation: \'scale\',
+	icon: \'fa fa-question\',
+    title: \'' . $_lang["delete_resource"] . ' \'+trID,
+    content: \'' . $confirm_delete_resource . '\',
+    buttons: {	
+        confirm: {
+        btnClass: \'btn-danger\',
+		text: \'' . $_lang["yes"] . '\',
+		action: function () {
+		    result= true;
+			if(confirm) {
+			var jqxhr = $.post( "index.php?a=6&id="+trID, function() {
+            window.location.reload(true);	
+               })			  
             }
-  });
-$("#TableList").on("click", ".btn-undelete", function(){
-   trID = $(this).closest("tr").attr("id");
-        r = confirm("' . $_lang["undelete_resource"] . ' ID:"+trID+" - ' . $_lang["confirm_undelete"] . '");
-        if(r) {
-          	  alert(trID+" ' . $_lang["undeleted"] . '");
-              window.location.reload();
+			 $.alert({			 
+			 useBootstrap: false,
+			 animateFromElement: false,
+			 type: \'green\',
+    		 animation: \'top\',
+			 theme: \''.$confirmTheme.'\',
+			 icon: \'fa fa-thumbs-o-up\',
+			 title:\'' . $_LDlang["deleted"] . ' \'+trID,
+			 content: \'' . $_lang["actioncomplete"] . '\',
+			 useBootstrap: false,
+    		 animation: \'top\',
+			 });
+			} 
+        },
+        cancel: {
+		btnClass: \'btn-warning\',
+		text: \'' . $_lang["cancel"] . '\',
+		action: function () {
+           //$.alert(\'Canceled!\');
+        }
+		 }
+    }
+});
+});
+
+$("#TableList").on("click", ".btn-undelete" , function(){
+event.preventDefault();
+event.stopPropagation();
+ trID = $(this).closest("tr").attr("id");
+$.confirm({
+    type: \'orange\',
+    theme: \''.$confirmTheme.'\',
+    animateFromElement: false,
+	useBootstrap: false,
+    animation: \'top\',
+    closeAnimation: \'scale\',
+	icon: \'fa fa-question\',
+    title: \'' . $_lang["undelete_resource"] . ' \'+trID,
+    content: \'' . $_lang["confirm_undelete"] . '\',
+    buttons: {	
+        confirm: {
+		btnClass: \'btn-success\',
+		text: \'' . $_lang["yes"] . '\',
+		action: function () {
+		    result= true;
+			if(confirm) {
+			var jqxhr = $.post( "index.php?a=63&id="+trID, function() {
+            window.location.reload(true);	
+               })			  
+            }			
+			 $.alert({			 
+			 useBootstrap: false,
+			 animateFromElement: false,
+			 type: \'green\',
+    		 animation: \'top\',
+			 theme: \''.$confirmTheme.'\',
+			 icon: \'fa fa-thumbs-o-up\',
+			 title:\'' . $_lang["undeleted"] . ' \'+trID,
+			 content: \'' . $_lang["actioncomplete"] . '\',
+			 useBootstrap: false,
+    		 animation: \'top\',
+			 });
+			} 
+        },
+        cancel: {
+		btnClass: \'btn-warning\',
+		text: \'' . $_lang["cancel"] . '\',
+		action: function () {
+           //$.alert(\'Canceled!\');
+        }
+		 }
+    }
+});
+});
+
+$("#TableList").on("click", ".btn-unpublish" , function(){
+event.preventDefault();
+event.stopPropagation();
+ trID = $(this).closest("tr").attr("id");
+$.confirm({
+    type: \'orange\',
+    theme: \''.$confirmTheme.'\',
+    animateFromElement: false,
+	useBootstrap: false,
+    animation: \'top\',
+    closeAnimation: \'scale\',
+	icon: \'fa fa-question\',
+    title: \'' . $_lang["unpublish_resource"] . ' \'+trID,
+    content: \'' . $confirm_unpublish . '\',
+    buttons: {	
+        confirm: {
+		btnClass: \'btn-success\',
+		text: \'' . $_lang["yes"] . '\',
+		action: function () {
+		    result= true;
+			if(confirm) {
+			var jqxhr = $.post( "index.php?a=62&id="+trID, function() {
+			window.location.reload(true);
+               })			  
             }
-  });
-$("#TableList").on("click", ".btn-unpublish", function(){
-   trID = $(this).closest("tr").attr("id");
-        r = confirm("' . $_lang["unpublish_resource"] . ' ID:"+trID+" - ' . $_lang["confirm_unpublish"] . '");
-        if(r) {
-          	 // alert(trID+" ' . $_LDlang["unpublished"] . '");
-              window.location.reload();
+			 $.alert({			 
+			 useBootstrap: false,
+			 animateFromElement: false,
+			 type: \'green\',
+    		 animation: \'top\',
+			 theme: \''.$confirmTheme.'\',
+			 icon: \'fa fa-thumbs-o-up\',
+			 title:\'' . $_lang["unpublish_resource"] . ' \'+trID,
+			 content: \'' . $_lang["actioncomplete"] . '\',
+			 useBootstrap: false,
+    		 animation: \'top\',
+			 });
+			} 
+        },
+        cancel: {
+		btnClass: \'btn-warning\',
+		text: \'' . $_lang["cancel"] . '\',
+		action: function () {
+           //$.alert(\'Canceled!\');
+        }
+		 }
+    }
+});
+});
+
+$("#TableList").on("click", ".btn-publish" , function(){
+event.preventDefault();
+event.stopPropagation();
+ trID = $(this).closest("tr").attr("id");
+$.confirm({
+    type: \'orange\',
+    theme: \''.$confirmTheme.'\',
+    animateFromElement: false,
+	useBootstrap: false,
+    animation: \'top\',
+    closeAnimation: \'scale\',
+	icon: \'fa fa-question\',
+    title: \'' . $_lang["publish_resource"] . ' \'+trID,
+    content: \'' . $confirm_publish . '\',
+    buttons: {	
+        confirm: {
+		btnClass: \'btn-success\',
+		text: \'' . $_lang["yes"] . '\',
+		action: function () {
+		    result= true;
+			if(confirm) {
+			var jqxhr = $.post( "index.php?a=61&id="+trID, function() {
+			window.location.reload(true);
+               })			  
             }
-  });
-$("#TableList").on("click", ".btn-publish", function(){
-   trID = $(this).closest("tr").attr("id");
-        r = confirm("' . $_lang["publish_resource"] . ' ID:"+trID+" - ' . $_lang["confirm_publish"] . '");
-        if(r) {
-          	  //alert(trID+" ' . $_LDlang["published"] . '");
-              window.location.reload();
-            }
-  });
-$("#TableList").on("click", ".btn-duplicate", function(){
-   trID = $(this).closest("tr").attr("id");
-        r = confirm("' . $_lang["resource_duplicate"] . ' ID:"+trID+" - ' . $_lang["confirm_duplicate_record"] . '");
-        if(r) {
-          	//alert(trID+" ' . $_lang["duplicated"] . '");
-              window.location.reload();
-            }
-  });
+			 $.alert({			 
+			 useBootstrap: false,
+			 animateFromElement: false,
+			 type: \'green\',
+    		 animation: \'top\',
+			 theme: \''.$confirmTheme.'\',
+			 icon: \'fa fa-thumbs-o-up\',
+			 title:\'' . $_lang["publish_resource"] . ' \'+trID,
+			 content: \'' . $_lang["actioncomplete"] . '\',
+			 useBootstrap: false,
+    		 animation: \'top\',
+			 });
+			} 
+        },
+        cancel: {
+		btnClass: \'btn-warning\',
+		text: \'' . $_lang["cancel"] . '\',
+		action: function () {
+           //$.alert(\'Canceled!\');
+        }
+		 }
+    }
+});
+});
+$("#TableList").on("click", ".btn-duplicate" , function(event){
+event.preventDefault();
+event.stopPropagation();
+ trID = $(this).closest("tr").attr("id");
+$.confirm({
+    type: \'orange\',
+    theme: \''.$confirmTheme.'\',
+    animateFromElement: false,
+	useBootstrap: false,
+    animation: \'top\',
+    closeAnimation: \'scale\',
+	icon: \'fa fa-question\',
+    title: \'' . $_lang["resource_duplicate"] . ' \'+trID,
+    content: \'' . $_lang["confirm_duplicate_record"] . '\',
+    buttons: {	
+        confirm: {
+		btnClass: \'btn-success\',
+		text: \'' . $_lang["yes"] . '\',
+		action: function () {
+		    result= true;				
+			if(confirm) {
+			var jqxhr = $.post( "index.php?a=94&id="+trID, function() {
+			window.location.reload(true);
+               })
+            }			 
+			 $.alert({			 
+			 useBootstrap: false,
+			 animateFromElement: false,
+			 type: \'green\',
+    		 animation: \'top\',
+			 theme: \''.$confirmTheme.'\',
+			 title:\'' . $_lang["resource_duplicate"] . ' \'+trID,
+			 content: \'' . $_lang["actioncomplete"] . '\',
+			 useBootstrap: false,
+    		 animation: \'top\',
+			 });
+			} 
+        },
+        cancel: {
+		btnClass: \'btn-warning\',
+		text: \'' . $_lang["cancel"] . '\',
+		action: function () {
+           //$.alert(\'Canceled!\');
+        }
+		 }
+    }
+});
+});
 $("div#DashboardList").fadeIn();
 });
 </script>';
 if($manager_theme == "EvoFLAT") {
 $cssOutput = '
 <link type="text/css" rel="stylesheet" href="../assets/plugins/dashboarddoclist/css/footable.evo.min.css">
-<link type="text/css" rel="stylesheet" href="../assets/plugins/dashboarddoclist/css/list_flat.css">';
+<link type="text/css" rel="stylesheet" href="../assets/plugins/dashboarddoclist/css/list_flat.css">
+<link type="text/css" rel="stylesheet" href="../assets/plugins/dashboarddoclist/css/jquery-confirm.min.css">';
 }
 else {
 $cssOutput = '
 <link type="text/css" rel="stylesheet" href="../assets/plugins/dashboarddoclist/css/footable.evo.min.css">
-<link type="text/css" rel="stylesheet" href="../assets/plugins/dashboarddoclist/css/list.css">';
+<link type="text/css" rel="stylesheet" href="../assets/plugins/dashboarddoclist/css/list.css">
+<link type="text/css" rel="stylesheet" href="../assets/plugins/dashboarddoclist/css/jquery-confirm.min.css">';
 }
 $e->output($jsOutput.$cssOutput);
 break;
