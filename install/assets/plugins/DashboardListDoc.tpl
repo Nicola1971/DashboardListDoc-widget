@@ -1,10 +1,10 @@
 /**
- * DashboardListDoc 
+ * DashboardDocList 
  *
  * Dashboard Documents list/grid widget plugin
  *
  * @category plugin
- * @version 2.0.5.1
+ * @version 2.0.5.2
  * @author Nicola Lambathakis http://www.tattoocms.it/ https://github.com/Nicola1971/
  * @license http://www.gnu.org/copyleft/gpl.html GNU Public License (GPL)
  * @internal @events OnManagerWelcomeHome,OnManagerWelcomePrerender
@@ -165,7 +165,7 @@ $(\'button.btn-size\').each(function(){
         $(this).addClass(\'active\');
     });
 });
-$("#TableList").on("click", ".btn-delete" , function(){
+$("#TableList").on("click", ".btn-delete" , function(event){
 event.preventDefault();
 event.stopPropagation();
  trID = $(this).closest("tr").attr("id");
@@ -216,7 +216,7 @@ $.confirm({
 });
 });
 
-$("#TableList").on("click", ".btn-undelete" , function(){
+$("#TableList").on("click", ".btn-undelete" , function(event){
 event.preventDefault();
 event.stopPropagation();
  trID = $(this).closest("tr").attr("id");
@@ -267,7 +267,7 @@ $.confirm({
 });
 });
 
-$("#TableList").on("click", ".btn-unpublish" , function(){
+$("#TableList").on("click", ".btn-unpublish" , function(event){
 event.preventDefault();
 event.stopPropagation();
  trID = $(this).closest("tr").attr("id");
@@ -318,7 +318,7 @@ $.confirm({
 });
 });
 
-$("#TableList").on("click", ".btn-publish" , function(){
+$("#TableList").on("click", ".btn-publish" , function(event){
 event.preventDefault();
 event.stopPropagation();
  trID = $(this).closest("tr").attr("id");
