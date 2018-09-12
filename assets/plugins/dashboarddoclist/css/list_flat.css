@@ -60,53 +60,53 @@ span.footable-toggle {display:inline-block;width:20px;cursor:pointer;}
 	border-color: var(--main-color);
 }
 .icon-imagetv {color: #dfdfdf;}
-.dark .icon-imagetv {color: var(--medium-grey);}
-.dark .img-thumbnail-sm {
+.darkness .icon-imagetv {color: var(--medium-grey);}
+.darkness .img-thumbnail-sm {
     background: var(--medium-grey);
     border: 1px solid var(--main-color);
     border-radius: 4px;
     padding: 2px;
 }
-/*DARK*/
-.dark #DashboardList td a.notinmenu {color:#dcdcdc;}
-.dark #DashboardList td .weblinkicon {color:#bcbec0;}
-.dark .footable .pagination > li > a {border-color:var(--dark-grey); background-color:var(--default-grey); color: #fff;}
+/*darkness*/
+.darkness #DashboardList td a.notinmenu {color:#dcdcdc;}
+.darkness #DashboardList td .weblinkicon {color:#bcbec0;}
+.darkness .footable .pagination > li > a {border-color:var(--darkness-grey); background-color:var(--default-grey); color: #fff;}
 
-.dark .footable .pagination > li > a:hover,
-.dark .footable .pagination > li > span:hover,
-.dark .footable .pagination > li > a:focus,
-.dark .footable .pagination > li > span:focus {
+.darkness .footable .pagination > li > a:hover,
+.darkness .footable .pagination > li > span:hover,
+.darkness .footable .pagination > li > a:focus,
+.darkness .footable .pagination > li > span:focus {
 	color: #fff;
-	border-color:var(--dark-grey); background-color:var(--medium-grey)
+	border-color:var(--darkness-grey); background-color:var(--medium-grey)
 }
 
-.dark .footable .pagination > .active > a,
-.dark .footable .pagination > .active > span,
-.dark .footable .pagination > .active > a:hover,
-.dark .footable .pagination > .active > span:hover,
-.dark .footable .pagination > .active > a:focus,
-.dark .footable .pagination > .active > span:focus {
+.darkness .footable .pagination > .active > a,
+.darkness .footable .pagination > .active > span,
+.darkness .footable .pagination > .active > a:hover,
+.darkness .footable .pagination > .active > span:hover,
+.darkness .footable .pagination > .active > a:focus,
+.darkness .footable .pagination > .active > span:focus {
 	color: #fff;
 	background-color: var(--main-color);
 	border-color:#202329;
 }
-.dark #DashboardList .table.data tbody tr { background-color: transparent;border:none; }
-.dark #DashboardList .table.data tbody tr:not(:hover):not(.footable-detail-row) { background-color: #383f48}
-.dark #DashboardList .table.data tbody tr:nth-child(2n+1):not(:hover):not(.footable-detail-row) { background-color: #272c33 }
-.dark #DashboardList .table.data tbody tr:hover { background-color: #30364c}
-.dark #DashboardList .table.data tbody tr.footable-detail-row, .dark #DashboardList .table.data tbody tr.footable-detail-row td { background-color: #383f48;}
-.dark #DashboardList .table.data tbody tr.footable-detail-row td:first-child{ border-top:1px solid #30364c; border-bottom:1px solid #272c33;}
+.darkness #DashboardList .table.data tbody tr { background-color: transparent;border:none; }
+.darkness #DashboardList .table.data tbody tr:not(:hover):not(.footable-detail-row) { background-color: #383f48}
+.darkness #DashboardList .table.data tbody tr:nth-child(2n+1):not(:hover):not(.footable-detail-row) { background-color: #272c33 }
+.darkness #DashboardList .table.data tbody tr:hover { background-color: #30364c}
+.darkness #DashboardList .table.data tbody tr.footable-detail-row, .darkness #DashboardList .table.data tbody tr.footable-detail-row td { background-color: #383f48;}
+.darkness #DashboardList .table.data tbody tr.footable-detail-row td:first-child{ border-top:1px solid #30364c; border-bottom:1px solid #272c33;}
 
-.dark #DashboardList .table.data tbody tr.footable-detail-row:hover { background-color: transparent;}
+.darkness #DashboardList .table.data tbody tr.footable-detail-row:hover { background-color: transparent;}
 
-.dark #DashboardList .btn, .dark #DashboardList select, .dark #DashboardList th form div ul { background-color: #383f48; color:#FFF; border-color:#48505c}
-.dark #DashboardList th form div ul li a{color:#FFF;}
-.dark #DashboardList .footable .dropdown-menu > li > a:hover,
-.dark #DashboardList .footable .dropdown-menu > li > a:focus{color:#FFF;background-color: #272c33!important;}
+.darkness #DashboardList .btn, .darkness #DashboardList select, .darkness #DashboardList th form div ul { background-color: #383f48; color:#FFF; border-color:#48505c}
+.darkness #DashboardList th form div ul li a{color:#FFF;}
+.darkness #DashboardList .footable .dropdown-menu > li > a:hover,
+.darkness #DashboardList .footable .dropdown-menu > li > a:focus{color:#FFF;background-color: #272c33!important;}
 
 /*right click*/
 li.parentname {color:var(--main-color);}
-.dark li.parentname {color:#fff;}
+.darkness li.parentname {color:#fff;}
   .context-menu ul{ 
     z-index: 10000;
     position: absolute;      
@@ -120,7 +120,7 @@ li.parentname {color:var(--main-color);}
     box-shadow: 0 0.5rem 2rem rgba(0, 0, 0, 0.3); 
     padding: 0;
 }
-.dark .context-menu ul{ 
+.darkness .context-menu ul{ 
     background: #383f48;
     border-color: #272c33;
     color: #FFF;
@@ -148,18 +148,18 @@ li.parentname {color:var(--main-color);}
     text-decoration:none;
     color: #fff!important;
 }
-.dark .context-menu ul li a{ 
+.darkness .context-menu ul li a{ 
     color: #FFF;
 }
 .context-menu ul li.parentname:hover{cursor:default;background-color:transparent;}
-.dark .context-menu ul li.parentname:hover{color:#FFF;}
+.darkness .context-menu ul li.parentname:hover{color:#FFF;}
 
-.dark #DashboardList .btn-success {
+.darkness #DashboardList .btn-success {
 	color: #fff;
 	background-color: #5cb85c; 
 	border-color: #5cb85c; 
 }
-.dark #DashboardList .btn-success:hover {
+.darkness #DashboardList .btn-success:hover {
 	color: #fff;
 	background-color: #449d44; 
 	border-color: #449d44; 
