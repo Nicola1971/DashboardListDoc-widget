@@ -9,7 +9,7 @@ table.footable-details th {display:none;}
 #DashboardList table.footable-details.table.data tbody tr:hover { border:none; background-color: transparent;}
 
 span.footable-toggle {display:inline-block;width:20px;cursor:pointer;}
-
+.icon-imagetv {color: #dfdfdf;}
 /*hide search filter dropdown*//*
 .footable-filtering-search .btn.dropdown-toggle {
     display: none;
@@ -21,8 +21,54 @@ span.footable-toggle {display:inline-block;width:20px;cursor:pointer;}
   color: #444!important;
   border:none;
 }
-
+#DashboardList .btn.btn-size.active {
+  background-color: #1377c5;
+  color: #fff;
+  border-color:#1377c5; 
+}
 #DashboardList td.actions .fa {margin-left:6px;}
-#DashboardList td a.unpublished {color:#B98787;font-style: italic}
-#DashboardList td a.deleted {color:#A52A2A;text-decoration: line-through}
+#DashboardList td a.unpublished {color:#B68282;font-style: italic}
+#DashboardList td a.deleted, #DashboardList td a.deleted.notinmenu {color:#A52A2A;text-decoration: line-through}
 #DashboardList td a.deleted:hover {color:#A52A2A;text-decoration: line-through}
+#DashboardList td a.notinmenu {color:#404040;}
+#DashboardList td .weblinkicon {font-size: 0.75em; color: #404040; }
+
+/*right click*/
+.context-menu ul li.parentname {color:#1377c5;}
+.context-menu ul li.parentname:hover {cursor:default;background-color:transparent;}
+  .context-menu ul{ 
+    z-index: 1000;
+    position: absolute;
+    overflow: hidden;
+    border: 1px solid #CCC;
+    white-space: nowrap;
+    font-family: sans-serif;
+    background: #FFF;
+    color: #333;
+    border-radius: 0.25rem; 
+    -webkit-box-shadow: 0 0.5rem 2rem rgba(0, 0, 0, 0.3); 
+    box-shadow: 0 0.5rem 2rem rgba(0, 0, 0, 0.3); 
+    padding: 0;
+}
+/* Each of the items in the list */
+.context-menu ul li {
+    padding: 5px 12px 5px 10px;
+    cursor: pointer;
+    list-style-type: none;
+}
+.context-menu ul li a{
+    color: #333;
+}
+.context-menu ul li a .fa{
+    font-size:0.9rem;
+    vertical-align:middle;
+	margin-top:-4px;
+}
+.context-menu ul li:hover {
+    background-color: #1377c5;
+}
+.context-menu ul li:hover a {
+    background-color: #1377c5;
+    text-decoration:none;
+    color: #fff!important;
+}

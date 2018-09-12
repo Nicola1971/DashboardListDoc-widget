@@ -66,7 +66,7 @@
 }
 .footable .btn-primary {
 	color: #fff;
-	background-color: #337ab7;
+	background-color: #1377c5;
 	border-color: #2e6da4;
 }
 .footable .btn-primary:hover,
@@ -76,7 +76,7 @@
 .footable .btn-primary.active,
 .footable .open > .dropdown-toggle.btn-primary {
 	color: #fff;
-	background-color: #286090;
+	background-color: #1377c5;
 	border-color: #204d74;
 }
 /* button groups */
@@ -454,7 +454,7 @@ table.footable-details > tbody > tr > th:nth-child(1) {
 table.footable-details > tbody > tr > td:nth-child(2) {
 	word-break: break-all;
 }
-
+/*
 table.footable-details > thead > tr:first-child > th,
 table.footable-details > thead > tr:first-child > td,
 table.footable-details > tbody > tr:first-child > th,
@@ -463,7 +463,7 @@ table.footable-details > tfoot > tr:first-child > th,
 table.footable-details > tfoot > tr:first-child > td {
 	border-top-width: 0;
 }
-table.footable-details.table-bordered > thead > tr:first-child > th,
+table.footable-details.table-bordered > thead >  > th,
 table.footable-details.table-bordered > thead > tr:first-child > td,
 table.footable-details.table-bordered > tbody > tr:first-child > th,
 table.footable-details.table-bordered > tbody > tr:first-child > td,
@@ -471,7 +471,7 @@ table.footable-details.table-bordered > tfoot > tr:first-child > th,
 table.footable-details.table-bordered > tfoot > tr:first-child > td {
 	border-top-width: 1px;
 }
-
+*/
 div.footable-loader {
 	vertical-align: middle;
 	text-align: center;
@@ -763,4 +763,9 @@ table.footable-editing.footable-editing-always-show button.footable-add {
 }
 */
 
-
+.img-thumbnail-sm {
+    background: #fff;
+    border: 1px solid #bbb;
+    border-radius: 4px;
+    padding: 2px;
+}
