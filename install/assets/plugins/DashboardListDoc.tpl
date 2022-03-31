@@ -4,7 +4,7 @@
  * Dashboard Documents list/grid widget plugin
  *
  * @category plugin
- * @version 2.0.5.3
+ * @version 2.0.5.4
  * @author Nicola Lambathakis http://www.tattoocms.it/ https://github.com/Nicola1971/
  * @license http://www.gnu.org/copyleft/gpl.html GNU Public License (GPL)
  * @internal @events OnManagerWelcomeHome,OnManagerWelcomePrerender
@@ -12,7 +12,7 @@
  * @internal @installset base, sample
  * @internal @modx_category Dashboard
  * @internal    @disabled 0
- * @lastupdate  29-11-2018
+ * @lastupdate  31-03-2022
  * @documentation Requirements: This plugin requires Evolution 1.4 or later
  * @documentation https://github.com/Nicola1971/DashboardListDoc-widget/
  * @reportissues https://github.com/Nicola1971/DashboardListDoc-widget/issues
@@ -513,7 +513,7 @@
  			<li><a target="main" href="index.php?a=72&pid=[+parent+]"><i class="fa fa-link fa-fw"></i>  ' . $_lang["create_weblink_here"] . '</a></li>
  	        <li><a target="main" href="index.php?a=56&id=[+parent+]"><i class="fa fa-sort-numeric-asc fa-fw"></i>  ' . $_lang["sort_menuindex"] . '</a></li>';
  }
- $rowTpl .= '<li><a href="[(site_url)]index.php?id=[+parent+]" target="_blank" title="' . $_lang["preview_resource"] . '"><i class="fa fa-eye""></i>  '.$_lang["preview_resource"].'</a></li></td></ul></div>';
+ $rowTpl .= '<li><a href="[(site_url)]index.php?id=[+parent+]" target="_blank" title="' . $_lang["preview_resource"] . '"><i class="fa fa-eye"></i>  '.$_lang["preview_resource"].'</a></li></td></ul></div>';
  }
  //TVs columns
  $rowTpl .= $TvTDs;
@@ -686,7 +686,7 @@
  				'body' => '<div class="widget-stage"><div id="DashboardList" class="table-responsive">
  				<table data-state="true" data-state-key="DashboardList'.$pluginid.'_state" data-paging-size="10" data-show-toggle="false" data-toggle-column="last" data-toggle-selector=".footable-toggle" data-filter-ignore-case="true" data-filtering="true" data-state-filtering="true" data-filter-exact-match="false" data-filter-dropdown-title="'.$_lang["search_criteria"].'" data-filter-placeholder="'.$_lang["element_filter_msg"].'" data-filter-position="right" class="table data" id="TableList">
                  <thead>
- <div style="position:absolute;top:55px;left:25px;z-index:10;" class="hidden-xs-down">
+ <div style="position:absolute;top:60px;right:25px;z-index:10;" class="hidden-xs-down">
  <button type="button" class="btn btn-sm btn-success" onClick="window.location.reload();" title="' . $_LDlang["update"] . '"><i class="fa fa-refresh" aria-hidden="true"></i></button>
  <button type="button" class="btn btn-sm btn-secondary btn-size" id="page-size-5" data-page-size="5">5</button>
  <button type="button" class="btn btn-sm btn-secondary btn-size" id="page-size-10" data-page-size="10">10</button>
