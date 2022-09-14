@@ -4,7 +4,7 @@
  * Dashboard Documents list/grid widget plugin
  *
  * @category plugin
- * @version 2.0.5.4
+ * @version 2.0.5.5
  * @author Nicola Lambathakis http://www.tattoocms.it/ https://github.com/Nicola1971/
  * @license http://www.gnu.org/copyleft/gpl.html GNU Public License (GPL)
  * @internal @events OnManagerWelcomeHome,OnManagerWelcomePrerender
@@ -12,7 +12,7 @@
  * @internal @installset base, sample
  * @internal @modx_category Dashboard
  * @internal    @disabled 0
- * @lastupdate  13-11-2019
+ * @lastupdate  14-09-2022
  * @documentation Requirements: This plugin requires Evolution 1.4 or later
  * @documentation https://github.com/Nicola1971/DashboardListDoc-widget/
  * @reportissues https://github.com/Nicola1971/DashboardListDoc-widget/issues
@@ -79,8 +79,8 @@
  <script>
  ';
 
- if ($showUnpublished == yes) {
- if ($showStatusFilter == yes) {
+ if ($showUnpublished == 'yes') {
+ if ($showStatusFilter == 'yes') {
  $jsOutput .= 'FooTable.MyFiltering = FooTable.Filtering.extend({
  	construct: function(instance){
  		this._super(instance);
@@ -437,7 +437,7 @@
  $tableheading = isset($tableheading) ? $tableheading : 'Long Title,Description,Introtext,Tags';
 
  //Header create resource in parent buttons
- if ($showAddButtons == yes) {
+ if ($showAddButtons == 'yes') {
  	if($modx->hasPermission('edit_document')) {
  $Parents = explode(",","$ParentFolder");
  foreach ($Parents as $Parent){
@@ -447,7 +447,7 @@
  	}
  	else {
  	$ParentTitle = "<i class=\"fa fa-sitemap\"></i> Root";}
- 	if ($editInModal == yes) {
+ 	if ($editInModal == 'yes') {
  	$ParentsButtons .= '<a class="btn btn-sm btn-success" title="' . $_lang["create_resource_here"] . '" style="cursor:pointer" href="" onClick="parent.modx.popup({url:\''. MODX_MANAGER_URL.'?a=4&pid='.$Parent.'\',title1:\'' . $_lang["create_resource_here"] . '\',icon:\'fa-file-o\',iframe:\'iframe\',selector2:\'.tab-page>.container\',position:\'center center\',width:\'80%\',height:\'80%\',wrap:\'body\',hide:0,hover:0,overlay:1,overlayclose:1})">+ <i class="fa fa-file-o fa-fw"></i>  ' . $ParentTitle . '</a> ';
  	}
  	else {
@@ -490,7 +490,7 @@
 
  //Image column
  if ($ImageTv != '') {
- if ($ShowImageIn == column) {
+ if ($ShowImageIn == 'column') {
  $rowTpl .= '<td aria-expanded="false" class="footable-toggle" ><img class="footable-toggle img-thumbnail-sm" src="../[[phpthumb? &input=`[+'.$ImageTv.'+]` &options=`w=70,h=70,q=60,zc=C`]]" alt="[+title+]"> </td> ';
  $ImageTVHead = '<th width="100" data-type="html" data-breakpoints="xs" data-filterable="false" data-sortable="false" style="text-align:center"><i class="icon-imagetv fa fa-2x fa-camera" aria-hidden="true"></i></th> ';
  }
@@ -499,7 +499,7 @@
  $rowTpl .= '<td class="footable-toggle"><a target="main" data-title="edit?" class="dataConfirm [[if? &is=`[+published+]:=:0` &then=`unpublished`]] [[if? &is=`[+deleted+]:=:1` &then=`deleted`]] [[if? &is=`[+hidemenu+]:is:1:and:[+published+]:is:1` &then=`notinmenu`]]" href="index.php?a=27&id=[+id+]" title="' . $_lang["edit_resource"] . '">[[if? &is=`[+'.$DisplayTitle.'+]:!empty` &then=`[+'.$DisplayTitle.'+]` &else=[+title+]`]]</a>[[if? &is=`[+type+]:is:reference` &then=` <i class="weblinkicon fa fa-link"></i>`]]</td> ';
 
  //Parent column	and context menu
- if ($showParent == yes) {
+ if ($showParent == 'yes') {
  $rowTpl .= '
  <td aria-expanded="false" [[if? &is=`[+parent+]:not:0`&then=`oncontextmenu ="event.preventDefault();$(\'#[+id+]context-menu\').show();$(\'#context-menu\').offset({\'top\':mouseY,\'left\':mouseX})"`]]>
  [[if? &is=`[+parent+]:not:0`&then=`<a target="main" href="index.php?a=3&id=[+parent+]&tab=1" title="'.$_lang["view_child_resources_in_container"].'">[[DocInfo? &docid=`[+parent+]` &field=`pagetitle`]]</a>`]]
@@ -513,7 +513,7 @@
  			<li><a target="main" href="index.php?a=72&pid=[+parent+]"><i class="fa fa-link fa-fw"></i>  ' . $_lang["create_weblink_here"] . '</a></li>
  	        <li><a target="main" href="index.php?a=56&id=[+parent+]"><i class="fa fa-sort-numeric-asc fa-fw"></i>  ' . $_lang["sort_menuindex"] . '</a></li>';
  }
- $rowTpl .= '<li><a href="[(site_url)]index.php?id=[+parent+]" target="_blank" title="' . $_lang["preview_resource"] . '"><i class="fa fa-eye""></i>  '.$_lang["preview_resource"].'</a></li></td></ul></div>';
+ $rowTpl .= '<li><a href="[(site_url)]index.php?id=[+parent+]" target="_blank" title="' . $_lang["preview_resource"] . '"><i class="fa fa-eye"></i>  '.$_lang["preview_resource"].'</a></li></td></ul></div>';
  }
  //TVs columns
  $rowTpl .= $TvTDs;
@@ -557,7 +557,7 @@
  $rowTpl .='<td style="text-align: right;" class="actions">';
  //Action buttons
  if($modx->hasPermission('edit_document')) {
- if ($editInModal == yes) {
+ if ($editInModal == 'yes') {
  $rowTpl .= '<a title="' . $_lang["edit_resource"] . '" style="cursor:pointer" href="" onClick="parent.modx.popup({url:\''. MODX_MANAGER_URL.'?a=27&id=[+id+]&tab=1\',title1:\'' . $_lang["edit_resource"] . '\',icon:\'fa-pencil-square-o\',iframe:\'iframe\',selector2:\'.tab-page>.container\',position:\'center center\',width:\'80%\',height:\'80%\',wrap:\'body\',hide:0,hover:0,overlay:1,overlayclose:1})"><i class="fa fa-external-link"></i></a>';
  }
  else {
@@ -566,15 +566,15 @@
  }
  $rowTpl .= '<a href="[(site_url)]index.php?id=[+id+]" target="_blank" title="' . $_lang["preview_resource"] . '"><i class="fa fa-eye"></i></a> ';
  if($modx->hasPermission('edit_document')) {
- if ($showMoveButton == yes) {
+ if ($showMoveButton == 'yes') {
  $rowTpl .= '<a class="hidden-xs-down" target="main" href="index.php?a=51&id=[+id+]" title="' . $_lang["move_resource"] . '"><i class="fa fa-arrows"></i></a> ';
  }
  //Duplicate btn
- if ($showDuplicateButton == yes) {
+ if ($showDuplicateButton == 'yes') {
  $rowTpl .= '<a target="main" class="btn-duplicate hidden-xs-down" href="index.php?a=94&id=[+id+]" title="' . $_lang["resource_duplicate"] . '"><i class="fa fa-clone"></i></a> ';
  }
  //Publish btn
- if ($showPublishButton == yes) {
+ if ($showPublishButton == 'yes') {
  $rowTpl .= '[[if? &is=`[+deleted+]:=:0` &then=`[[if? &is=`[+published+]:=:1` &then=`
  <a class="btn-unpublish hidden-xs-down" target="main" href="index.php?a=62&id=[+id+]" title="' . $_lang["unpublish_resource"] . '"><i class="fa fa-arrow-down"></i></a>
  `&else=`
@@ -587,8 +587,8 @@
  }
  }
  //add resource here btn
- if ($showAddHere == yes) {
- if ($editInModal == yes) {
+ if ($showAddHere == 'yes') {
+ if ($editInModal == 'yes') {
  $rowTpl .= '<a class="hidden-xs-down" title="' . $_lang["create_resource_here"] . '" style="cursor:pointer" href="" onClick="parent.modx.popup({url:\''. MODX_MANAGER_URL.'?a=4&pid=[+id+]\',title1:\'' . $_lang["create_resource_here"] . '\',icon:\'fa-file-o\',iframe:\'iframe\',selector2:\'.tab-page>.container\',position:\'center center\',width:\'80%\',height:\'80%\',wrap:\'body\',hide:0,hover:0,overlay:1,overlayclose:1})"><i class="fa fa-file-o"></i></a>';
  }
  else {
@@ -596,7 +596,7 @@
  }
  }
  //delete btn
- if ($showDeleteButton == yes) {
+ if ($showDeleteButton == 'yes') {
  if($modx->hasPermission('delete_document')) {
  $rowTpl .= '[[if? &is=`[+deleted+]:=:0` &then=`
  <a class="btn-delete" target="main" href="index.php?a=6&id=[+id+]" title="' . $_lang["delete_resource"] . '"><i class="fa fa-trash"></i></a>
@@ -611,7 +611,7 @@
  <td class="resource-details">';
  //image tv
  if ($ImageTv != '') {
- if ($ShowImageIn == overview) {
+ if ($ShowImageIn == 'overview') {
  $rowTpl .= '<div class="pull-left" style="margin-right:5px"><img class="img-responsive img-thumbnail" src="../[[phpthumb? &input=`[+'.$ImageTv.'+]` &options=`w=90,h=90,q=60,zc=C`]]" alt="[+title+]"> </div> ';
  }
  }
@@ -625,7 +625,7 @@
  </tr>
  ';
  //headers
- if ($showParent == yes) {
+ if ($showParent == 'yes') {
  $parentColumnHeader = '
  <th data-type="text">[%resource_parent%]</th> ';
  }
@@ -660,10 +660,10 @@
  $params['tvList'] = $TvFields;
  $params['display'] = $ListItems;
  //filters
- if ($showUnpublished == yes) {
+ if ($showUnpublished == 'yes') {
  $params['showNoPublish'] = '1';
  }
- if ($hideFolders == yes) {
+ if ($hideFolders == 'yes') {
  $wherehideFolders = 'isfolder=0';
  $params['addWhereList'] = 'isfolder=0';
  }

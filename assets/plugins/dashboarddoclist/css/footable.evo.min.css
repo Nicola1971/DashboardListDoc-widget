@@ -77,23 +77,24 @@ table.footable>tbody>tr.footable-empty>td,table.footable>tbody>tr.footable-empty
 100%{-webkit-transform:rotate(359deg);transform:rotate(359deg)}
 }@keyframes fooicon-spin-r{0%{-webkit-transform:rotate(0deg);transform:rotate(0deg)}
 100%{-webkit-transform:rotate(359deg);transform:rotate(359deg)}
-}.fooicon{display:inline-block;font-size:inherit;font-family:FontAwesome!important;font-style:normal;font-weight:400;line-height:1;text-rendering:auto;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;transform:translate(0,0)}
+}
+.fooicon{display:inline-block;font-size:inherit;font-style:normal;font-variant: normal;line-height:1;text-rendering:auto;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;transform:translate(0,0)}
 .fooicon:before,.fooicon:after{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box}
-.fooicon-loader:before{content:"\f01e"}
-.fooicon-plus:before{content:"\f067"}
-.fooicon-minus:before{content:"\f068"}
-.fooicon-search:before{content:"\f002"}
-.fooicon-remove:before{content:"\f00d"}
-.fooicon-sort:before{content:"\f0dc"}
-.fooicon-sort-asc:before{content:"\f160"}
-.fooicon-sort-desc:before{content:"\f161"}
-.fooicon-pencil:before{content:"\f040"}
-.fooicon-trash:before{content:"\f1f8"}
-.fooicon-eye-close:before{content:"\f070"}
-.fooicon-flash:before{content:"\f0e7"}
-.fooicon-cog:before{content:"\f013"}
-.fooicon-stats:before{content:"\f080"}
-table.footable>thead>tr.footable-filtering>th{border-bottom-width:1px;font-weight:normal}
+.fooicon-loader:before{font-family:"Font Awesome 5 Free";font-weight:900;content:"\f01e"}
+.fooicon-plus:before{font-family:"Font Awesome 5 Free";font-weight:900;content:"\f067"}
+.fooicon-minus:before{font-family:"Font Awesome 5 Free";font-weight:900;content:"\f068"}
+.fooicon-search::before{font-family:"Font Awesome 5 Free";font-weight:900;content:"\f002"}
+.fooicon-remove:before{font-family:"Font Awesome 5 Free";font-weight:900;content:"\f00d"}
+.fooicon-sort:before{font-family:"Font Awesome 5 Free";font-weight:900;content:"\f0dc"}
+.fooicon-sort-asc:before{font-family:"Font Awesome 5 Free";font-weight:900;content:"\f160"}
+.fooicon-sort-desc:before{font-family:"Font Awesome 5 Free";font-weight:900;content:"\f161"}
+.fooicon-pencil:before{font-family:"Font Awesome 5 Free";font-weight:900;content:"\f040"}
+.fooicon-trash:before{font-family:"Font Awesome 5 Free";font-weight:900;content:"\f1f8"}
+.fooicon-eye-close:before{font-family:"Font Awesome 5 Free";font-weight:900;content:"\f070"}
+.fooicon-flash:before{font-family:"Font Awesome 5 Free";font-weight:900;content:"\f0e7"}
+.fooicon-cog:before{font-family:"Font Awesome 5 Free";font-weight:900;content:"\f013"}
+.fooicon-stats:before{font-family:"Font Awesome 5 Free";font-weight:900;content:"\f080"}
+table.footable>thead>tr.footable-filtering>th{border-bottom-width:1px;font-weight:normal;}
 .footable-filtering-external.footable-filtering-right,table.footable>thead>tr.footable-filtering>th,table.footable.footable-filtering-right>thead>tr.footable-filtering>th{text-align:right}
 .footable-filtering-external.footable-filtering-left,table.footable.footable-filtering-left>thead>tr.footable-filtering>th{text-align:left}
 .footable-filtering-external.footable-filtering-center,table.footable.footable-filtering-center>thead>tr.footable-filtering>th{text-align:center}
@@ -120,3 +121,5 @@ ul.pagination>li.footable-page{display:none}
 ul.pagination>li.footable-page.visible{display:inline}
 td.footable-editing{width:90px;max-width:90px}
 .img-thumbnail-sm{background:#fff;border:1px solid #bbb;border-radius:4px;padding:2px}
+
+.footable-filtering-search {float:right;}
