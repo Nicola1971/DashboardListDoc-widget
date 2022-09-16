@@ -4,7 +4,7 @@
  * Dashboard Documents list/grid widget plugin
  *
  * @category plugin
- * @version 2.0.5.5
+ * @version 2.0.5.6
  * @author Nicola Lambathakis http://www.tattoocms.it/ https://github.com/Nicola1971/
  * @license http://www.gnu.org/copyleft/gpl.html GNU Public License (GPL)
  * @internal @events OnManagerWelcomeHome,OnManagerWelcomePrerender
