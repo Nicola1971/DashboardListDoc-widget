@@ -9,5 +9,7 @@ Requires snippets: DocLister, DocInfo, If, PhpThumb.
 
 ![doclist333](https://user-images.githubusercontent.com/7342798/33715917-865d2b64-db54-11e7-9eba-89f12b368be5.png)
 
+Module versione here: https://github.com/Nicola1971/ListDoc-module
+
 ## To Do
 - **Ajax** pagination/load of resources
