@@ -4,22 +4,20 @@
  * Dashboard Documents list/grid widget plugin
  *
  * @category plugin
- * @version 2.0.5.6
+ * @version 2.0.5.7
  * @author Nicola Lambathakis http://www.tattoocms.it/ https://github.com/Nicola1971/
  * @license http://www.gnu.org/copyleft/gpl.html GNU Public License (GPL)
  * @internal @events OnManagerWelcomeHome,OnManagerWelcomePrerender
- * @internal @properties &wdgVisibility=Show widget for:;menu;All,AdminOnly,AdminExcluded,ThisRoleOnly,ThisUserOnly;All &ThisRole=Show only to this role id:;string;;;enter the role id &ThisUser=Show only to this username:;string;;;enter the username &wdgTitle=Widget Title:;string;Documents List &wdgicon=widget icon:;string;fa-pencil &wdgposition=widget position:;list;1,2,3,4,5,6,7,8,9,10;1 &wdgsizex=widget width:;list;12,6,4,3;12 &ParentFolder=Parent folder for List documents:;string;0 &ListItems=Max items in List:;string;50 &dittolevel=Depht:;string;3 &hideFolders=Hide Folders:;list;yes,no;no &showUnpublished=Show Deleted and Unpublished:;list;yes,no;yes;;Show Deleted and Unpublished resources &showAddButtons=Show Create Resource Buttons:;list;yes,no;no;;show header add buttons &showStatusFilter=Show Status Filter:;list;yes,no;yes;;require Show Deleted and Unpublished YES &DisplayTitle=Display Title in title column:;list;pagetitle,longtitle,menutitle;pagetitle;;choose which title display in title column &showParent=Show Parent Column:;list;yes,no;yes &showUser=Show User Column:;list;createdby,publishedby,editedby,no;createdby &showDate=Show Date Column:;list;createdon,publishedon,editedon,no;editedon &dateFormat=Date Column Format:;list;DD MM YYYY,MM DD YYYY,YYYY MM DD;DD MM YYYY &TvColumn=Tv Columns:;string;[+longtitle+],[+menuindex+] &TvSortType=Tv Column Sort type:;string;text,number &ImageTv=Show Image TV:;string;image;;enter tv name &ShowImageIn=Show image Tv in:;list;overview,column;overview &tablefields=Overview Tv Fields:;string;[+longtitle+],[+description+],[+introtext+],[+documentTags+] &tableheading=Overview TV headings:;string;Long Title,Description,Introtext,Tags &editInModal=Edit docs in modal:;list;yes,no;no;;edit and create resources in evo modal window &showMoveButton=Show Move Button:;list;yes,no;yes;;hides the button to everyone, even if the user has permissions &showAddHere=Show Create Resource here Button:;list;yes,no;yes;;hides the button to everyone, even if the user has permissions &showDuplicateButton=Show Duplicate Button:;list;yes,no;yes;;hides the button to everyone, even if the user has permissions &showPublishButton=Show Publish Button:;list;yes,no;yes;;hides the button to everyone, even if the user has permissions &showDeleteButton=Show Delete Button:;list;yes,no;yes;;hides the button to everyone, even if the user has permissions &HeadBG=Widget Title Background color:;string; &HeadColor=Widget title color:;string  &confirmTheme=jquery confirm Theme:;list;modern,light,dark,supervan,material,bootstrap;modern;;theme styles for confim alert windows
+ * @internal @properties &wdgVisibility=Show widget for:;menu;All,AdminOnly,AdminExcluded,ThisRoleOnly,ThisUserOnly;All &ThisRole=Show only to this role id:;string;;;enter the role id &ThisUser=Show only to this username:;string;;;enter the username &wdgTitle=Widget Title:;string;Documents List &wdgicon=widget icon:;string;fa-pencil &wdgposition=widget position:;list;1,2,3,4,5,6,7,8,9,10;1 &wdgsizex=widget width:;list;12,6,4,3;12 &ParentFolder=Parent folder for List documents:;string;0 &DLFilter=DL Filter:;string &ListItems=Max items in List:;string;50 &dittolevel=Depht:;string;3 &hideFolders=Hide Folders:;list;yes,no;no &showUnpublished=Show Deleted and Unpublished:;list;yes,no;yes;;Show Deleted and Unpublished resources &showAddButtons=Show Create Resource Buttons:;list;yes,no;no;;show header add buttons &showStatusFilter=Show Status Filter:;list;yes,no;yes;;require Show Deleted and Unpublished YES &DisplayTitle=Display Title in title column:;list;pagetitle,longtitle,menutitle;pagetitle;;choose which title display in title column &showParent=Show Parent Column:;list;yes,no;yes &showUser=Show User Column:;list;createdby,publishedby,editedby,no;createdby &showDate=Show Date Column:;list;createdon,publishedon,editedon,no;editedon &showDate2=Show Date 2 Column:;list;createdon,publishedon,editedon,no;createdon &dateFormat=Date Column Format:;list;DD MM YYYY,MM DD YYYY,YYYY MM DD;DD MM YYYY &TvColumn=Tv Columns:;string;[+longtitle+],[+menuindex+] &TvSortType=Tv Column Sort type:;string;text,number &ImageTv=Show Image TV:;string;image;;enter tv name &ShowImageIn=Show image Tv in:;list;overview,column;overview &tablefields=Overview Tv Fields:;string;[+longtitle+],[+description+],[+introtext+],[+documentTags+] &tableheading=Overview TV headings:;string;Long Title,Description,Introtext,Tags &editInModal=Edit docs in modal:;list;yes,no;no;;edit and create resources in evo modal window &showMoveButton=Show Move Button:;list;yes,no;yes;;hides the button to everyone, even if the user has permissions &showAddHere=Show Create Resource here Button:;list;yes,no;yes;;hides the button to everyone, even if the user has permissions &showDuplicateButton=Show Duplicate Button:;list;yes,no;yes;;hides the button to everyone, even if the user has permissions &showPublishButton=Show Publish Button:;list;yes,no;yes;;hides the button to everyone, even if the user has permissions &showDeleteButton=Show Delete Button:;list;yes,no;yes;;hides the button to everyone, even if the user has permissions &HeadBG=Widget Title Background color:;string; &HeadColor=Widget title color:;string  &confirmTheme=jquery confirm Theme:;list;modern,light,dark,supervan,material,bootstrap;modern;;theme styles for confim alert windows
  * @internal @installset base, sample
  * @internal @modx_category Dashboard
  * @internal    @disabled 0
- * @lastupdate  14-09-2022
+ * @lastupdate  16-04-2024
  * @documentation Requirements: This plugin requires Evolution 1.4 or later
  * @documentation https://github.com/Nicola1971/DashboardListDoc-widget/
  * @reportissues https://github.com/Nicola1971/DashboardListDoc-widget/issues
  */
-
-
- //lang
+//lang
  // get global language
  global $modx,$_lang;
  //get custom language
@@ -482,7 +480,7 @@
  $find = array('DD','MM','YYYY');
  $replace = array('%d','%m','%Y');
  $DLdate = str_replace($find,$replace,$dateFormat);
-
+ $DLdate2 = str_replace($find,$replace,$dateFormat);
  ////////////Columns
  //ID column
  $rowTpl = '@CODE: <tr id="[+id+]">
@@ -536,6 +534,21 @@
  else if ($showDate == 'editedon') {
  $rowTpl .= '<td style="white-space: nowrap;" class="footable-toggle text-nowrap">[+editedon:date=`' . $DLdate . '`+]</td>';
  $dateColHead = '<th data-type="date" data-format-string="'.$dateFormat.'" data-sorted="true" data-direction="DESC" style="width: 1%; text-align:right;">[%page_data_edited%]</th>';
+ }
+ else {}
+
+ //DATE 2 column
+ if ($showDate2 == 'createdon') {
+ $rowTpl .= '<td style="white-space: nowrap;" class="footable-toggle text-nowrap">[+createdon:date=`' . $DLdate2 . '`+]</td>';
+ $date2ColHead = '<th data-type="date" data-format-string="'.$dateFormat.'" data-sorted="true" data-direction="DESC" style="width: 1%; text-align:right;">[%page_data_created%]</th>';
+ }
+ else if ($showDate2 == 'publishedon') {
+ $rowTpl .= '<td style="white-space: nowrap;" class="footable-toggle text-nowrap">[+publishedon:date=`' . $DLdate2 . '`+]</td>';
+ $date2ColHead = '<th data-type="date" data-format-string="'.$dateFormat.'" data-sorted="true" data-direction="DESC" style="width: 1%; text-align:right;">[%page_data_published%]</th>';
+ }
+ else if ($showDate2 == 'editedon') {
+ $rowTpl .= '<td style="white-space: nowrap;" class="footable-toggle text-nowrap">[+editedon:date=`' . $DLdate2 . '`+]</td>';
+ $date2ColHead = '<th data-type="date" data-format-string="'.$dateFormat.'" data-sorted="true" data-direction="DESC" style="width: 1%; text-align:right;">[%page_data_edited%]</th>';
  }
  else {}
 
@@ -654,7 +667,7 @@
  $params['id'] = 'doclistwdg';
  $params['parents'] = $parentId;
  $params['depth'] = $dittolevel;
- $params['filters'] = 'private';
+ $params['filters'] = $DLFilter;
  $params['tpl'] = $rowTpl;
  $params['tvPrefix'] = '';
  $params['tvList'] = $TvFields;
@@ -705,6 +718,7 @@
  							'.$TvColumnsHeaders.'
  							<th data-visible="false" data-name="status" data-filterable="true" data-type="text">'.$_lang["page_data_status"].'</th>
  							'.$dateColHead.'
+							'.$date2ColHead.'
  							'.$userColHead.'
  							<th data-filterable="false" data-sortable="false" style="width: 1%; text-align:center;">[%mgrlog_action%]</th>
  							<th data-filterable="false" data-sortable="false" data-breakpoints="all"></th>
