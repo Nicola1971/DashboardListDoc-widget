@@ -14,7 +14,7 @@ $_LDlang['all_status'] = 'Все статусы';
 $_LDlang['published'] = 'опубликованный';
 $_LDlang['unpublished'] = 'неопубликованный';
 $_LDlang["deleted"] = 'удаленный';
-
+$_LDlang["undeleted"] = 'не удалено';
 $_LDlang["Showing"] = 'показ';
 $_LDlang["of"] = 'из';
 $_LDlang["pages"] = 'страницы';

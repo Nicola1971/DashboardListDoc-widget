@@ -14,7 +14,7 @@ $_LDlang['all_status'] = 'Alle';
 $_LDlang['published'] = 'gepubliceerd';
 $_LDlang['unpublished'] = 'gedepubliceerd';
 $_LDlang["deleted"] = 'verwijderde';
-
+$_LDlang["undeleted"] = 'niet verwijderd';
 $_LDlang["Showing"] = 'Resultaat';
 $_LDlang["of"] = 'van';
 $_LDlang["pages"] = 'Pagina\'s';

@@ -14,7 +14,7 @@ $_LDlang['all_status'] = 'All Status';
 $_LDlang['published'] = 'published';
 $_LDlang['unpublished'] = 'unpublished';
 $_LDlang["deleted"] = 'deleted';
-
+$_LDlang["undeleted"] = 'undeleted';
 $_LDlang["Showing"] = 'Showing';
 $_LDlang["of"] = 'of';
 $_LDlang["pages"] = 'Pages';

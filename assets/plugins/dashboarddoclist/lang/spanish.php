@@ -14,7 +14,7 @@ $_LDlang['all_status'] = 'Todos estados';
 $_LDlang['published'] = 'publicado';
 $_LDlang['unpublished'] = 'no publicado';
 $_LDlang["deleted"] = 'borrado';
-
+$_LDlang["undeleted"] = 'no eliminado';
 $_LDlang["Showing"] = 'Mostrando';
 $_LDlang["of"] = 'de';
 $_LDlang["pages"] = 'Páginas';
