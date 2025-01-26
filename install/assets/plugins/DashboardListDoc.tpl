@@ -4,7 +4,7 @@
  * Dashboard Documents list/grid widget plugin
  *
  * @category plugin
- * @version 2.0.5.7
+ * @version 2.0.5.8
  * @author Nicola Lambathakis http://www.tattoocms.it/ https://github.com/Nicola1971/
  * @license http://www.gnu.org/copyleft/gpl.html GNU Public License (GPL)
  * @internal @events OnManagerWelcomeHome,OnManagerWelcomePrerender
@@ -12,7 +12,7 @@
  * @internal @installset base, sample
  * @internal @modx_category Dashboard
  * @internal    @disabled 0
- * @lastupdate  16-04-2024
+ * @lastupdate  26-01-2025
  * @documentation Requirements: This plugin requires Evolution 1.4 or later
  * @documentation https://github.com/Nicola1971/DashboardListDoc-widget/
  * @reportissues https://github.com/Nicola1971/DashboardListDoc-widget/issues
@@ -26,6 +26,35 @@
  if (file_exists(MODX_BASE_PATH.'assets/plugins/dashboarddoclist/lang/' . $modx->config['manager_language'] . '.php')) {
      include(MODX_BASE_PATH.'assets/plugins/dashboarddoclist/lang/' . $modx->config['manager_language'] . '.php');
  }
+$ThisRole = $ThisRole ?? '';
+$ThisUser = $ThisUser ?? '';
+$wdgVisibility = $wdgVisibility ?? 'All';
+$DLFilter = $DLFilter ?? '';
+$ParentFolder = $ParentFolder ?? '0';
+$TvColumn = $TvColumn ?? '';
+$TvSortType = $TvSortType ?? '';
+$tablefields = $tablefields ?? '[+longtitle+],[+description+],[+introtext+],[+documentTags+]';
+$tableheading = $tableheading ?? 'Long Title,Description,Introtext,Tags';
+$TvTDs = '';
+$thtdfields = '';
+$TvColumnsHeaders = ''; 
+// Widget options
+$ThisRole = isset($ThisRole) ? trim($ThisRole) : '';
+$ThisUser = isset($ThisUser) ? trim($ThisUser) : '';
+$wdgVisibility = isset($wdgVisibility) ? trim($wdgVisibility) : 'All';
+$HeadBG = isset($HeadBG) ? trim($HeadBG) : '';
+$HeadColor = isset($HeadColor) ? trim($HeadColor) : '';
+$showUnpublished = isset($showUnpublished) ? trim($showUnpublished) : 'no';
+$showStatusFilter = isset($showStatusFilter) ? trim($showStatusFilter) : 'no';
+$showParent = isset($showParent) ? trim($showParent) : 'yes';
+$showAddButtons = isset($showAddButtons) ? trim($showAddButtons) : 'no';
+$editInModal = isset($editInModal) ? trim($editInModal) : 'no';
+$showMoveButton = isset($showMoveButton) ? trim($showMoveButton) : 'yes';
+$showDuplicateButton = isset($showDuplicateButton) ? trim($showDuplicateButton) : 'yes';
+$showPublishButton = isset($showPublishButton) ? trim($showPublishButton) : 'yes';
+$showAddHere = isset($showAddHere) ? trim($showAddHere) : 'yes';
+$showDeleteButton = isset($showDeleteButton) ? trim($showDeleteButton) : 'yes';
+$hideFolders = isset($hideFolders) ? trim($hideFolders) : 'no';
  // get manager role
  $internalKey = $modx->getLoginUserID();
  $sid = $modx->sid;
@@ -244,7 +273,7 @@
      		 animation: \'top\',
  			 theme: \''.$confirmTheme.'\',
  			 icon: \'fa fa-thumbs-o-up\',
- 			 title:\'' . $_lang["undeleted"] . ' \'+trID,
+ 			 title:\'' . $_LDlang["undeleted"] . ' \'+trID,
  			 content: \'' . $_lang["actioncomplete"] . '\',
  			 useBootstrap: false,
      		 animation: \'top\',
@@ -457,24 +486,32 @@
  }
  }
  //get Tv vars Heading Titles from Module configuration (ie: Page Title,Description,Date)
- $tharr = explode(",","$tableheading");
- $tdarr = explode(",","$tablefields");
- foreach (array_combine($tharr, $tdarr) as $thval => $tdval){
-     $thtdfields .=  "
-     <li><b>" . $thval . "</b>: " . $tdval . "</li>
-     ";
- }
- //get tv columns
- $TvColumns = explode(",","$TvColumn");
- $TvTypes = explode(",","$TvSortType");
- foreach (array_combine($TvColumns, $TvTypes) as $TvTD => $TvType){
-     $TvTDs .=  '<td aria-expanded="false" class="footable-toggle">'.$TvTD.'</td>';
- 	$find = array('[+','+]');
- 	$replace = array('','');
- 	$getTvName = str_replace($find,$replace,$TvTD);
- 	$TvName = $getTvName;
- 	$TvColumnsHeaders .= '<th data-breakpoints="xs" data-type="'.$TvType.'">'.$TvName.'</th> ';
- }
+if (!empty($tableheading) && !empty($tablefields)) {
+    $tharr = array_filter(explode(",", $tableheading));
+    $tdarr = array_filter(explode(",", $tablefields));
+    if (count($tharr) === count($tdarr)) {
+        $combined = array_combine($tharr, $tdarr);
+        foreach ($combined as $thval => $tdval) {
+            $thtdfields .= "
+            <li><b>" . htmlspecialchars($thval) . "</b>: " . htmlspecialchars($tdval) . "</li>";
+        }
+    }
+}
+if (!empty($TvColumn) && !empty($TvSortType)) {
+    $TvColumns = array_filter(explode(",", $TvColumn));
+    $TvTypes = array_filter(explode(",", $TvSortType));
+    if (count($TvColumns) === count($TvTypes)) {
+        $combined = array_combine($TvColumns, $TvTypes);
+        foreach ($combined as $TvTD => $TvType) {
+            $TvTDs .= '<td aria-expanded="false" class="footable-toggle">'.htmlspecialchars($TvTD).'</td>';
+            $find = array('[+','+]');
+            $replace = array('','');
+            $getTvName = str_replace($find, $replace, $TvTD);
+            $TvName = htmlspecialchars($getTvName);
+            $TvColumnsHeaders .= '<th data-breakpoints="xs" data-type="'.htmlspecialchars($TvType).'">'.$TvName.'</th> ';
+        }
+    }
+}
  //get date format
  $dateFormat = isset($dateFormat) ? $dateFormat : 'DD MM YYYY';
  $find = array('DD','MM','YYYY');
@@ -682,7 +719,11 @@
  }
  //user extender
  $params['extender'] = 'user';
+ if (intval(substr($modx->config['settings_version'],0,1)) < 3) {
  $params['usertype'] = 'mgr';
+ } else {
+ $params['usertype'] = 'users';
+ }
  $params['userFields'] = 'createdby,publishedby,editedby';
 
  // run DocLister
